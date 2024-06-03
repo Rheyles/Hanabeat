@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://blajjabpjjy68"]
+
+[node name="AmazingScene" type="Node2D"]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 1147.0
+offset_bottom = 511.0
+theme_override_font_sizes/font_size = 152
+text = "C'est ici le fun ?"
+horizontal_alignment = 1
+vertical_alignment = 1
