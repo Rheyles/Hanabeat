@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=3 uid="uid://ha58pewxuub3"]
+
+[ext_resource type="Texture2D" uid="uid://eoivoo3yqfid" path="res://Ressources/Sprites/SparkleSprite.png" id="1_tcg8j"]
+
+[sub_resource type="Curve" id="Curve_ia6db"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ya0js"]
+curve = SubResource("Curve_ia6db")
+
+[sub_resource type="Curve" id="Curve_52k2m"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.195122, 1), 0.0, 0.0, 0, 0, Vector2(0.579268, 0.10989), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_556ik"]
+curve = SubResource("Curve_52k2m")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_erf4i"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+angle_max = 150.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+radial_velocity_min = 30.0
+radial_velocity_max = 50.0
+radial_velocity_curve = SubResource("CurveTexture_556ik")
+gravity = Vector3(0, 10, 0)
+scale_min = 0.1
+scale_max = 0.3
+color = Color(0.963752, 0.90348, 0, 1)
+alpha_curve = SubResource("CurveTexture_ya0js")
+hue_variation_min = -0.06
+hue_variation_max = 0.07
+
+[sub_resource type="Animation" id="Animation_owvg8"]
+resource_name = "FireWorkExplosionQuit"
+length = 2.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xbtyv"]
+_data = {
+"FireWorkExplosionQuit": SubResource("Animation_owvg8")
+}
+
+[node name="FireWorkExplosion1" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 3
+emitting = false
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_erf4i")
+texture = ExtResource("1_tcg8j")
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GPUParticles2D"]
+libraries = {
+"": SubResource("AnimationLibrary_xbtyv")
+}
+autoplay = "FireWorkExplosionQuit"

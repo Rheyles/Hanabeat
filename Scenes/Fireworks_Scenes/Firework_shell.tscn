@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1mqwkcvbykx"]
+
+[ext_resource type="Texture2D" uid="uid://c005mrowk3i00" path="res://Ressources/Sprites/new_gradient_texture_2d2.tres" id="1_jh2v2"]
+[ext_resource type="Script" path="res://Script/firework_shell.gd" id="1_m75v3"]
+[ext_resource type="PackedScene" uid="uid://ha58pewxuub3" path="res://Scenes/Fireworks_Scenes/Firework_explosion.tscn" id="2_bupcr"]
+
+[node name="Firework_Shell" type="Node2D"]
+z_index = 1
+script = ExtResource("1_m75v3")
+fireWorkExplosion = ExtResource("2_bupcr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.011811, 0.125)
+texture = ExtResource("1_jh2v2")

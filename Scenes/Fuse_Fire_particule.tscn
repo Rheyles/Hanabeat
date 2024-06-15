@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=3 uid="uid://dehxybw4gvjkg"]
+
+[ext_resource type="Texture2D" uid="uid://eoivoo3yqfid" path="res://Ressources/Sprites/SparkleSprite.png" id="1_ww758"]
+
+[sub_resource type="Curve" id="Curve_yood5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2q1au"]
+curve = SubResource("Curve_yood5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_p7kgo"]
+particle_flag_align_y = true
+particle_flag_disable_z = true
+angle_min = 225.0
+angle_max = 225.0
+direction = Vector3(0, 1, 0)
+spread = 180.0
+radial_velocity_min = 45.55
+radial_velocity_max = 47.05
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 100.0
+linear_accel_max = 100.0
+scale_min = 0.05
+scale_max = 0.05
+color = Color(1, 0.913725, 0.658824, 1)
+alpha_curve = SubResource("CurveTexture_2q1au")
+
+[sub_resource type="Gradient" id="Gradient_oihdy"]
+offsets = PackedFloat32Array(0, 0.580882, 0.838235, 1)
+colors = PackedColorArray(0.94902, 0.741176, 0, 1, 0.976471, 0.380392, 0.219608, 1, 0.603922, 0.0196078, 0, 1, 0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bsfgx"]
+gradient = SubResource("Gradient_oihdy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_71ruy"]
+particle_flag_disable_z = true
+angle_min = -159.5
+angle_max = 95.5
+direction = Vector3(0, 1, 0)
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 31.25
+linear_accel_max = 31.25
+tangential_accel_max = 18.75
+scale_min = 0.1
+scale_max = 0.3
+color_ramp = SubResource("GradientTexture1D_bsfgx")
+alpha_curve = SubResource("CurveTexture_2q1au")
+
+[node name="fuseFireParticule" type="Node2D"]
+
+[node name="GPUParticles2D2" type="GPUParticles2D" parent="."]
+z_index = 3
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_p7kgo")
+texture = ExtResource("1_ww758")
+lifetime = 0.3
+explosiveness = 0.23
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 3
+amount = 15
+process_material = SubResource("ParticleProcessMaterial_71ruy")
+texture = ExtResource("1_ww758")
+lifetime = 0.5
+explosiveness = 0.35

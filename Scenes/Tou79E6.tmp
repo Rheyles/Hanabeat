@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=3 uid="uid://blajjabpjjy68"]
+
+[ext_resource type="Texture2D" uid="uid://68djx37jruo5" path="res://Ressources/Sprites/new_gradient_texture_2d.tres" id="1_hpbpx"]
+[ext_resource type="Texture2D" uid="uid://c005mrowk3i00" path="res://Ressources/Sprites/new_gradient_texture_2d2.tres" id="2_bog5v"]
+[ext_resource type="Script" path="res://Script/MouseController.gd" id="3_vklir"]
+[ext_resource type="Texture2D" uid="uid://bcbgnmf6d6xyq" path="res://icon.svg" id="4_03fg0"]
+[ext_resource type="PackedScene" uid="uid://dehxybw4gvjkg" path="res://Scenes/fuse_Fire_particule.tscn" id="5_6dmip"]
+[ext_resource type="PackedScene" uid="uid://d1mqwkcvbykx" path="res://Scenes/Fireworks_Scenes/firework_shell.tscn" id="6_qdeiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpsbj"]
+size = Vector2(125.901, 125.935)
+
+[node name="AmazingScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(58, 216)
+scale = Vector2(1.17167, 0.880138)
+texture_normal = ExtResource("1_hpbpx")
+texture_pressed = ExtResource("2_bog5v")
+
+[node name="Label" type="Label" parent="TouchScreenButton"]
+offset_left = 34.9928
+offset_top = -78.3968
+offset_right = 253.993
+offset_bottom = -20.3968
+theme_override_font_sizes/font_size = 40
+text = "Simple Tap"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MouseController" type="Node2D" parent="." node_paths=PackedStringArray("lineRef")]
+script = ExtResource("3_vklir")
+lineRef = NodePath("baseLine")
+firework = ExtResource("6_qdeiq")
+fuseFire = ExtResource("5_6dmip")
+
+[node name="baseLine" type="Line2D" parent="MouseController"]
+points = PackedVector2Array(124, 44)
+default_color = Color(0.45098, 0.211765, 0.0705882, 1)
+
+[node name="StartingDrawnPoint" type="Sprite2D" parent="."]
+position = Vector2(699, 84)
+scale = Vector2(0.476563, 0.484375)
+texture = ExtResource("4_03fg0")
+
+[node name="Area2D" type="Area2D" parent="StartingDrawnPoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartingDrawnPoint/Area2D"]
+position = Vector2(0, 1.03232)
+shape = SubResource("RectangleShape2D_mpsbj")
+
+[node name="Firework_Shell" parent="." instance=ExtResource("6_qdeiq")]
+position = Vector2(778, 377)
