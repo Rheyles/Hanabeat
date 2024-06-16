@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvkkdafludy3f"]
+
+[ext_resource type="Script" path="res://Scenes/Fuse/Fuse.gd" id="1_25v6q"]
+
+[node name="Fuse" type="Node2D"]
+script = ExtResource("1_25v6q")

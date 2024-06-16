@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://be2ph6eey4l2r"]
+
+[ext_resource type="Script" path="res://Scenes/Detonator/Detonator.gd" id="1_yja46"]
+
+[node name="Detonator" type="Node2D"]
+script = ExtResource("1_yja46")

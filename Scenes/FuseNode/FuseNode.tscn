@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dyei080hdqt5s"]
+
+[ext_resource type="Script" path="res://Scenes/FuseNode/FuseNode.gd" id="1_p25cf"]
+
+[node name="FuseNode" type="Node2D"]
+script = ExtResource("1_p25cf")

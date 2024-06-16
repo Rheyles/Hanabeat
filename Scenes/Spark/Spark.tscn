@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://co83bx4ic3dha"]
+
+[ext_resource type="Script" path="res://Scenes/Spark/Spark.gd" id="1_smgt8"]
+
+[node name="Spark" type="Node2D"]
+script = ExtResource("1_smgt8")

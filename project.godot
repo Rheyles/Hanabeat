@@ -11,9 +11,22 @@ config_version=5
 [application]
 
 config/name="HanaBeat"
-run/main_scene="res://Scenes/TouchTest.tscn"
+run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DATA="*res://Autoloads/Data.gd"
+EVENTS="*res://Autoloads/Events.gd"
+GAME="*res://Autoloads/Game.gd"
+LOCALIZATION="*res://Autoloads/Localization.gd"
+
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=1080
+window/handheld/orientation=1
 
 [input_devices]
 

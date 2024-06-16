@@ -1,8 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://d2g2gyo78g2n5"]
+[gd_scene load_steps=5 format=3 uid="uid://dvve77y48bbgn"]
 
-[ext_resource type="Script" path="res://Script/Fuse_scene.gd" id="1_xepeh"]
+[ext_resource type="Script" path="res://Scenes/_Test/Fuse_scene.gd" id="1_xepeh"]
 [ext_resource type="PackedScene" uid="uid://d1mqwkcvbykx" path="res://Scenes/Fireworks_Scenes/Firework_shell.tscn" id="2_1ej2y"]
-[ext_resource type="PackedScene" uid="uid://dehxybw4gvjkg" path="res://Scenes/Fuse_Fire_particule.tscn" id="3_36iow"]
+[ext_resource type="PackedScene" uid="uid://dehxybw4gvjkg" path="res://Scenes/_Test/Fuse_Fire_particule.tscn" id="3_36iow"]
 
 [sub_resource type="Gradient" id="Gradient_d1igo"]
 colors = PackedColorArray(0.76688, 0.540396, 0.142015, 1, 0.469057, 0.324083, 0.0676379, 1)

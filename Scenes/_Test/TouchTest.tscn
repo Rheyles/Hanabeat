@@ -1,10 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://blajjabpjjy68"]
+[gd_scene load_steps=8 format=3 uid="uid://bpyyi66mf0uwg"]
 
 [ext_resource type="Texture2D" uid="uid://68djx37jruo5" path="res://Ressources/Sprites/new_gradient_texture_2d.tres" id="1_hpbpx"]
 [ext_resource type="Texture2D" uid="uid://c005mrowk3i00" path="res://Ressources/Sprites/new_gradient_texture_2d2.tres" id="2_bog5v"]
-[ext_resource type="Script" path="res://Script/MouseController.gd" id="3_vklir"]
+[ext_resource type="Script" path="res://Scenes/_Test/MouseController.gd" id="3_vklir"]
 [ext_resource type="Texture2D" uid="uid://bcbgnmf6d6xyq" path="res://icon.svg" id="4_03fg0"]
-[ext_resource type="PackedScene" uid="uid://d2g2gyo78g2n5" path="res://Scenes/Fuse_scene.tscn" id="6_augbs"]
+[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/_Test/Fuse_scene.tscn" id="6_augbs"]
 [ext_resource type="PackedScene" uid="uid://d1mqwkcvbykx" path="res://Scenes/Fireworks_Scenes/Firework_shell.tscn" id="6_qdeiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpsbj"]
