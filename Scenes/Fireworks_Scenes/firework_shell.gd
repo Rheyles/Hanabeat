@@ -20,8 +20,9 @@ func _process(delta):
 		var newExplosion = fireWorkExplosion.instantiate()
 		add_child(newExplosion)
 		newExplosion.reparent(get_node(".."))
+		
 		newExplosion.global_position = self.global_position
 		newExplosion.get_node("GPUParticles2D").process_material.color = colors[randi() % colors.size()]
 		newExplosion.get_node("GPUParticles2D").emitting = true
-		print(newExplosion.global_position)
+		
 		queue_free()

@@ -1,6 +1,17 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvkkdafludy3f"]
+[gd_scene load_steps=5 format=3 uid="uid://dvve77y48bbgn"]
 
-[ext_resource type="Script" path="res://Scenes/Fuse/Fuse.gd" id="1_25v6q"]
+[ext_resource type="Script" path="res://Scenes/Fuse/Fuse.gd" id="1_u5up8"]
+[ext_resource type="PackedScene" uid="uid://d1mqwkcvbykx" path="res://Scenes/Fireworks_Scenes/Firework_shell.tscn" id="2_1ej2y"]
+[ext_resource type="PackedScene" uid="uid://dehxybw4gvjkg" path="res://Scenes/Spark/Fuse_Fire_particule.tscn" id="3_7411b"]
 
-[node name="Fuse" type="Node2D"]
-script = ExtResource("1_25v6q")
+[sub_resource type="Gradient" id="Gradient_d1igo"]
+colors = PackedColorArray(0.76688, 0.540396, 0.142015, 1, 0.469057, 0.324083, 0.0676379, 1)
+
+[node name="Fuse_Scene" type="Node2D"]
+script = ExtResource("1_u5up8")
+firework = ExtResource("2_1ej2y")
+fuseFire = ExtResource("3_7411b")
+
+[node name="Line2D" type="Line2D" parent="."]
+default_color = Color(0.768627, 0.541176, 0.141176, 1)
+gradient = SubResource("Gradient_d1igo")

@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpyyi66mf0uwg"]
+[gd_scene load_steps=7 format=3 uid="uid://bpyyi66mf0uwg"]
 
-[ext_resource type="Texture2D" uid="uid://68djx37jruo5" path="res://Ressources/Sprites/new_gradient_texture_2d.tres" id="1_hpbpx"]
-[ext_resource type="Texture2D" uid="uid://c005mrowk3i00" path="res://Ressources/Sprites/new_gradient_texture_2d2.tres" id="2_bog5v"]
+[ext_resource type="PackedScene" uid="uid://dyei080hdqt5s" path="res://Scenes/FuseNode/FuseNode.tscn" id="3_8wjx0"]
 [ext_resource type="Script" path="res://Scenes/_Test/MouseController.gd" id="3_vklir"]
 [ext_resource type="Texture2D" uid="uid://bcbgnmf6d6xyq" path="res://icon.svg" id="4_03fg0"]
-[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/_Test/Fuse_scene.tscn" id="6_augbs"]
+[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Fuse/Fuse.tscn" id="6_augbs"]
 [ext_resource type="PackedScene" uid="uid://d1mqwkcvbykx" path="res://Scenes/Fireworks_Scenes/Firework_shell.tscn" id="6_qdeiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpsbj"]
@@ -14,29 +13,15 @@ size = Vector2(125.901, 125.935)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
-position = Vector2(58, 216)
-scale = Vector2(1.17167, 0.880138)
-texture_normal = ExtResource("1_hpbpx")
-texture_pressed = ExtResource("2_bog5v")
-
-[node name="Label" type="Label" parent="TouchScreenButton"]
-offset_left = 34.9928
-offset_top = -78.3968
-offset_right = 253.993
-offset_bottom = -20.3968
-theme_override_font_sizes/font_size = 40
-text = "Simple Tap"
-horizontal_alignment = 1
-vertical_alignment = 1
+editor_draw_drag_margin = true
 
 [node name="MouseController" type="Node2D" parent="."]
 script = ExtResource("3_vklir")
 fuseLine2D = ExtResource("6_augbs")
+fuseNode = ExtResource("3_8wjx0")
 
 [node name="StartingDrawnPoint" type="Sprite2D" parent="."]
-position = Vector2(699, 84)
+position = Vector2(47, 46.9999)
 scale = Vector2(0.476563, 0.484375)
 texture = ExtResource("4_03fg0")
 
