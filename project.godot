@@ -32,6 +32,10 @@ window/handheld/orientation=1
 
 pointing/emulate_touch_from_mouse=true
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://Localization/translations.en.translation", "res://Localization/translations.fr.translation")
+
 [rendering]
 
 renderer/rendering_method="mobile"

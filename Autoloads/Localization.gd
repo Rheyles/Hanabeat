@@ -2,6 +2,8 @@ extends Node
 
 ## LOCALIZATION
 ## This autoload contains the variables and methods to manage the language of the game
+##
+## Ex : label.text = tr("MY_TOKEN")
 
 var available_lng = ["fr", "en"]
 var crt_lng_idx = 0

@@ -5,3 +5,5 @@ extends Node
 # warnings-disable
 
 signal example()
+
+signal language_changed()
