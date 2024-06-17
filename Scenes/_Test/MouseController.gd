@@ -35,6 +35,8 @@ func _input(event: InputEvent)-> void:
 			var nodePose =  currentLine.get_node("Line2D").get_point_position(currentLine.get_node("Line2D").get_point_count() -1)
 			var newNode = fuseNode.instantiate()
 			newNode.position = nodePose
+			newNode.linePointRef = currentLine.get_node("Line2D").get_point_count() -1
+			newNode._renameAtInstantiate()
 			add_child(newNode)
 			newNode.reparent(currentLine)
 	
