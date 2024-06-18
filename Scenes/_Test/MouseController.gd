@@ -36,13 +36,12 @@ func _input(event: InputEvent)-> void:
 			var newNode = fuseNode.instantiate()
 			newNode.position = nodePose
 			newNode.linePointRef = currentLine.get_node("Line2D").get_point_count() -1
-			newNode._renameAtInstantiate()
 			add_child(newNode)
 			newNode.reparent(currentLine)
 	
 	if event is InputEventMouseButton :
 		if event.button_index == MOUSE_BUTTON_LEFT && event.is_action_released && !pressed:
 #For Testing Purpose : At release => lunch Burn logic
-			currentLine.eraseLine(currentLine.get_node("Line2D"))
+			currentLine._eraseLine(currentLine.get_node("Line2D"))
 			print("release")
 

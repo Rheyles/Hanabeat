@@ -1,8 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://co83bx4ic3dha"]
+[gd_scene load_steps=4 format=3 uid="uid://co83bx4ic3dha"]
 
 [ext_resource type="Script" path="res://Scenes/Spark/Spark.gd" id="1_smgt8"]
 [ext_resource type="PackedScene" uid="uid://dehxybw4gvjkg" path="res://Scenes/Spark/Fuse_Fire_particule.tscn" id="2_g17ci"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ukbay"]
+
 [node name="Spark" type="Node2D"]
 script = ExtResource("1_smgt8")
 fuseFireParticule = ExtResource("2_g17ci")
+
+[node name="fuseFireParticule" parent="." instance=ExtResource("2_g17ci")]
+
+[node name="sparkShapeCast" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_ukbay")
+target_position = Vector2(0, 0)
+collide_with_areas = true
+collide_with_bodies = false

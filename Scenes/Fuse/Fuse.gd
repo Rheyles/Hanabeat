@@ -2,20 +2,21 @@ extends Node2D
 
 @export var firework : Resource
 @export var fuseFire : Resource
+@export var spark : Resource
 
-var erasePointDelay : float = 0.07 #Delay entre deux call d'effacement de point => Moins de delay = combustion plus rapide
 var startingPos : Vector2
 
-func eraseLine(lineToErase: Line2D):
+func _eraseLine(lineToErase: Line2D):
 #Fonction qui va suppr la line2D point par point avec un delay entre chaque boucle
 #A la fin call une instance de FireWork
-	var newFuseFire = fuseFire.instantiate()
-	add_child(newFuseFire)
-	while lineToErase.get_point_count() > 0:
-		newFuseFire.position = lineToErase.get_point_position(lineToErase.get_point_count()-1)
-		await get_tree().create_timer(erasePointDelay).timeout
-		lineToErase.remove_point(lineToErase.get_point_count()-1)
-	newFuseFire.queue_free()
+	var newSpark = spark.instantiate()
+	newSpark.actualFuseNodePos = lineToErase.get_point_position(lineToErase.get_point_count()-1)
+	newSpark.position = newSpark.actualFuseNodePos
+	newSpark.fuseRef = self
+	add_child(newSpark)
+	newSpark._burnTheFuse()
+
+func _lunchFirework():
 	var newFirework = firework.instantiate()
 	newFirework.position = startingPos
 	add_child(newFirework)
