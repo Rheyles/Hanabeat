@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nufanppsxsnn"
-path="res://.godot/imported/PlaceHolder_Tree.png-f5da31cf27fb31ae032abf89bc2a5b42.ctex"
+uid="uid://ck4rsrulf7obj"
+path="res://.godot/imported/LevelSelectionButton.png-66b921ab8a6272d0a8b77bc65a74e2ca.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/PlaceHolder_Tree.png"
-dest_files=["res://.godot/imported/PlaceHolder_Tree.png-f5da31cf27fb31ae032abf89bc2a5b42.ctex"]
+source_file="res://Ressources/Sprites/Placeholders/LevelSelectionButton.png"
+dest_files=["res://.godot/imported/LevelSelectionButton.png-66b921ab8a6272d0a8b77bc65a74e2ca.ctex"]
 
 [params]
 

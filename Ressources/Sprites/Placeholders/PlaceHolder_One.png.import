@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ddtdat8ce75jn"
-path="res://.godot/imported/square4pi.png-5e200ea8ef4062861e19e77b362aa6cb.ctex"
+uid="uid://ckffrsy26r0ei"
+path="res://.godot/imported/PlaceHolder_One.png-507c90245c07b3bf85a5850524e3596c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/square4pi.png"
-dest_files=["res://.godot/imported/square4pi.png-5e200ea8ef4062861e19e77b362aa6cb.ctex"]
+source_file="res://Ressources/Sprites/Placeholders/PlaceHolder_One.png"
+dest_files=["res://.godot/imported/PlaceHolder_One.png-507c90245c07b3bf85a5850524e3596c.ctex"]
 
 [params]
 

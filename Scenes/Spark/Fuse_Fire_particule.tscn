@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://dehxybw4gvjkg"]
 
-[ext_resource type="Texture2D" uid="uid://eoivoo3yqfid" path="res://Ressources/Sprites/SparkleSprite.png" id="1_ww758"]
+[ext_resource type="Texture2D" uid="uid://eoivoo3yqfid" path="res://Ressources/Sprites/Placeholders/SparkleSprite.png" id="1_ww758"]
 
 [sub_resource type="Curve" id="Curve_yood5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
