@@ -1,6 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://be2ph6eey4l2r"]
+[gd_scene load_steps=6 format=3 uid="uid://be2ph6eey4l2r"]
 
 [ext_resource type="Script" path="res://Scenes/Detonator/Detonator.gd" id="1_yja46"]
+[ext_resource type="Texture2D" uid="uid://ck4rsrulf7obj" path="res://Ressources/Sprites/Placeholders/LevelSelectionButton.png" id="2_luasq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx7gw"]
+size = Vector2(61, 60)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_js8u5"]
+atlas = ExtResource("2_luasq")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sh613"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_js8u5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Detonator" type="Node2D"]
 script = ExtResource("1_yja46")
+
+[node name="ClickArea" type="Area2D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+position = Vector2(0.5, 0)
+shape = SubResource("RectangleShape2D_wx7gw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sh613")
+metadata/_edit_lock_ = true
+
+[node name="SparkSpawn" type="Marker2D" parent="."]
+position = Vector2(0, -31)

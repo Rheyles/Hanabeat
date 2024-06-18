@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxydqx7n6hfof"
-path="res://.godot/imported/PlaceHolder_Square.png-cafa7fef494307d7bc9fe3523c14d31a.ctex"
+path="res://.godot/imported/PlaceHolder_Square.png-52b3fc119ffab8b9765ba88d3752d4dd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/PlaceHolder_Square.png"
-dest_files=["res://.godot/imported/PlaceHolder_Square.png-cafa7fef494307d7bc9fe3523c14d31a.ctex"]
+source_file="res://Ressources/Sprites/Placeholders/PlaceHolder_Square.png"
+dest_files=["res://.godot/imported/PlaceHolder_Square.png-52b3fc119ffab8b9765ba88d3752d4dd.ctex"]
 
 [params]
 

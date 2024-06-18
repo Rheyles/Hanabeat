@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpyyi66mf0uwg"]
+
+[ext_resource type="PackedScene" uid="uid://dyei080hdqt5s" path="res://Scenes/FuseNode/FuseNode.tscn" id="3_8wjx0"]
+[ext_resource type="Script" path="res://Scenes/_Test/MouseController.gd" id="3_vklir"]
+[ext_resource type="Texture2D" uid="uid://bcbgnmf6d6xyq" path="res://icon.svg" id="4_03fg0"]
+[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Fuse/Fuse.tscn" id="6_augbs"]
+[ext_resource type="PackedScene" uid="uid://d1mqwkcvbykx" path="res://Scenes/Fireworks_Scenes/Firework_shell.tscn" id="6_qdeiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mpsbj"]
+size = Vector2(125.901, 125.935)
+
+[node name="AmazingScene" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+editor_draw_drag_margin = true
+
+[node name="MouseController" type="Node2D" parent="."]
+script = ExtResource("3_vklir")
+fuseLine2D = ExtResource("6_augbs")
+fuseNode = ExtResource("3_8wjx0")
+
+[node name="StartingDrawnPoint" type="Sprite2D" parent="."]
+position = Vector2(47, 46.9999)
+scale = Vector2(0.476563, 0.484375)
+texture = ExtResource("4_03fg0")
+
+[node name="Area2D" type="Area2D" parent="StartingDrawnPoint"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StartingDrawnPoint/Area2D"]
+position = Vector2(0, 1.03232)
+shape = SubResource("RectangleShape2D_mpsbj")
+
+[node name="Firework_Shell" parent="." instance=ExtResource("6_qdeiq")]
+position = Vector2(778, 377)
