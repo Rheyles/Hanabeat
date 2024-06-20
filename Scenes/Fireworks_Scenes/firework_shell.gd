@@ -1,10 +1,13 @@
 extends Node2D
 
-var timer: float = 0.8
-var speed: float = 190
 @export var fireWorkExplosion: Resource
 
-var colors = [Color(0, 0.706, 0.765),Color(0.964, 0.903, 0),Color(0.987, 0.366, 0.636)] #Turquoise / Jaune / Rose
+var timer: float = 0.8 #Delay Before explosion
+var speed: float = 190 #movespeed during delay
+
+var colors = [Color(0, 0.706, 0.765),Color(0.964, 0.903, 0),Color(0.987, 0.366, 0.636)] #Turquoise / Jaune / Rose / Color Preset to pick from
+
+### BUILT-IN
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

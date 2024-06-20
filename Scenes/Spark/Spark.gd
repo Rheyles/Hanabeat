@@ -1,35 +1,35 @@
 extends Node2D
 
-@export var fuseFireParticule: Resource
+@onready var spark_shape_cast : ShapeCast2D = $sparkShapeCast
 
-@onready var sparkShapeCast : ShapeCast2D = $sparkShapeCast
+var fuse_ref : Node2D
+var actual_fuse_node_pos
+var actual_fuse_node_idx : int
 
-var fuseRef : Node2D
-var actualFuseNodePos
+var spark_delay : float = 0.5
 
-var sparkDelay : float = 0.07
-
+### LOGIC
 
 #Must contain burn logic ?
 #At each step (burn FuseNode 1 by 1) FuseNode check for collision + other logic
 #VFX -> move particule at each step
 func _burnTheFuse():
-	var fuseLine : Line2D = fuseRef.get_node("Line2D")
-	while fuseLine.get_point_count() > 0:
-		await get_tree().create_timer(sparkDelay).timeout
-		_stepBurn(fuseLine)
-	fuseRef._lunchFirework()
+	var fuse_line : Line2D = fuse_ref.get_node("Line2D")
+	while actual_fuse_node_idx >= 0:
+		await get_tree().create_timer(spark_delay).timeout
+		_stepBurn(fuse_line)
+	fuse_ref._lunchFirework()
 
-func _stepBurn(lineToBurn : Line2D):
+
+func _stepBurn(line_to_burn : Line2D): 
 	
-	if sparkShapeCast.is_colliding():	
-		var i = sparkShapeCast.get_collision_count()
+	if spark_shape_cast.is_colliding():	
+		var i = spark_shape_cast.get_collision_count()
 		while i > 0:
-			var colliderFuseNode = sparkShapeCast.get_collider(i-1).get_parent()
-			colliderFuseNode.get_node("Sprite2D").modulate = Color.FIREBRICK
-			
+			var collider_fuse_node = spark_shape_cast.get_collider(i-1).get_parent()
+			collider_fuse_node._burn()
 			i -= 1
 	
-	lineToBurn.remove_point(lineToBurn.get_point_count()-1)
-	
-	self.position = lineToBurn.get_point_position(lineToBurn.get_point_count()-1)
+	line_to_burn.remove_point(actual_fuse_node_idx)
+	self.position = line_to_burn.get_point_position(actual_fuse_node_idx -1)
+	actual_fuse_node_idx -= 1

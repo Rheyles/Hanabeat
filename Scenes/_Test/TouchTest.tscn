@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpyyi66mf0uwg"]
+[gd_scene load_steps=8 format=3 uid="uid://bpyyi66mf0uwg"]
 
 [ext_resource type="PackedScene" uid="uid://dyei080hdqt5s" path="res://Scenes/FuseNode/FuseNode.tscn" id="3_8wjx0"]
 [ext_resource type="Script" path="res://Scenes/_Test/MouseController.gd" id="3_vklir"]
 [ext_resource type="Texture2D" uid="uid://bcbgnmf6d6xyq" path="res://icon.svg" id="4_03fg0"]
 [ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Fuse/Fuse.tscn" id="6_augbs"]
+[ext_resource type="PackedScene" uid="uid://be2ph6eey4l2r" path="res://Scenes/Detonator/Detonator.tscn" id="6_mvc18"]
 [ext_resource type="PackedScene" uid="uid://d1mqwkcvbykx" path="res://Scenes/Fireworks_Scenes/Firework_shell.tscn" id="6_qdeiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mpsbj"]
@@ -33,3 +34,6 @@ shape = SubResource("RectangleShape2D_mpsbj")
 
 [node name="Firework_Shell" parent="." instance=ExtResource("6_qdeiq")]
 position = Vector2(778, 377)
+
+[node name="Detonator" parent="." instance=ExtResource("6_mvc18")]
+position = Vector2(147, 531)
