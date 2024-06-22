@@ -28,17 +28,13 @@ sprite_frames = SubResource("SpriteFrames_e7yuc")
 metadata/_edit_lock_ = true
 
 [node name="Fuse1" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(-53, 45)
-metadata/_edit_lock_ = true
+position = Vector2(47, 28)
 
 [node name="Fuse2" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(-16, 49)
-metadata/_edit_lock_ = true
+position = Vector2(15, 45)
 
 [node name="Fuse3" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(15, 51)
-metadata/_edit_lock_ = true
+position = Vector2(-18, 41)
 
 [node name="Fuse4" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(46, 48)
-metadata/_edit_lock_ = true
+position = Vector2(-53, 28)

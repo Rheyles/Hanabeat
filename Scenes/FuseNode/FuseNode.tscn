@@ -11,6 +11,8 @@ load_path = "res://.godot/imported/PlaceHolder_Circle.png-2bdf646b27c971193892b0
 script = ExtResource("1_p25cf")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_17tk0")

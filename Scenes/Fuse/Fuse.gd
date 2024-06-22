@@ -2,17 +2,35 @@ extends Node2D
 
 @export var firework : Resource
 @export var spark : Resource
+@export var fuseNode : Resource
 
-var fuse_idx : int
+var fuse_idx : int = 0
 var first_node
 var is_burning : bool = false
 
 var starting_pos : Vector2
 
+func _ready():
+	_createFirstFuseNode()
+
+
 ### LOGIC
 
+func _createFirstFuseNode():
+	var current_line = get_node("Line2D")
+	current_line.set_point_position(0,starting_pos)
+	var newNode = fuseNode.instantiate()
+	first_node = newNode
+	newNode.position = current_line.get_point_position(0)
+	newNode.parent_fuse_ref = self
+	newNode.line_point_ref = 0
+	add_child(newNode)
+	
+	get_tree().current_scene.get_node("%MouseController")._connectFirstFuseNode(newNode)
+
+
 #ANCIENNE LOGIC A SPRR CAR C EST LE ROCKETBANK QUI DOIT AVOIR CETTE LOGIC
-func _lunchFirework():
+func lunchFirework():
 	var newFirework = firework.instantiate()
 	newFirework.position = starting_pos
 	add_child(newFirework)
@@ -20,11 +38,11 @@ func _lunchFirework():
 	print("Line erased")
 	queue_free()
 
-#ANCIENNE LOGIC A SPRR CAR C EST LE DETONATOR QUI DOIT AVOIR CETTE LOGIC
-func _eraseLine():
+#LOGIC call by the Detonator
+func igniteFuse():
 #Fonction qui va suppr la line2D point par point avec un delay entre chaque boucle
 #A la fin call une instance de FireWork
 	is_burning = true
-	get_child(get_node("Line2D").get_point_count())._start_new_burn_point()
-	print(get_node("Line2D").get_point_count())
-	print(get_child(get_node("Line2D").get_point_count()).name)
+	get_child(get_node("Line2D").get_point_count()).start_new_burn_point()
+	print("Burn Start : Nb of point in the Fuse = " + str(get_node("Line2D").get_point_count()))
+	print("Burn Start : Last_Node = " + str(get_child(get_node("Line2D").get_point_count()).name))

@@ -13,5 +13,6 @@ script = ExtResource("1_smgt8")
 [node name="sparkShapeCast" type="ShapeCast2D" parent="."]
 shape = SubResource("CircleShape2D_ukbay")
 target_position = Vector2(0, 0)
+collision_mask = 2
 collide_with_areas = true
 collide_with_bodies = false

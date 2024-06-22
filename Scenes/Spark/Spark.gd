@@ -6,7 +6,7 @@ var fuse_ref : Node2D
 var actual_fuse_node_pos
 var actual_fuse_node_idx : int
 
-var spark_delay : float = 0.5
+var spark_delay : float = 0.1
 
 ### LOGIC
 
@@ -18,7 +18,7 @@ func _burnTheFuse():
 	while actual_fuse_node_idx >= 0:
 		await get_tree().create_timer(spark_delay).timeout
 		_stepBurn(fuse_line)
-	fuse_ref._lunchFirework()
+	fuse_ref.lunchFirework()
 
 
 func _stepBurn(line_to_burn : Line2D): 
@@ -27,9 +27,10 @@ func _stepBurn(line_to_burn : Line2D):
 		var i = spark_shape_cast.get_collision_count()
 		while i > 0:
 			var collider_fuse_node = spark_shape_cast.get_collider(i-1).get_parent()
-			collider_fuse_node._burn()
+			if collider_fuse_node.is_burnt == false:
+				collider_fuse_node._burn()
 			i -= 1
-	
+	if line_to_burn.get_point_count() > 1: #The Sark souldn't move again if it's the last point to burn
+		self.position = line_to_burn.get_point_position(actual_fuse_node_idx - 1)
 	line_to_burn.remove_point(actual_fuse_node_idx)
-	self.position = line_to_burn.get_point_position(actual_fuse_node_idx -1)
 	actual_fuse_node_idx -= 1

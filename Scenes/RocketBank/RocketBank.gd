@@ -13,9 +13,11 @@ var rocket_start = [0,0,0,0]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	fuses = [fuse_1, fuse_2, fuse_3, fuse_4]
 	for i in range(len(fuses)):
 		fuses[i].fuse_idx = i
-		fuses[i].first_node.burnt.connect(_on_Fuse_burnt)
+		#fuses[i].first_node.burnt.connect(_on_Fuse_burnt)
+		pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

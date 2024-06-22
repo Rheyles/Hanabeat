@@ -1,25 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://be2ph6eey4l2r"]
+[gd_scene load_steps=5 format=3 uid="uid://be2ph6eey4l2r"]
 
 [ext_resource type="Script" path="res://Scenes/Detonator/Detonator.gd" id="1_yja46"]
-[ext_resource type="Texture2D" uid="uid://ck4rsrulf7obj" path="res://Ressources/Sprites/Placeholders/LevelSelectionButton.png" id="2_luasq"]
+[ext_resource type="Texture2D" uid="uid://7qupujgfjibn" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Circle.png" id="2_cn5er"]
+[ext_resource type="Texture2D" uid="uid://boxb7avk34ewm" path="res://Ressources/Sprites/sphereFire_spriteSheet.png" id="3_ust55"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_wx7gw"]
-size = Vector2(61, 60)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_js8u5"]
-atlas = ExtResource("2_luasq")
-region = Rect2(0, 0, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_sh613"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_js8u5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="CircleShape2D" id="CircleShape2D_q2avd"]
+radius = 50.0
 
 [node name="Detonator" type="Node2D"]
 script = ExtResource("1_yja46")
@@ -28,12 +14,25 @@ script = ExtResource("1_yja46")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-position = Vector2(0.5, 0)
-shape = SubResource("RectangleShape2D_wx7gw")
+shape = SubResource("CircleShape2D_q2avd")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_sh613")
-metadata/_edit_lock_ = true
+[node name="AreaSprite" type="Sprite2D" parent="ClickArea"]
+modulate = Color(1, 0.392157, 0.215686, 1)
+scale = Vector2(1.655, 1.655)
+texture = ExtResource("2_cn5er")
 
 [node name="SparkSpawn" type="Marker2D" parent="."]
 position = Vector2(0, -31)
+
+[node name="FlameSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, 2)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_ust55")
+hframes = 4
+frame = 3
+
+[node name="DetonatorSprite" type="Sprite2D" parent="."]
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("3_ust55")
+hframes = 4
