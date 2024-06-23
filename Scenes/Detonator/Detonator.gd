@@ -29,7 +29,8 @@ func _process(_delta):
 func create_spark() -> void:
 	# Create a spark at the spawn
 	for i in range(len(connected_fuses)):
-		connected_fuses[i].igniteFuse()
+		if connected_fuses[i].is_burning == false:
+			connected_fuses[i].igniteFuse()
 	connected_fuses.clear()
 	pass
 	

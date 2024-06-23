@@ -19,27 +19,20 @@ var last_node_pos : Vector2 = Vector2.ZERO
 
 func _input(event: InputEvent)-> void:
 #Check for 1st click
-	if event is InputEventMouseButton :
-		if event.button_index == MOUSE_BUTTON_LEFT:
-			pressed = event.pressed
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
+		pressed = event.pressed
 #After 1st click => Create new Fuse and store it in the List "fuse_list"
 		if  pressed:
-			#if(!mouse_is_on_fuseNode): #For creating new fuse from scratch
-				#var newfuse = fuseLine2D.instantiate()
-				#current_line = newfuse
-				#newfuse.starting_pos = event.position 
-				#fuse_list.append(newfuse)
-				#newfuse.fuse_idx = fuse_list.size()-1
-				#add_child(newfuse)
-				#last_node_pos = event.position
 			if (mouse_is_on_fuseNode):
 				current_fuse = hovered_fuse
+				
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT:
+		current_fuse.resetFuse()
 
 #While Mouse Button Left is not release => Add a new line2D point + a FuseNode
 #Check for min distance between the last fuseNode Position and Mouse position to reduce the number of point
 	if event is InputEventMouseMotion && pressed && mouse_is_on_last_fuseNode:
 		#last_node_pos = le last fuse node sous la souris
-
 		if last_node_pos.distance_to(get_local_mouse_position()) >= minNodeDistance:
 			current_fuse.get_node("Line2D").add_point(event.position - current_fuse.global_position)
 			
@@ -52,6 +45,7 @@ func _input(event: InputEvent)-> void:
 			newNode.line_point_ref = current_fuse.get_node("Line2D").get_point_count() -1
 			add_child(newNode)
 			newNode.reparent(current_fuse)
+			current_fuse.fuseNode_list.append(newNode)
 			newNode.get_node("Area2D").mouse_entered.connect(_On_mouse_enter_fuseNode)
 			newNode.get_node("Area2D").mouse_exited.connect(_On_mouse_exit_fuseNode)
 	
@@ -63,8 +57,6 @@ func _input(event: InputEvent)-> void:
 			#if current_line != null && current_line.get_node("Line2D").get_point_count() > 0:
 				#current_line.igniteFuse()
 				#print("release")
-				
-
 
 func _connectFirstFuseNode(newNode):
 	newNode.get_node("Area2D").mouse_entered.connect(_On_mouse_enter_fuseNode)

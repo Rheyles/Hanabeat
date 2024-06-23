@@ -5,10 +5,11 @@ extends Node2D
 @export var fuseNode : Resource
 
 var fuse_idx : int = 0
-var first_node
 var is_burning : bool = false
 
 var starting_pos : Vector2
+var first_node
+var fuseNode_list = []
 
 func _ready():
 	_createFirstFuseNode()
@@ -25,9 +26,17 @@ func _createFirstFuseNode():
 	newNode.parent_fuse_ref = self
 	newNode.line_point_ref = 0
 	add_child(newNode)
+	fuseNode_list.append(newNode)
 	
 	get_tree().current_scene.get_node("%MouseController")._connectFirstFuseNode(newNode)
 
+func resetFuse():
+	for i in range(len(fuseNode_list)):
+		fuseNode_list[i].queue_free()
+	fuseNode_list.clear()
+	_createFirstFuseNode()
+	get_node("Line2D").clear_points()
+	get_node("Line2D").add_point(Vector2.ZERO)
 
 #ANCIENNE LOGIC A SPRR CAR C EST LE ROCKETBANK QUI DOIT AVOIR CETTE LOGIC
 func lunchFirework():
