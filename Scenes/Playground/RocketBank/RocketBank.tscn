@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://81yg5m76kgvo"]
+[gd_scene load_steps=5 format=3 uid="uid://81yg5m76kgvo"]
 
-[ext_resource type="Script" path="res://Scenes/RocketBank/RocketBank.gd" id="1_p215p"]
+[ext_resource type="Script" path="res://Scenes/Playground/RocketBank/RocketBank.gd" id="1_p215p"]
 [ext_resource type="Texture2D" uid="uid://dxydqx7n6hfof" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Square.png" id="2_wqvt3"]
-[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Fuse/Fuse.tscn" id="3_jpads"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ej53n"]
 atlas = ExtResource("2_wqvt3")
@@ -26,15 +25,3 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_e7yuc")
 metadata/_edit_lock_ = true
-
-[node name="Fuse1" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(47, 28)
-
-[node name="Fuse2" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(15, 45)
-
-[node name="Fuse3" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(-18, 41)
-
-[node name="Fuse4" parent="." instance=ExtResource("3_jpads")]
-position = Vector2(-53, 28)

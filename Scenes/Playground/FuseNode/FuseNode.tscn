@@ -1,14 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://dyei080hdqt5s"]
 
-[ext_resource type="Script" path="res://Scenes/FuseNode/FuseNode.gd" id="1_p25cf"]
+[ext_resource type="Script" path="res://Scenes/Playground/FuseNode/FuseNode.gd" id="1_fijev"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17tk0"]
+radius = 20.0
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4u2rx"]
 load_path = "res://.godot/imported/PlaceHolder_Circle.png-2bdf646b27c971193892b0e896a8a939.ctex"
 
 [node name="FuseNode" type="Node2D"]
-script = ExtResource("1_p25cf")
+script = ExtResource("1_fijev")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

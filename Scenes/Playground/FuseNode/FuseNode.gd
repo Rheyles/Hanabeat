@@ -1,4 +1,5 @@
 extends Node2D
+class_name FuseNode
 
 @onready var area2D = $Area2D
 
@@ -8,6 +9,8 @@ var line_point_ref : int #Ref of the index of the Line2D point link to this Fuse
 var mouse_is_in : bool = false
 
 var is_burnt : bool = false
+
+signal burnt(fuse_idx)
 
 ### BUILT-IN
 
@@ -27,8 +30,9 @@ func _renameAtInstantiate():
 func _burn():
 #Visual Feedback
 	is_burnt = true
-	if !parent_fuse_ref.is_burning:
-		start_new_burn_point()
+	emit_signal("burnt", parent_fuse_ref.fuse_idx)
+	#if !parent_fuse_ref.is_burning:
+	start_new_burn_point()
 		
 	get_node("Sprite2D").modulate = Color.FIREBRICK
 
@@ -54,14 +58,14 @@ func _checkForOtherFuseNode():
 
 func start_new_burn_point():
 	parent_fuse_ref.is_burning = true
-	var newSpark = parent_fuse_ref.spark.instantiate()
+	var newSpark = parent_fuse_ref.spark_scene.instantiate()
 	newSpark.actual_fuse_node_pos = parent_fuse_ref.get_node("Line2D").get_point_position(line_point_ref)
 	newSpark.actual_fuse_node_idx = line_point_ref
 	newSpark.fuse_ref = parent_fuse_ref
 	add_child(newSpark)
 	newSpark.reparent(parent_fuse_ref)
 	newSpark.position = parent_fuse_ref.get_node("Line2D").get_point_position(line_point_ref)
-	newSpark._burnTheFuse()
+	#newSpark._stepBurn()
 	print("new burn on FuseNode n° : " + str(line_point_ref))
 
 ### SIGNAL RESPONSES

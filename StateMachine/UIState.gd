@@ -6,13 +6,13 @@ func enter_state() -> void:
 	disable_buttons(self, true)
 	$AnimationPlayer.play("tween_in")
 	set_visible(true)
-	yield($AnimationPlayer,"animation_finished")
+	await $AnimationPlayer.animation_finished
 	disable_buttons(self, false)
 	
 func exit_state() -> void:
 	disable_buttons(self, true)
 	$AnimationPlayer.play("tween_out")
-	yield($AnimationPlayer,"animation_finished")
+	await $AnimationPlayer.animation_finished
 	set_visible(false)
 	GAME.button_clicked = false
 
