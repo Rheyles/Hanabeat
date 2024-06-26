@@ -10,6 +10,45 @@ config_version=5
 
 [application]
 
-config/name="Test_Git"
+config/name="HanaBeat"
+run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DATA="*res://Autoloads/Data.gd"
+EVENTS="*res://Autoloads/Events.gd"
+GAME="*res://Autoloads/Game.gd"
+LOCALIZATION="*res://Autoloads/Localization.gd"
+
+[display]
+
+window/size/viewport_width=600
+window/size/viewport_height=1080
+window/handheld/orientation=1
+
+[input]
+
+left_click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+right_click={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":2,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://Localization/translations.en.translation", "res://Localization/translations.fr.translation")
+
+[rendering]
+
+renderer/rendering_method="mobile"

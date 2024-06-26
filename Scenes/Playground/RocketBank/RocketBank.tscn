@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://81yg5m76kgvo"]
+
+[ext_resource type="Script" path="res://Scenes/Playground/RocketBank/RocketBank.gd" id="1_p215p"]
+[ext_resource type="Texture2D" uid="uid://dxydqx7n6hfof" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Square.png" id="2_wqvt3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ej53n"]
+atlas = ExtResource("2_wqvt3")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e7yuc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ej53n")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="RocketBank" type="Node2D"]
+script = ExtResource("1_p215p")
+metadata/_edit_lock_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e7yuc")
+metadata/_edit_lock_ = true
