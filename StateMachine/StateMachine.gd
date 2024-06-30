@@ -1,8 +1,8 @@
 extends Node
 class_name StateMachine
 
-var current_state : Node = null setget set_state, get_state
-var previous_state : Node = null setget ,get_previous_state
+var current_state : Node = null : set=set_state, get=get_state
+var previous_state : Node = null : get=get_previous_state
 
 signal state_changed(state)
 

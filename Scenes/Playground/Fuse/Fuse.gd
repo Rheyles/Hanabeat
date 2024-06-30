@@ -1,7 +1,5 @@
 extends Node2D
 
-const firework_scene = preload("res://Scenes/Playground/Fireworks_Scenes/Firework_shell.tscn")
-const spark_scene = preload("res://Scenes/Playground/Spark/Spark.tscn")
 const fuseNode_scene = preload("res://Scenes/Playground/FuseNode/FuseNode.tscn")
 
 var fuse_idx : int = 0
@@ -16,7 +14,6 @@ var fuseNode_list = []
 func _ready():
 	_createFirstFuseNode()
 	get_tree().current_scene.get_node("%MouseController").slice_fuse.connect(_on_Slice)
-
 
 ### LOGIC
 
@@ -40,25 +37,6 @@ func resetFuse():
 	_createFirstFuseNode()
 	fuse_line.clear_points()
 	fuse_line.add_point(Vector2.ZERO)
-
-#ANCIENNE LOGIC A SPRR CAR C EST LE ROCKETBANK QUI DOIT AVOIR CETTE LOGIC
-func lunchFirework():
-	var newFirework = firework_scene.instantiate()
-	newFirework.position = starting_pos
-	add_child(newFirework)
-	newFirework.reparent(get_node(".."))
-	print("Line erased")
-	queue_free()
-
-#LOGIC call by the Detonator
-func igniteFuse():
-#Fonction qui va suppr la line2D point par point avec un delay entre chaque boucle
-#A la fin call une instance de FireWork
-	is_burning = true
-	get_child(fuse_line.get_point_count()).start_new_burn_point()
-	print("Burn Start : Nb of point in the Fuse = " + str(get_node("Line2D").get_point_count()))
-	print("Burn Start : Last_Node = " + str(get_child(get_node("Line2D").get_point_count()).name))
-	
 	
 ### SIGNAL RESPONSES
 
@@ -78,7 +56,7 @@ func _on_Slice(start:Vector2, end:Vector2)->void:
 			break
 	
 	if last_node_idx != 0 :
-		for i in range(last_node_idx, len(fuseNode_list)):
+		for _i in range(len(fuseNode_list) - last_node_idx):
 			fuseNode_list[last_node_idx].queue_free()
 			fuseNode_list.remove_at(last_node_idx)
 			fuse_line.remove_point(last_node_idx)

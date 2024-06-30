@@ -19,3 +19,4 @@ position = Vector2(306, 960)
 
 [node name="RocketBank" parent="." instance=ExtResource("7_q0dnc")]
 position = Vector2(305, 340)
+fuses_nb = 8
