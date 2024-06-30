@@ -12,7 +12,7 @@ var hovered_fuse : Node2D
 
 var fuse_list = []
 
-var minNodeDistance : float = 10
+var minNodeDistance : float = 16
 var last_node_pos : Vector2 = Vector2.ZERO
 
 var slice_start : Vector2 = Vector2.ZERO
