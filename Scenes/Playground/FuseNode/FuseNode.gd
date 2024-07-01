@@ -3,8 +3,10 @@ class_name FuseNode
 
 const spark_scene = preload("res://Scenes/Playground/Spark/Spark.tscn")
 const fuse_burnt_sprite = preload("res://Ressources/Sprites/Fuses/fuse_burnt_fuseNodeTest.png")
+const firstfuse_burnt_sprite = preload("res://Ressources/Sprites/Fuses/fuse_burnt_firstfuseNodeTest.png")
 
 @onready var area2D = $Area2D
+@onready var fuse_sprite = $fuseSprite
 
 var parent_fuse_ref
 var line_point_ref : int #Ref of the index of the Line2D point link to this FuseNode
@@ -30,12 +32,14 @@ func _renameAtInstantiate():
 
 func _burn():
 	is_burnt = true
-	get_node("fuseSprite").texture = fuse_burnt_sprite
+	fuse_sprite.texture = fuse_burnt_sprite
+	if line_point_ref == 0:
+		fuse_sprite.texture = firstfuse_burnt_sprite
 	emit_signal("burnt", parent_fuse_ref.fuse_idx, line_point_ref)
 	start_new_burn_point()
 #Visual
-	var node_gradient = get_node("fuseSprite").self_modulate.g
-	get_node("fuseSprite").self_modulate = Color(node_gradient,node_gradient,node_gradient)
+	var node_gradient = fuse_sprite.self_modulate.g
+	fuse_sprite.self_modulate = Color(node_gradient,node_gradient,node_gradient)
 	get_node("Sprite2D").modulate = Color.FIREBRICK
 
 func start_new_burn_point():

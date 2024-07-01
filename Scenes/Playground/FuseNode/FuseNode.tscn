@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dyei080hdqt5s"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/FuseNode/FuseNode.gd" id="1_fijev"]
-[ext_resource type="Texture2D" uid="uid://kpmlrc810cu1" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_fuseNodeTest.png" id="2_t3rpw"]
+[ext_resource type="Texture2D" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_fuseNodeTest.png" id="2_t3rpw"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17tk0"]
 radius = 20.0

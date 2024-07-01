@@ -49,9 +49,9 @@ func update_gradient():
 	for i in range(len(fuseNode_list)):
 		var node_position_in_fuse : float 
 		node_position_in_fuse = (float(fuseNode_list[i].line_point_ref) / float(fuseNode_list.size()))
-		fuseNode_list[i].get_node("fuseSprite").self_modulate = Color.WHITE
+		fuseNode_list[i].fuse_sprite.self_modulate = Color.WHITE
 		if node_position_in_fuse >= 0.30:
-			fuseNode_list[i].get_node("fuseSprite").self_modulate = Color(1,1 - (node_position_in_fuse/2) ,1)
+			fuseNode_list[i].fuse_sprite.self_modulate = Color(1,1 - (node_position_in_fuse/2) ,1)
 
 
 ### SIGNAL RESPONSES
