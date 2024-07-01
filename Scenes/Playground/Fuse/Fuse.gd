@@ -29,6 +29,10 @@ func _createFirstFuseNode():
 	fuseNode_list.append(newNode)
 	
 	get_tree().current_scene.get_node("%MouseController")._connectFirstFuseNode(newNode)
+	newNode.burnt.connect(_on_node_burnt)
+
+func connect_newNode(newNode : Node2D):
+	newNode.burnt.connect(_on_node_burnt)
 
 func resetFuse():
 	for i in range(len(fuseNode_list)):
@@ -37,8 +41,27 @@ func resetFuse():
 	_createFirstFuseNode()
 	fuse_line.clear_points()
 	fuse_line.add_point(Vector2.ZERO)
-	
+
+func update_gradient():
+	for i in range(len(fuseNode_list)):
+		var node_position_in_fuse : float 
+		node_position_in_fuse = (float(fuseNode_list[i].line_point_ref) / float(fuseNode_list.size()))
+		fuseNode_list[i].get_node("fuseSprite").self_modulate = Color.WHITE
+		if node_position_in_fuse >= 0.30:
+			fuseNode_list[i].get_node("fuseSprite").self_modulate = Color(1,1 - (node_position_in_fuse/2) ,1)
+
+
 ### SIGNAL RESPONSES
+
+func _on_node_burnt(parent_fuse_ref : int, line_point_ref : int):
+	if parent_fuse_ref == fuse_idx:
+		var current_line = get_node("Line2D")
+		current_line.remove_point(current_line.get_point_count()-1)
+		var lineburnt = get_node("Lineburnt")
+		lineburnt.clear_points()
+		for i in range(len(fuseNode_list)):
+			if fuseNode_list[i].is_burnt:
+				lineburnt.add_point(fuseNode_list[i].position)
 
 func _on_Slice(start:Vector2, end:Vector2)->void:
 	#print('slice signal received')

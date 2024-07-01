@@ -35,6 +35,6 @@ func _process(_delta):
 
 ### SIGNAL RESPONSES
 
-func _on_Fuse_burnt(fuse_idx:int) -> void:
+func _on_Fuse_burnt(fuse_idx:int, line_point_ref:int) -> void:
 	rocket_start[fuse_idx] = Time.get_ticks_msec()
 	print(rocket_start)

@@ -2,6 +2,7 @@ extends Node2D
 class_name FuseNode
 
 const spark_scene = preload("res://Scenes/Playground/Spark/Spark.tscn")
+const fuse_burnt_sprite = preload("res://Ressources/Sprites/Fuses/fuse_burnt_fuseNodeTest.png")
 
 @onready var area2D = $Area2D
 
@@ -12,7 +13,7 @@ var mouse_is_in : bool = false
 
 var is_burnt : bool = false
 
-signal burnt(fuse_idx)
+signal burnt(fuse_idx, line_point_ref)
 
 ### BUILT-IN
 
@@ -28,19 +29,22 @@ func _renameAtInstantiate():
 	self.name = "FuseNode_" + str(line_point_ref)
 
 func _burn():
-	#Visual Feedback
 	is_burnt = true
-	emit_signal("burnt", parent_fuse_ref.fuse_idx)
+	get_node("fuseSprite").texture = fuse_burnt_sprite
+	emit_signal("burnt", parent_fuse_ref.fuse_idx, line_point_ref)
 	start_new_burn_point()
-		
+#Visual
+	var node_gradient = get_node("fuseSprite").self_modulate.g
+	get_node("fuseSprite").self_modulate = Color(node_gradient,node_gradient,node_gradient)
 	get_node("Sprite2D").modulate = Color.FIREBRICK
 
 func start_new_burn_point():
 	parent_fuse_ref.is_burning = true
+	
 	var newSpark = spark_scene.instantiate()
 	get_parent().add_child(newSpark)
-	newSpark.position = parent_fuse_ref.get_node("Line2D").get_point_position(line_point_ref)
-	print("new burn on FuseNode n° : " + str(line_point_ref))
+	newSpark.position = self.position
+	#print("new burn on FuseNode n° : " + str(line_point_ref))
 
 ### SIGNAL RESPONSES
 

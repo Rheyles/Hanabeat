@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://dvve77y48bbgn"]
+[gd_scene load_steps=2 format=3 uid="uid://dvve77y48bbgn"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/Fuse/Fuse.gd" id="1_ej8a2"]
-[ext_resource type="Texture2D" uid="uid://c6swa50knbt1l" path="res://Ressources/Sprites/Fuses/fuse_not_burnt.png" id="2_6i5yu"]
-[ext_resource type="Shader" path="res://Scenes/Playground/Fuse/Fuse.gdshader" id="2_qumay"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vxhyp"]
-shader = ExtResource("2_qumay")
-shader_parameter/outline_width = 4.0
-shader_parameter/outline_color = null
 
 [node name="Fuse_Scene" type="Node2D"]
+z_index = 1
 script = ExtResource("1_ej8a2")
 
 [node name="Line2D" type="Line2D" parent="."]
-material = SubResource("ShaderMaterial_vxhyp")
+z_index = 2
 points = PackedVector2Array(0, 0)
-texture = ExtResource("2_6i5yu")
+default_color = Color(1, 1, 1, 0)
+texture_mode = 1
+joint_mode = 2
+end_cap_mode = 2
+antialiased = true
+
+[node name="Lineburnt" type="Line2D" parent="."]
+default_color = Color(1, 1, 1, 0)
 texture_mode = 1
 joint_mode = 1
+end_cap_mode = 2

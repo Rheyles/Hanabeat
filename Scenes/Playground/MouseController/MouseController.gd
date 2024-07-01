@@ -12,7 +12,7 @@ var hovered_fuse : Node2D
 
 var fuse_list = []
 
-var minNodeDistance : float = 16
+var minNodeDistance : float = 10
 var last_node_pos : Vector2 = Vector2.ZERO
 
 var slice_start : Vector2 = Vector2.ZERO
@@ -74,11 +74,14 @@ func _create_fuse():
 		last_node_pos = newNode.position
 		newNode.parent_fuse_ref = current_fuse
 		newNode.line_point_ref = current_fuse.get_node("Line2D").get_point_count() -1
+		newNode.rotation = trajectory_vec.angle()
 		add_child(newNode)
 		newNode.reparent(current_fuse)
 		current_fuse.fuseNode_list.append(newNode)
+		current_fuse.connect_newNode(newNode)
 		newNode.get_node("Area2D").mouse_entered.connect(_On_mouse_enter_fuseNode)
 		newNode.get_node("Area2D").mouse_exited.connect(_On_mouse_exit_fuseNode)
+		current_fuse.update_gradient()
 
 func _prep_slice_fuse():
 	slice_start = get_local_mouse_position()
@@ -87,7 +90,7 @@ func _prep_slice_fuse():
 
 func _update_slice_fuse():
 	slice_line.set_point_position(1, get_local_mouse_position())
-	
+
 func _slice_fuse():
 	var slice_end = get_local_mouse_position()
 	emit_signal("slice_fuse", slice_start, slice_end)
