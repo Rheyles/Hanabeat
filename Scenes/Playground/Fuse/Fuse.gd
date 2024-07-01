@@ -1,6 +1,8 @@
 extends Node2D
 
 const fuseNode_scene = preload("res://Scenes/Playground/FuseNode/FuseNode.tscn")
+@export var first_node_sprite : Resource
+@export var first_node_burnt_sprite : Resource
 
 var fuse_idx : int = 0
 var is_burning : bool = false
@@ -25,6 +27,7 @@ func _createFirstFuseNode():
 	newNode.position = current_line.get_point_position(0)
 	newNode.parent_fuse_ref = self
 	newNode.line_point_ref = 0
+	newNode.get_node("fuseSprite").texture = first_node_sprite
 	add_child(newNode)
 	fuseNode_list.append(newNode)
 	
