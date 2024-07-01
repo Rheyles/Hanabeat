@@ -3,7 +3,7 @@ extends Node2D
 @export var fireWorkExplosion: Resource
 
 var timer: float = 0.8 #Delay Before explosion
-var speed: float = 190 #movespeed during delay
+var speed: float = 450 #movespeed during delay
 
 var colors = [Color(0, 0.706, 0.765),Color(0.964, 0.903, 0),Color(0.987, 0.366, 0.636)] #Turquoise / Jaune / Rose / Color Preset to pick from
 

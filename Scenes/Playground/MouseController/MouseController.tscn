@@ -1,12 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsjhobxnt5ch6"]
+[gd_scene load_steps=3 format=3 uid="uid://dsjhobxnt5ch6"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/MouseController/MouseController.gd" id="1_2qyka"]
-[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Playground/Fuse/Fuse.tscn" id="2_7hwtx"]
 [ext_resource type="PackedScene" uid="uid://dyei080hdqt5s" path="res://Scenes/Playground/FuseNode/FuseNode.tscn" id="3_n2bub"]
 
 [node name="MouseController" type="Node2D"]
 script = ExtResource("1_2qyka")
-fuseLine2D = ExtResource("2_7hwtx")
 fuseNode = ExtResource("3_n2bub")
 
 [node name="SliceLine" type="Line2D" parent="."]

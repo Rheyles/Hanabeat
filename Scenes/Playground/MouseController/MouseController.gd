@@ -1,6 +1,5 @@
 extends Node2D
 
-@export var fuseLine2D : Resource
 @export var fuseNode : Resource
 
 var pressed : bool = false
@@ -39,14 +38,13 @@ func _process(_delta)-> void:
 		pressed = false
 		hovered_fuse = current_fuse
 		current_fuse = null
+		mouse_is_on_last_fuseNode = false
 		
 	if Input.is_action_just_pressed('right_click') and hovered_fuse:
 		hovered_fuse.resetFuse()
-
-	#While Mouse Button Left is not release => Add a new line2D point + a FuseNode
-	#Check for min distance between the last fuseNode Position and Mouse position to reduce the number of point
+		
 	if pressed :
-		if current_fuse :
+		if current_fuse && mouse_is_on_last_fuseNode:
 			_create_fuse()
 		elif slice_start != Vector2.ZERO:
 			_update_slice_fuse()
@@ -58,7 +56,6 @@ func _connectFirstFuseNode(newNode):
 	newNode.get_node("Area2D").mouse_exited.connect(_On_mouse_exit_fuseNode)
 
 func _create_fuse():
-	# last_node_pos = le last fuse node sous la souris		
 	var distance_to_mouse = last_node_pos.distance_to(get_local_mouse_position())
 	var nb_new_nodes = floor(distance_to_mouse/minNodeDistance)
 	var trajectory_vec = (get_local_mouse_position() - last_node_pos).normalized()
@@ -66,21 +63,20 @@ func _create_fuse():
 	
 	for i in range(1, nb_new_nodes + 1) :
 		var node_pos = last_node_pos_mem + (trajectory_vec*i*minNodeDistance) - current_fuse.global_position
-		current_fuse.get_node("Line2D").add_point(node_pos)
 		
-		# Add the fuseNode at the position of the new Line2D Point
 		var newNode = fuseNode.instantiate()
 		newNode.position = node_pos + current_fuse.global_position
 		last_node_pos = newNode.position
 		newNode.parent_fuse_ref = current_fuse
-		newNode.line_point_ref = current_fuse.get_node("Line2D").get_point_count() -1
 		newNode.rotation = trajectory_vec.angle()
 		add_child(newNode)
 		newNode.reparent(current_fuse)
 		current_fuse.fuseNode_list.append(newNode)
-		current_fuse.connect_newNode(newNode)
+		newNode.fuseNode_idx = current_fuse.fuseNode_list.size()-1
+		
 		newNode.get_node("Area2D").mouse_entered.connect(_On_mouse_enter_fuseNode)
 		newNode.get_node("Area2D").mouse_exited.connect(_On_mouse_exit_fuseNode)
+		
 		current_fuse.update_gradient()
 
 func _prep_slice_fuse():
@@ -101,13 +97,9 @@ func _slice_fuse():
 
 func _On_mouse_enter_fuseNode():
 	mouse_is_on_fuseNode = true;
-	#print("MouseController : " + str(mouse_is_on_fuseNode))
-	#print(hovered_fuse)
 
 func _On_mouse_exit_fuseNode():
 	mouse_is_on_fuseNode = false
 	if not pressed:
 		hovered_fuse = null
-
-	#print("MouseController : " + str(mouse_is_on_fuseNode))
 

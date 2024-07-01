@@ -1,7 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyei080hdqt5s"]
+[gd_scene load_steps=8 format=3 uid="uid://dyei080hdqt5s"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/FuseNode/FuseNode.gd" id="1_fijev"]
-[ext_resource type="Texture2D" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_fuseNodeTest.png" id="2_t3rpw"]
+[ext_resource type="Texture2D" uid="uid://kpmlrc810cu1" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_fuseNodeTest.png" id="2_t3rpw"]
+[ext_resource type="PackedScene" uid="uid://co83bx4ic3dha" path="res://Scenes/Playground/Spark/Spark.tscn" id="2_unabm"]
+[ext_resource type="Texture2D" uid="uid://dpdrbt363gj46" path="res://Ressources/Sprites/Fuses/fuse_burnt_fuseNodeTest.png" id="3_cpxgm"]
+[ext_resource type="Texture2D" uid="uid://wl81jedt4gjo" path="res://Ressources/Sprites/Fuses/fuse_burnt_firstfuseNodeTest.png" id="4_2jagd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17tk0"]
 radius = 20.0
@@ -11,6 +14,9 @@ load_path = "res://.godot/imported/PlaceHolder_Circle.png-2bdf646b27c971193892b0
 
 [node name="FuseNode" type="Node2D"]
 script = ExtResource("1_fijev")
+spark_scene = ExtResource("2_unabm")
+fuse_burnt_sprite = ExtResource("3_cpxgm")
+firstfuse_burnt_sprite = ExtResource("4_2jagd")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 2

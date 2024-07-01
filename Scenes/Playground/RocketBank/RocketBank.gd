@@ -1,6 +1,6 @@
 extends Node2D
 
-const fuse_scene = preload("res://Scenes/Playground/Fuse/Fuse.tscn")
+@export var fuse_scene : Resource
 
 @export_range (1, 8) var fuses_nb :int = 4
 var margin_x : float = 80.0
@@ -25,16 +25,12 @@ func _ready():
 		newFuse.first_node.burnt.connect(_on_Fuse_burnt)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
 ### LOGIC
 
 
 
 ### SIGNAL RESPONSES
 
-func _on_Fuse_burnt(fuse_idx:int, line_point_ref:int) -> void:
+func _on_Fuse_burnt(fuse_idx:int, fuseNode_idx:int) -> void:
 	rocket_start[fuse_idx] = Time.get_ticks_msec()
 	print(rocket_start)
