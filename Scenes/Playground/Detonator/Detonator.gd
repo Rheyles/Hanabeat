@@ -1,6 +1,6 @@
 extends Node2D
 
-const spark_scene = preload("res://Scenes/Playground/Spark/Spark.tscn")
+@export var spark_scene : Resource
 
 @onready var spark_spawn = $SparkSpawn
 @onready var click_area = $ClickArea

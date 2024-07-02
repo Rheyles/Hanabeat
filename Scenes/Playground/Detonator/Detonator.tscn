@@ -1,8 +1,9 @@
-[gd_scene load_steps=44 format=3 uid="uid://be2ph6eey4l2r"]
+[gd_scene load_steps=45 format=3 uid="uid://be2ph6eey4l2r"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/Detonator/Detonator.gd" id="1_yja46"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_clxi5"]
 [ext_resource type="Texture2D" uid="uid://7qupujgfjibn" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Circle.png" id="2_cn5er"]
+[ext_resource type="PackedScene" uid="uid://co83bx4ic3dha" path="res://Scenes/Playground/Spark/Spark.tscn" id="2_s23te"]
 [ext_resource type="Texture2D" uid="uid://d3ly1t4b1t8lb" path="res://Ressources/Sprites/Detonator/tail0000.png" id="3_ruw1x"]
 [ext_resource type="Texture2D" uid="uid://i6868jej4u1a" path="res://Ressources/Sprites/Detonator/tail0002.png" id="4_w3ajo"]
 [ext_resource type="Texture2D" uid="uid://3trrklcuykec" path="res://Ressources/Sprites/Detonator/tail0004.png" id="5_ymsv0"]
@@ -192,6 +193,7 @@ animations = [{
 [node name="Detonator" type="Node2D"]
 z_index = 10
 script = ExtResource("1_yja46")
+spark_scene = ExtResource("2_s23te")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 z_index = -1

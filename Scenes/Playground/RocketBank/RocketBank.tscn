@@ -1,6 +1,7 @@
-[gd_scene load_steps=28 format=3 uid="uid://81yg5m76kgvo"]
+[gd_scene load_steps=29 format=3 uid="uid://81yg5m76kgvo"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/RocketBank/RocketBank.gd" id="1_p215p"]
+[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Playground/Fuse/Fuse.tscn" id="2_a5mi3"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_m45pr"]
 [ext_resource type="Texture2D" uid="uid://b1lolwne405lt" path="res://Ressources/Sprites/Rocket/rocket_fire0000.png" id="2_wuqlk"]
 [ext_resource type="Texture2D" uid="uid://x2hskeko08g5" path="res://Ressources/Sprites/Rocket/rocket_fire0008.png" id="3_vihje"]
@@ -157,6 +158,7 @@ _data = {
 [node name="RocketBank" type="Node2D"]
 z_index = 5
 script = ExtResource("1_p215p")
+fuse_scene = ExtResource("2_a5mi3")
 fuses_nb = 1
 metadata/_edit_lock_ = true
 
