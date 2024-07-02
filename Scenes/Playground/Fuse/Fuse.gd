@@ -57,14 +57,15 @@ func update_gradient():
 ### SIGNAL RESPONSES
 
 func _on_node_burnt(parent_fuse_ref : int, line_point_ref : int):
-	if parent_fuse_ref == fuse_idx:
-		var current_line = get_node("Line2D")
-		current_line.remove_point(current_line.get_point_count()-1)
-		var lineburnt = get_node("Lineburnt")
-		lineburnt.clear_points()
-		for i in range(len(fuseNode_list)):
-			if fuseNode_list[i].is_burnt:
-				lineburnt.add_point(fuseNode_list[i].position)
+	pass
+	#if parent_fuse_ref == fuse_idx:
+		#var current_line = get_node("Line2D")
+		#current_line.remove_point(current_line.get_point_count()-1)
+		#var lineburnt = get_node("Lineburnt")
+		#lineburnt.clear_points()
+		#for i in range(len(fuseNode_list)):
+			#if fuseNode_list[i].is_burnt:
+				#lineburnt.add_point(fuseNode_list[i].position)
 
 func _on_Slice(start:Vector2, end:Vector2)->void:
 	#print('slice signal received')

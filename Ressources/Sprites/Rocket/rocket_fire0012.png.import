@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh50ce0ltbpb3"
-path="res://.godot/imported/sphere-flames.png-1cb12be8e17d03bfcf43d026d6a9395a.ctex"
+uid="uid://dm1nh0arb3gat"
+path="res://.godot/imported/rocket_fire0012.png-baaf45ed527fc9dfe3e516a76f63745e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/sphere-flames.png"
-dest_files=["res://.godot/imported/sphere-flames.png-1cb12be8e17d03bfcf43d026d6a9395a.ctex"]
+source_file="res://Ressources/Sprites/Rocket/rocket_fire0012.png"
+dest_files=["res://.godot/imported/rocket_fire0012.png-baaf45ed527fc9dfe3e516a76f63745e.ctex"]
 
 [params]
 

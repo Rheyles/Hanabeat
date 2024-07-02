@@ -1,38 +1,233 @@
-[gd_scene load_steps=5 format=3 uid="uid://be2ph6eey4l2r"]
+[gd_scene load_steps=44 format=3 uid="uid://be2ph6eey4l2r"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/Detonator/Detonator.gd" id="1_yja46"]
+[ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_clxi5"]
 [ext_resource type="Texture2D" uid="uid://7qupujgfjibn" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Circle.png" id="2_cn5er"]
-[ext_resource type="Texture2D" uid="uid://boxb7avk34ewm" path="res://Ressources/Sprites/sphereFire_spriteSheet.png" id="3_ust55"]
+[ext_resource type="Texture2D" uid="uid://d3ly1t4b1t8lb" path="res://Ressources/Sprites/Detonator/tail0000.png" id="3_ruw1x"]
+[ext_resource type="Texture2D" uid="uid://i6868jej4u1a" path="res://Ressources/Sprites/Detonator/tail0002.png" id="4_w3ajo"]
+[ext_resource type="Texture2D" uid="uid://3trrklcuykec" path="res://Ressources/Sprites/Detonator/tail0004.png" id="5_ymsv0"]
+[ext_resource type="Texture2D" uid="uid://bnsgcbbbwpbud" path="res://Ressources/Sprites/Detonator/tail0006.png" id="6_ko4sg"]
+[ext_resource type="Texture2D" uid="uid://8b0pqnru0amk" path="res://Ressources/Sprites/Detonator/tail0008.png" id="7_7bs8y"]
+[ext_resource type="Texture2D" uid="uid://0rq8f02kgoir" path="res://Ressources/Sprites/Detonator/tail0010.png" id="8_57jd1"]
+[ext_resource type="Texture2D" uid="uid://cdagftxewjq0x" path="res://Ressources/Sprites/Detonator/Detonator.png" id="9_xiah3"]
+[ext_resource type="Texture2D" uid="uid://b723fk31rno37" path="res://Ressources/Sprites/Detonator/flame0000.png" id="10_ettt2"]
+[ext_resource type="Texture2D" uid="uid://cuu8nhm833iwy" path="res://Ressources/Sprites/Detonator/flame0002.png" id="11_i7ov2"]
+[ext_resource type="Texture2D" uid="uid://uj5focgst41l" path="res://Ressources/Sprites/Detonator/flame0004.png" id="12_ve5jy"]
+[ext_resource type="Texture2D" uid="uid://bc0e0836y12uc" path="res://Ressources/Sprites/Detonator/flame0006.png" id="13_rpabr"]
+[ext_resource type="Texture2D" uid="uid://c6q1lcfxai3il" path="res://Ressources/Sprites/Detonator/flame0008.png" id="14_bm406"]
+[ext_resource type="Texture2D" uid="uid://b3b5b2064fjk6" path="res://Ressources/Sprites/Detonator/flame0010.png" id="15_udq60"]
+[ext_resource type="Texture2D" uid="uid://culq5ckhfbaf6" path="res://Ressources/Sprites/Detonator/flame0012.png" id="16_gavir"]
+[ext_resource type="Texture2D" uid="uid://bduhvhoqiisjm" path="res://Ressources/Sprites/Detonator/flame0014.png" id="17_bxjdm"]
+[ext_resource type="Texture2D" uid="uid://dtslotholpbyo" path="res://Ressources/Sprites/Detonator/flame0016.png" id="18_dgfp4"]
+[ext_resource type="Texture2D" uid="uid://c7bsuii5ov0ku" path="res://Ressources/Sprites/Detonator/flame0018.png" id="19_t3sw2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2avd"]
-radius = 50.0
+radius = 31.0161
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ujj1"]
+atlas = ExtResource("3_ruw1x")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n4bi6"]
+atlas = ExtResource("4_w3ajo")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dtwc"]
+atlas = ExtResource("5_ymsv0")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uspp1"]
+atlas = ExtResource("6_ko4sg")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyq2i"]
+atlas = ExtResource("7_7bs8y")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ppyc"]
+atlas = ExtResource("8_57jd1")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4lbuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ujj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n4bi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dtwc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uspp1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyq2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ppyc")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vairs"]
+atlas = ExtResource("9_xiah3")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6xk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vairs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_fhcwi"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nxpw6"]
+_data = {
+"Idle": SubResource("Animation_fhcwi")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1khn0"]
+atlas = ExtResource("10_ettt2")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ydquo"]
+atlas = ExtResource("11_i7ov2")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvvbd"]
+atlas = ExtResource("12_ve5jy")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v47rh"]
+atlas = ExtResource("13_rpabr")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmdcn"]
+atlas = ExtResource("14_bm406")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5jfq4"]
+atlas = ExtResource("15_udq60")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtcgf"]
+atlas = ExtResource("16_gavir")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_df5bg"]
+atlas = ExtResource("17_bxjdm")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xrato"]
+atlas = ExtResource("18_dgfp4")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbne3"]
+atlas = ExtResource("19_t3sw2")
+region = Rect2(0, 0, 32, 87)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_njp3r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1khn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ydquo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvvbd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v47rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmdcn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5jfq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtcgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_df5bg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xrato")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbne3")
+}],
+"loop": false,
+"name": &"default",
+"speed": 16.0
+}]
 
 [node name="Detonator" type="Node2D"]
+z_index = 10
 script = ExtResource("1_yja46")
+
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 4)
+scale = Vector2(1.85417, 1.85417)
+texture = ExtResource("2_clxi5")
 
 [node name="ClickArea" type="Area2D" parent="."]
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
+visible = false
 shape = SubResource("CircleShape2D_q2avd")
 
 [node name="AreaSprite" type="Sprite2D" parent="ClickArea"]
+visible = false
 modulate = Color(1, 0.392157, 0.215686, 1)
-scale = Vector2(1.655, 1.655)
+scale = Vector2(1.025, 1.025)
 texture = ExtResource("2_cn5er")
 
 [node name="SparkSpawn" type="Marker2D" parent="."]
 position = Vector2(0, -31)
 
-[node name="FlameSprite" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-1, 2)
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_ust55")
-hframes = 4
-frame = 3
+[node name="Tail" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_4lbuy")
+frame = 5
+frame_progress = 1.0
 
-[node name="DetonatorSprite" type="Sprite2D" parent="."]
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("3_ust55")
-hframes = 4
+[node name="Dragon" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w6xk1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dragon"]
+libraries = {
+"": SubResource("AnimationLibrary_nxpw6")
+}
+
+[node name="FlameSprite" type="AnimatedSprite2D" parent="."]
+z_index = 10
+sprite_frames = SubResource("SpriteFrames_njp3r")

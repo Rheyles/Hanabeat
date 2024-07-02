@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dyei080hdqt5s"]
+[gd_scene load_steps=6 format=3 uid="uid://dyei080hdqt5s"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/FuseNode/FuseNode.gd" id="1_fijev"]
-[ext_resource type="Texture2D" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_fuseNodeTest.png" id="2_t3rpw"]
+[ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_dyasi"]
+[ext_resource type="Texture2D" uid="uid://kpmlrc810cu1" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_fuseNodeTest.png" id="2_wlcwg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17tk0"]
 radius = 20.0
@@ -25,8 +26,11 @@ modulate = Color(0.270588, 1, 1, 1)
 scale = Vector2(0.35, 0.35)
 texture = SubResource("CompressedTexture2D_4u2rx")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+scale = Vector2(0.833333, 0.833333)
+texture = ExtResource("2_dyasi")
+
 [node name="fuseSprite" type="Sprite2D" parent="."]
-position = Vector2(1.96863, 0.0787506)
-rotation = 1.5708
-scale = Vector2(0.719497, 1.28123)
-texture = ExtResource("2_t3rpw")
+texture = ExtResource("2_wlcwg")

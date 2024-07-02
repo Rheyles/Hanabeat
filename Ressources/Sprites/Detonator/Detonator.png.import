@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0mfll0wl2rd7"
-path="res://.godot/imported/sphere-base.png-5b608d328a451397a804152c578bfa7f.ctex"
+uid="uid://cdagftxewjq0x"
+path="res://.godot/imported/Detonator.png-a82506dfaa4d21b3455a1d29ab29cf9e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/sphere-base.png"
-dest_files=["res://.godot/imported/sphere-base.png-5b608d328a451397a804152c578bfa7f.ctex"]
+source_file="res://Ressources/Sprites/Detonator/Detonator.png"
+dest_files=["res://.godot/imported/Detonator.png-a82506dfaa4d21b3455a1d29ab29cf9e.ctex"]
 
 [params]
 

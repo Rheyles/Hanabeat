@@ -9,11 +9,20 @@ var margin_y : float = 45.0
 var fuses = []
 var rocket_start = []
 
+@onready var flame_sprite = $Sprites/Flame
+@onready var rocket_sprite = $Sprites/RocketHolder/Rocket
+@onready var rocket_animation = $Sprites/RocketHolder/AnimationPlayer
+
 
 ### BUILT-IN
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	rocket_animation.play("idle")
+	rocket_animation.animation_finished.connect(_on_RocketAnimation_animation_finished)
+	flame_sprite.visible = false
+	flame_sprite.animation_finished.connect(_on_Flame_animation_finished)
+	
 	var fuse_origin = - ((fuses_nb - 1) * margin_x) / 2
 	for i in range(fuses_nb):
 		var newFuse = fuse_scene.instantiate()
@@ -36,5 +45,18 @@ func _process(_delta):
 ### SIGNAL RESPONSES
 
 func _on_Fuse_burnt(fuse_idx:int, line_point_ref:int) -> void:
-	rocket_start[fuse_idx] = Time.get_ticks_msec()
+	rocket_start = Time.get_ticks_msec()
 	print(rocket_start)
+	
+	rocket_animation.play("Starting")
+	
+func _on_RocketAnimation_animation_finished(anim_name:String) -> void:
+	if anim_name == "Starting":
+		flame_sprite.visible = true
+		flame_sprite.play("Starting")
+
+
+func _on_Flame_animation_finished() -> void:
+	if flame_sprite.animation == "Starting":
+		flame_sprite.play("Going")
+		rocket_animation.play("going")

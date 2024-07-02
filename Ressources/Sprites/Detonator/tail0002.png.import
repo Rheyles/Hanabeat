@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://boxb7avk34ewm"
-path="res://.godot/imported/sphereFire_spriteSheet.png-5ae3c9e592d7ff33b13aef1e145909ec.ctex"
+uid="uid://i6868jej4u1a"
+path="res://.godot/imported/tail0002.png-2396cedbe232dc50490753a002caf166.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/sphereFire_spriteSheet.png"
-dest_files=["res://.godot/imported/sphereFire_spriteSheet.png-5ae3c9e592d7ff33b13aef1e145909ec.ctex"]
+source_file="res://Ressources/Sprites/Detonator/tail0002.png"
+dest_files=["res://.godot/imported/tail0002.png-2396cedbe232dc50490753a002caf166.ctex"]
 
 [params]
 
