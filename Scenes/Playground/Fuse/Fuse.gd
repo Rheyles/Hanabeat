@@ -15,7 +15,7 @@ var fuseNode_list = []
 func _ready():
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	_createFirstFuseNode()
-	get_tree().current_scene.get_node("%MouseController").slice_fuse.connect(_on_Slice)
+	GAME.current_scene.get_node("%MouseController").slice_fuse.connect(_on_Slice)
 
 ### LOGIC
 
@@ -27,7 +27,7 @@ func _createFirstFuseNode():
 	newNode.get_node("fuseSprite").texture = first_node_sprite
 	add_child(newNode)
 	fuseNode_list.append(newNode)
-	get_tree().current_scene.get_node("%MouseController")._connectFirstFuseNode(newNode)
+	GAME.current_scene.get_node("%MouseController")._connectFirstFuseNode(newNode)
 
 func resetFuse():
 	for i in range(len(fuseNode_list)):
@@ -40,8 +40,8 @@ func update_gradient():
 		var node_position_in_fuse : float 
 		node_position_in_fuse = (float(fuseNode_list[i].fuseNode_idx) / float(fuseNode_list.size()))
 		fuseNode_list[i].fuse_sprite.self_modulate = Color.WHITE
-		if node_position_in_fuse >= 0.30:
-			fuseNode_list[i].fuse_sprite.self_modulate = Color(1,1 - (node_position_in_fuse/2) ,1)
+		if node_position_in_fuse >= 0.20:
+			fuseNode_list[i].fuse_sprite.self_modulate = Color(1,1 - (node_position_in_fuse/3) ,1)
 
 ### SIGNAL RESPONSES
 

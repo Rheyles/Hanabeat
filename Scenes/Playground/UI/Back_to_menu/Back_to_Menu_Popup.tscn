@@ -1,0 +1,102 @@
+[gd_scene load_steps=4 format=3 uid="uid://chraxbg00x6ry"]
+
+[ext_resource type="Script" path="res://Scenes/Playground/UI/Back_to_menu/Back_to_Menu_Popup.gd" id="1_3nds5"]
+[ext_resource type="Texture2D" uid="uid://dxydqx7n6hfof" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Square.png" id="1_p861y"]
+[ext_resource type="Texture2D" uid="uid://ck4rsrulf7obj" path="res://Ressources/Sprites/Placeholders/LevelSelectionButton.png" id="2_nsyno"]
+
+[node name="Back_To_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3nds5")
+
+[node name="CancelButtonZone" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="ColorRect" type="ColorRect" parent="CancelButtonZone"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.027451, 0.215686, 0.372549, 0.152941)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -290.18
+offset_right = 200.0
+offset_bottom = -130.179
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(200, 80)
+texture = ExtResource("1_p861y")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.5
+offset_right = 63.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 46
+text = "Leave the level ?"
+
+[node name="QuitButton" type="Button" parent="TextureRect"]
+custom_minimum_size = Vector2(188.07, 74.43)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -94.035
+offset_top = -74.43
+offset_right = 94.035
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 55
+text = "OK !"
+flat = true
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="TextureRect/QuitButton"]
+custom_minimum_size = Vector2(200, 56.96)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -32.0
+offset_right = 100.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_nsyno")
+expand_mode = 1
+
+[connection signal="button_down" from="CancelButtonZone" to="." method="_on_cancel_button_zone_button_down"]
+[connection signal="button_down" from="TextureRect/QuitButton" to="." method="_on_quit_button_button_down"]
