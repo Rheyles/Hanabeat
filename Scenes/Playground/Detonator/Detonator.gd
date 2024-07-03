@@ -9,6 +9,8 @@ extends Node2D
 @onready var dragon_sprite = $Dragon
 @onready var dragon_anim_sprite = $Dragon/AnimationPlayer
 @onready var flame_sprite = $FlameSprite
+@onready var reset_sprite = $Reset
+@onready var reset_anim = $Reset/AnimationPlayer
 
 var mouse_is_in : bool = false
 var is_ignite : bool = false
@@ -24,16 +26,25 @@ func _ready():
 	flame_sprite.frame = 9
 	dragon_anim_sprite.play("Idle")
 	tail_sprite.play("default")
+	
+	reset_sprite.visible = false
+	reset_anim.play("Idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed('left_click') and mouse_is_in:
+	if Input.is_action_just_pressed('left_click') and mouse_is_in and not GAME.has_detonated:
 		# If there is mouse click on the detonator, we create a spark
 		create_spark()
+		GAME.has_detonated = true
+		reset_sprite.visible = true
 		flame_sprite.stop()
 		dragon_anim_sprite.stop()
 		flame_sprite.play("default")
 		dragon_anim_sprite.play("Idle")
+	
+	elif Input.is_action_just_pressed('left_click') and mouse_is_in and GAME.has_detonated :
+		GAME.has_detonated = false
+		reset_sprite.visible = false
 
 ### LOGIC
 

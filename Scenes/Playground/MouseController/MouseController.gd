@@ -21,17 +21,20 @@ signal slice_fuse(start, end)
 
 ### BUILT-INT
 
+func _ready():
+	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
+
 func _process(_delta)-> void:
 	
 	# Manage Input
-	if Input.is_action_just_pressed('left_click'):
+	if Input.is_action_just_pressed('left_click') and not GAME.has_detonated:
 		pressed = true
 		if mouse_is_on_fuseNode:
 			current_fuse = hovered_fuse
 		else :
 			_prep_slice_fuse()
 		
-	if Input.is_action_just_released("left_click"):
+	if Input.is_action_just_released("left_click") and not GAME.has_detonated:
 		if not current_fuse and slice_start != Vector2.ZERO :
 			_slice_fuse()
 			
@@ -40,7 +43,7 @@ func _process(_delta)-> void:
 		current_fuse = null
 		mouse_is_on_last_fuseNode = false
 		
-	if Input.is_action_just_pressed('right_click') and hovered_fuse:
+	if Input.is_action_just_pressed('right_click') and hovered_fuse and not GAME.has_detonated:
 		hovered_fuse.resetFuse()
 		
 	if pressed :
@@ -103,3 +106,10 @@ func _On_mouse_exit_fuseNode():
 	if not pressed:
 		hovered_fuse = null
 
+func _on_EVENTS_has_detonated(_new_value:bool)->void:
+	slice_line.clear_points()
+	slice_start = Vector2.ZERO
+	pressed = false
+	hovered_fuse = current_fuse
+	current_fuse = null
+	mouse_is_on_last_fuseNode = false

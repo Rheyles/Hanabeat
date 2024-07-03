@@ -7,3 +7,5 @@ extends Node
 signal example()
 
 signal language_changed()
+
+signal has_detonated(new_value)

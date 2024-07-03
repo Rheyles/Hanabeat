@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1mqwkcvbykx"]
+[gd_scene load_steps=5 format=3 uid="uid://d1mqwkcvbykx"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/Fireworks_Scenes/firework_shell.gd" id="1_ba1kr"]
 [ext_resource type="Texture2D" uid="uid://c005mrowk3i00" path="res://Ressources/Sprites/Placeholders/new_gradient_texture_2d2.tres" id="1_jh2v2"]
 [ext_resource type="PackedScene" uid="uid://ha58pewxuub3" path="res://Scenes/Playground/Fireworks_Scenes/Firework_explosion.tscn" id="2_bupcr"]
+[ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="4_vrwgu"]
 
 [node name="Firework_Shell" type="Node2D"]
 z_index = 1
@@ -13,3 +14,6 @@ fireWorkExplosion = ExtResource("2_bupcr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.011811, 0.125)
 texture = ExtResource("1_jh2v2")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+texture = ExtResource("4_vrwgu")

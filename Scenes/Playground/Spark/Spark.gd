@@ -7,6 +7,8 @@ var spark_delay : float = 0.1
 ### BUILT-IN
 
 func _ready():
+	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
+	
 	_stepBurn()
 
 ### LOGIC
@@ -24,3 +26,9 @@ func _stepBurn():
 		i -= 1
 	
 	queue_free()
+
+### SIGNAL LOGICS
+
+func _on_EVENTS_has_detonated(new_value:bool)->void:
+	if not new_value:
+		queue_free()

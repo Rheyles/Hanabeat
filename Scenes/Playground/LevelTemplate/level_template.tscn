@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://c53tww0tg17d2"]
+
+[ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/level_template.gd" id="1_4a27f"]
+[ext_resource type="Texture2D" uid="uid://d112k4f6d4g27" path="res://Ressources/Sprites/Background/Background.png" id="1_qjqsj"]
+[ext_resource type="PackedScene" uid="uid://dsjhobxnt5ch6" path="res://Scenes/Playground/MouseController/MouseController.tscn" id="2_xs0eq"]
+[ext_resource type="PackedScene" uid="uid://be2ph6eey4l2r" path="res://Scenes/Playground/Detonator/Detonator.tscn" id="3_jg835"]
+[ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="4_wjenm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xfxnr"]
+atlas = ExtResource("1_qjqsj")
+region = Rect2(0, 0, 240, 432)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uuwv3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xfxnr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="LevelTemplate" type="Node2D"]
+script = ExtResource("1_4a27f")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+editor_draw_drag_margin = true
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_uuwv3")
+
+[node name="MouseController" parent="." instance=ExtResource("2_xs0eq")]
+unique_name_in_owner = true
+metadata/_edit_lock_ = true
+
+[node name="Detonator" parent="." instance=ExtResource("3_jg835")]
+unique_name_in_owner = true
+position = Vector2(307, 969)
+scale = Vector2(2.5, 2.5)
+metadata/_edit_lock_ = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="BackMenuButton" type="TextureButton" parent="UI"]
+offset_left = 464.0
+offset_top = 13.0
+offset_right = 592.0
+offset_bottom = 141.0
+texture_normal = ExtResource("4_wjenm")
+flip_h = true
+flip_v = true

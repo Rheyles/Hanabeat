@@ -2,7 +2,9 @@ extends Node2D
 class_name FuseNode
 
 @export var spark_scene : Resource
+@export var fuse_not_burnt_sprite = Resource
 @export var fuse_burnt_sprite = Resource
+@export var firstfuse_not_burnt_sprite = Resource
 @export var firstfuse_burnt_sprite = Resource
 
 @onready var area2D = $Area2D
@@ -20,6 +22,7 @@ signal burnt(fuse_idx, fuseNode_idx)
 ### BUILT-IN
 
 func _ready():
+	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	area2D.mouse_entered.connect(_on_ClickArea_mouse_entered)
 	area2D.mouse_exited.connect(_on_ClickArea_mouse_exited)
 	_renameAtInstantiate()
@@ -63,3 +66,12 @@ func _on_ClickArea_mouse_exited() -> void:
 	if get_tree().current_scene.get_node("%MouseController").pressed == false:
 		get_tree().current_scene.get_node("%MouseController").mouse_is_on_last_fuseNode = false
 
+func _on_EVENTS_has_detonated(new_value:bool)->void:
+	if not new_value :
+		is_burnt = false
+		fuse_sprite.texture = fuse_not_burnt_sprite
+		if fuseNode_idx == 0:
+			fuse_sprite.texture = firstfuse_not_burnt_sprite
+		var node_gradient = fuse_sprite.self_modulate.g
+		fuse_sprite.self_modulate = Color(node_gradient,node_gradient,node_gradient)
+		get_node("Sprite2D").modulate = Color.FIREBRICK

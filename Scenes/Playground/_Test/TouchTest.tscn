@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bpyyi66mf0uwg"]
+[gd_scene load_steps=8 format=3 uid="uid://bpyyi66mf0uwg"]
 
 [ext_resource type="Texture2D" uid="uid://d112k4f6d4g27" path="res://Ressources/Sprites/Background/Background.png" id="1_3qlc2"]
 [ext_resource type="PackedScene" uid="uid://dsjhobxnt5ch6" path="res://Scenes/Playground/MouseController/MouseController.tscn" id="1_fausl"]
+[ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="6_g055i"]
 [ext_resource type="PackedScene" uid="uid://be2ph6eey4l2r" path="res://Scenes/Playground/Detonator/Detonator.tscn" id="6_mvc18"]
 [ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="7_q0dnc"]
 
@@ -49,3 +50,14 @@ position = Vector2(492, 333)
 
 [node name="RocketBank3" parent="." instance=ExtResource("7_q0dnc")]
 position = Vector2(132, 472)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="BackMenuButton" type="TextureButton" parent="UI"]
+offset_left = 464.0
+offset_top = 13.0
+offset_right = 592.0
+offset_bottom = 141.0
+texture_normal = ExtResource("6_g055i")
+flip_h = true
+flip_v = true

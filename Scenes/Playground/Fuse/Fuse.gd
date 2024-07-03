@@ -13,6 +13,7 @@ var fuseNode_list = []
 
 
 func _ready():
+	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	_createFirstFuseNode()
 	get_tree().current_scene.get_node("%MouseController").slice_fuse.connect(_on_Slice)
 
@@ -63,3 +64,8 @@ func _on_Slice(start:Vector2, end:Vector2)->void:
 			fuseNode_list[last_node_idx].queue_free()
 			fuseNode_list.remove_at(last_node_idx)
 	update_gradient()
+
+
+func _on_EVENTS_has_detonated(new_value:bool)->void:
+	if not new_value :
+		update_gradient()
