@@ -25,7 +25,9 @@ func _process(delta):
 		newExplosion.reparent(get_node(".."))
 		
 		newExplosion.global_position = self.global_position
-		newExplosion.get_node("GPUParticles2D").process_material.color = colors[randi() % colors.size()]
+		var NewColor = colors[randi() % colors.size()]
+		newExplosion.get_node("GPUParticles2D").process_material.color = NewColor
+		newExplosion.get_node("PointLight2D").color = NewColor
 		newExplosion.get_node("GPUParticles2D").emitting = true
 		
 		queue_free()

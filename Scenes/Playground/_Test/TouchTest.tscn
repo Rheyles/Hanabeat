@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="6_g055i"]
 [ext_resource type="PackedScene" uid="uid://be2ph6eey4l2r" path="res://Scenes/Playground/Detonator/Detonator.tscn" id="6_mvc18"]
 [ext_resource type="Script" path="res://Scenes/Playground/_Test/BackMenuButton.gd" id="6_s8gur"]
-[ext_resource type="PackedScene" uid="uid://chraxbg00x6ry" path="res://Scenes/Playground/UI/Back_to_menu/Back_to_Menu_Popup.tscn" id="7_3rvkt"]
+[ext_resource type="PackedScene" uid="uid://chraxbg00x6ry" path="res://Scenes/Playground/UI/Back_to_menu_Popup/Back_to_Menu_Popup.tscn" id="7_3rvkt"]
 [ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="7_q0dnc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfxnr"]

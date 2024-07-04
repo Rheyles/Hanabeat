@@ -37,7 +37,9 @@ func _process(_delta)-> void:
 	if Input.is_action_just_released("left_click") and not GAME.has_detonated:
 		if not current_fuse and slice_start != Vector2.ZERO :
 			_slice_fuse()
-			
+		if current_fuse != null:
+			current_fuse.fuseNode_list.back().get_node("Sprite2D").visible = true
+		
 		pressed = false
 		hovered_fuse = current_fuse
 		current_fuse = null
@@ -48,6 +50,7 @@ func _process(_delta)-> void:
 		
 	if pressed :
 		if current_fuse && mouse_is_on_last_fuseNode:
+			current_fuse.fuseNode_list.back().get_node("Sprite2D").visible = false
 			_create_fuse()
 		elif slice_start != Vector2.ZERO:
 			_update_slice_fuse()
@@ -73,7 +76,7 @@ func _create_fuse():
 		newNode.parent_fuse_ref = current_fuse
 		newNode.rotation = trajectory_vec.angle()
 		add_child(newNode)
-		newNode.reparent(current_fuse)
+		#newNode.reparent(current_fuse)
 		current_fuse.fuseNode_list.append(newNode)
 		newNode.fuseNode_idx = current_fuse.fuseNode_list.size()-1
 		

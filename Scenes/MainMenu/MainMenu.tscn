@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://dvfw5qix0u7x"]
+[gd_scene load_steps=47 format=3 uid="uid://dvfw5qix0u7x"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_p1q1t"]
 [ext_resource type="Texture2D" uid="uid://d1fbk2ji0pum7" path="res://Ressources/Sprites/Menu/sky.png" id="2_ffe6f"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://ckm0jngbywerp" path="res://Ressources/Sprites/Menu/bckg_1_2.png" id="16_q53o6"]
 [ext_resource type="Texture2D" uid="uid://c43n17e8ag1qq" path="res://Ressources/Sprites/Menu/nuage_1.png" id="17_2a4ly"]
 [ext_resource type="Texture2D" uid="uid://i4o3tockjltq" path="res://Ressources/Sprites/Placeholders/message-24-error.png" id="18_2q28v"]
+[ext_resource type="FontFile" uid="uid://dmrpdxxwkj3cq" path="res://Ressources/Fonts/Miyoshi -Demo.ttf" id="25_8qaia"]
 [ext_resource type="AudioStream" uid="uid://cnouokacnm5xc" path="res://Ressources/Musics/Sample_slowversion.wav" id="26_4i8js"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_hsh2i"]
@@ -252,20 +253,25 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="UI"]
 z_index = 10
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
+anchors_preset = 12
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -336.0
-offset_right = -150.0
-offset_bottom = -313.0
+offset_left = -156.0
+offset_top = -377.0
+offset_right = 160.0
+offset_bottom = -183.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(4, 4)
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(458, 97)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("25_8qaia")
+theme_override_font_sizes/font_size = 186
 text = "HANABI'S QUEST"
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Start_Button" type="Button" parent="UI"]
 z_index = 10

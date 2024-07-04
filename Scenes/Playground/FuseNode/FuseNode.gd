@@ -42,7 +42,7 @@ func _burn():
 #Visual
 	var node_gradient = fuse_sprite.self_modulate.g
 	fuse_sprite.self_modulate = Color(node_gradient,node_gradient,node_gradient)
-	get_node("Sprite2D").modulate = Color.FIREBRICK
+	get_node("Sprite2D").visible = false
 
 func start_new_burn_point():
 	parent_fuse_ref.is_burning = true

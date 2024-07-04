@@ -25,6 +25,7 @@ func _createFirstFuseNode():
 	newNode.parent_fuse_ref = self
 	newNode.fuseNode_idx = 0
 	newNode.get_node("fuseSprite").texture = first_node_sprite
+	newNode.get_node("Sprite2D").visible = true
 	add_child(newNode)
 	fuseNode_list.append(newNode)
 	GAME.current_scene.get_node("%MouseController")._connectFirstFuseNode(newNode)
@@ -42,6 +43,7 @@ func update_gradient():
 		fuseNode_list[i].fuse_sprite.self_modulate = Color.WHITE
 		if node_position_in_fuse >= 0.20:
 			fuseNode_list[i].fuse_sprite.self_modulate = Color(1,1 - (node_position_in_fuse/3) ,1)
+
 
 ### SIGNAL RESPONSES
 
@@ -64,6 +66,7 @@ func _on_Slice(start:Vector2, end:Vector2)->void:
 			fuseNode_list[last_node_idx].queue_free()
 			fuseNode_list.remove_at(last_node_idx)
 	update_gradient()
+	fuseNode_list.back().get_node("Sprite2D").visible = true
 
 
 func _on_EVENTS_has_detonated(new_value:bool)->void:
