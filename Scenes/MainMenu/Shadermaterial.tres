@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://btq6lijikjd6c"]
+
+[ext_resource type="Shader" path="res://Scenes/MainMenu/water_reflection.gdshader" id="1_ehudl"]
+
+[resource]
+shader = ExtResource("1_ehudl")
+shader_parameter/level = 0.45
+shader_parameter/water_albedo = Color(0.894118, 0.54902, 0.117647, 1)
+shader_parameter/water_opacity = 0.35
+shader_parameter/water_speed = 0.055
+shader_parameter/wave_distortion = 0.0
+shader_parameter/wave_multiplyer = 72
+shader_parameter/water_texture_on = false
+shader_parameter/reflection_X_offset = 0.0
+shader_parameter/reflection_Y_offset = 0.0

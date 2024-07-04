@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c53tww0tg17d2"]
+[gd_scene load_steps=11 format=3 uid="uid://c53tww0tg17d2"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/level_template.gd" id="1_4a27f"]
 [ext_resource type="Texture2D" uid="uid://d112k4f6d4g27" path="res://Ressources/Sprites/Background/Background.png" id="1_qjqsj"]
 [ext_resource type="PackedScene" uid="uid://dsjhobxnt5ch6" path="res://Scenes/Playground/MouseController/MouseController.tscn" id="2_xs0eq"]
 [ext_resource type="PackedScene" uid="uid://be2ph6eey4l2r" path="res://Scenes/Playground/Detonator/Detonator.tscn" id="3_jg835"]
 [ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="4_wjenm"]
+[ext_resource type="Script" path="res://Scenes/Playground/_Test/BackMenuButton.gd" id="6_ll2ol"]
+[ext_resource type="PackedScene" uid="uid://chraxbg00x6ry" path="res://Scenes/Playground/UI/Back_to_menu/Back_to_Menu_Popup.tscn" id="7_82nld"]
+[ext_resource type="AudioStream" uid="uid://cnouokacnm5xc" path="res://Ressources/Musics/Sample_slowversion.wav" id="7_oxckr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xfxnr"]
 atlas = ExtResource("1_qjqsj")
@@ -27,11 +30,13 @@ script = ExtResource("1_4a27f")
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 editor_draw_drag_margin = true
+metadata/_edit_lock_ = true
 
 [node name="Background" type="AnimatedSprite2D" parent="."]
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_uuwv3")
+metadata/_edit_lock_ = true
 
 [node name="MouseController" parent="." instance=ExtResource("2_xs0eq")]
 unique_name_in_owner = true
@@ -53,3 +58,19 @@ offset_bottom = 141.0
 texture_normal = ExtResource("4_wjenm")
 flip_h = true
 flip_v = true
+script = ExtResource("6_ll2ol")
+
+[node name="Back_To_Menu" parent="UI" instance=ExtResource("7_82nld")]
+visible = false
+
+[node name="Label" type="Label" parent="UI"]
+offset_left = 24.0
+offset_top = 22.0
+offset_right = 203.0
+offset_bottom = 124.0
+text = "Best score :
+Last score :"
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_oxckr")
+autoplay = true

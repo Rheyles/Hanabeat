@@ -6,6 +6,8 @@ extends Node
 
 signal example()
 
+signal save_player_data()
+
 signal language_changed()
 
 signal has_detonated(new_value)

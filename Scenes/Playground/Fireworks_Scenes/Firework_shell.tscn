@@ -20,3 +20,4 @@ energy = 0.4
 range_z_min = -500
 range_z_max = 1
 texture = ExtResource("4_vrwgu")
+texture_scale = 0.1

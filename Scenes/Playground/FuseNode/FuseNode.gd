@@ -72,6 +72,3 @@ func _on_EVENTS_has_detonated(new_value:bool)->void:
 		fuse_sprite.texture = fuse_not_burnt_sprite
 		if fuseNode_idx == 0:
 			fuse_sprite.texture = firstfuse_not_burnt_sprite
-		var node_gradient = fuse_sprite.self_modulate.g
-		fuse_sprite.self_modulate = Color(node_gradient,node_gradient,node_gradient)
-		get_node("Sprite2D").modulate = Color.FIREBRICK

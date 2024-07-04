@@ -1,94 +1,328 @@
-[gd_scene load_steps=6 format=3 uid="uid://dvfw5qix0u7x"]
+[gd_scene load_steps=46 format=3 uid="uid://dvfw5qix0u7x"]
 
-[ext_resource type="Texture2D" uid="uid://cbdcarwpsf1g4" path="res://Ressources/Sprites/Menu/MainMenu.png" id="1_k6eto"]
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_p1q1t"]
-[ext_resource type="Texture2D" uid="uid://dcj2ghigh6y07" path="res://Ressources/Sprites/Menu/FlyingIsland.png" id="2_rfoh7"]
-[ext_resource type="Texture2D" uid="uid://ck4rsrulf7obj" path="res://Ressources/Sprites/Placeholders/LevelSelectionButton.png" id="3_d0oaf"]
+[ext_resource type="Texture2D" uid="uid://d1fbk2ji0pum7" path="res://Ressources/Sprites/Menu/sky.png" id="2_ffe6f"]
+[ext_resource type="Texture2D" uid="uid://bou71h2j1wgx4" path="res://Ressources/Sprites/Menu/bckg_7.png" id="3_j3fe6"]
 [ext_resource type="PackedScene" uid="uid://c4osw4w5md8xx" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="3_ttlhm"]
+[ext_resource type="Texture2D" uid="uid://c4o3s003ka0dn" path="res://Ressources/Sprites/Menu/bckg_6.png" id="4_6phnm"]
+[ext_resource type="Texture2D" uid="uid://bj6ri6gk5gxrf" path="res://Ressources/Sprites/Menu/nuage_2.png" id="4_mx0bp"]
+[ext_resource type="Texture2D" uid="uid://dnxldtrmjlpqs" path="res://Ressources/Sprites/Menu/nuage_2_n.png" id="5_a0q5g"]
+[ext_resource type="Texture2D" uid="uid://vux6ffayprm" path="res://Ressources/Sprites/Menu/bckg_7_n.png" id="5_dhn0m"]
+[ext_resource type="Texture2D" uid="uid://d2ej5k0nqahhx" path="res://Ressources/Sprites/Menu/bckg_5.png" id="5_vkrbb"]
+[ext_resource type="Texture2D" uid="uid://ddjeoni6cq5le" path="res://Ressources/Sprites/Menu/nuage_1_n.png" id="6_03ulg"]
+[ext_resource type="Texture2D" uid="uid://dlpn3mkg21h8v" path="res://Ressources/Sprites/Menu/bckg_4.png" id="6_hwuir"]
+[ext_resource type="Texture2D" uid="uid://b8rc8joxpdiyg" path="res://Ressources/Sprites/Menu/bckg_3.png" id="8_6slih"]
+[ext_resource type="Material" uid="uid://btq6lijikjd6c" path="res://Scenes/MainMenu/Shadermaterial.tres" id="8_cnotl"]
+[ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="8_tu4hk"]
+[ext_resource type="Texture2D" uid="uid://ba6ebtf4tbcnq" path="res://Ressources/Sprites/Menu/bckg_2.png" id="9_73v2t"]
+[ext_resource type="Texture2D" uid="uid://ik0dqm7cojk8" path="res://Ressources/Sprites/Menu/bckg_6_n.png" id="9_ya65h"]
+[ext_resource type="Texture2D" uid="uid://3xo78fpu2pl2" path="res://Ressources/Sprites/Menu/bckg_3_n.png" id="10_10phr"]
+[ext_resource type="Texture2D" uid="uid://dxtwodiwv6jc4" path="res://Ressources/Sprites/Menu/bckg_2_n.png" id="12_j0ges"]
+[ext_resource type="Shader" path="res://Scenes/MainMenu/wind.gdshader" id="13_b3h2c"]
+[ext_resource type="Texture2D" uid="uid://bevss48ykool4" path="res://Ressources/Sprites/Menu/bckg_5_n.png" id="13_y7ufq"]
+[ext_resource type="Texture2D" uid="uid://d3cxdok42dfib" path="res://Ressources/Sprites/Menu/bckg_1_n.png" id="14_teqoi"]
+[ext_resource type="Texture2D" uid="uid://qwt56cp0f22k" path="res://Ressources/Sprites/Menu/bckg_1_1.png" id="14_tnpmc"]
+[ext_resource type="Texture2D" uid="uid://ckm0jngbywerp" path="res://Ressources/Sprites/Menu/bckg_1_2.png" id="16_q53o6"]
+[ext_resource type="Texture2D" uid="uid://c43n17e8ag1qq" path="res://Ressources/Sprites/Menu/nuage_1.png" id="17_2a4ly"]
+[ext_resource type="Texture2D" uid="uid://i4o3tockjltq" path="res://Ressources/Sprites/Placeholders/message-24-error.png" id="18_2q28v"]
+[ext_resource type="AudioStream" uid="uid://cnouokacnm5xc" path="res://Ressources/Musics/Sample_slowversion.wav" id="26_4i8js"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hsh2i"]
+diffuse_texture = ExtResource("3_j3fe6")
+normal_texture = ExtResource("5_dhn0m")
+
+[sub_resource type="Gradient" id="Gradient_ddk8x"]
+offsets = PackedFloat32Array(0, 0.227941, 0.772059, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_lgaex"]
+gradient = SubResource("Gradient_ddk8x")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4bvnn"]
+lifetime_randomness = 0.37
+particle_flag_disable_z = true
+emission_shape_offset = Vector3(0, 200, 0)
+emission_shape_scale = Vector3(8.39, 500, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+inherit_velocity_ratio = 1.0
+spread = 180.0
+flatness = 0.687
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(1, 0, 0)
+scale_min = 0.5
+scale_max = 2.5
+color_ramp = SubResource("GradientTexture1D_lgaex")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ol2iq"]
+diffuse_texture = ExtResource("4_mx0bp")
+normal_texture = ExtResource("5_a0q5g")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_u1bew"]
+diffuse_texture = ExtResource("4_6phnm")
+normal_texture = ExtResource("9_ya65h")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_mk2yh"]
+diffuse_texture = ExtResource("17_2a4ly")
+normal_texture = ExtResource("6_03ulg")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bfl4o"]
+load_path = "res://.godot/imported/nuage_3.png-0043b46cd0745f0908d9d4668c784265.ctex"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_hh4qh"]
+diffuse_texture = SubResource("CompressedTexture2D_bfl4o")
+normal_texture = ExtResource("6_03ulg")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_q1x5v"]
+diffuse_texture = ExtResource("5_vkrbb")
+normal_texture = ExtResource("13_y7ufq")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_4hasq"]
+diffuse_texture = ExtResource("8_6slih")
+normal_texture = ExtResource("10_10phr")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_vi01t"]
+diffuse_texture = ExtResource("9_73v2t")
+normal_texture = ExtResource("12_j0ges")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i7k1i"]
+shader = ExtResource("13_b3h2c")
+shader_parameter/right = false
+shader_parameter/speed = 1.195
+shader_parameter/minStrength = 0.071
+shader_parameter/maxStrength = 0.095
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 2.255
+shader_parameter/detail = 1.165
+shader_parameter/distortion = 0.094
+shader_parameter/heightOffset = 0.0
+shader_parameter/offset = 0.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_ldp04"]
+diffuse_texture = ExtResource("14_tnpmc")
+normal_texture = ExtResource("14_teqoi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r5y1a"]
+shader = ExtResource("13_b3h2c")
+shader_parameter/right = true
+shader_parameter/speed = 1.195
+shader_parameter/minStrength = 0.102
+shader_parameter/maxStrength = 0.095
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 2.255
+shader_parameter/detail = 1.165
+shader_parameter/distortion = 0.542
+shader_parameter/heightOffset = 0.083
+shader_parameter/offset = 1.0
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k0bt7"]
+load_path = "res://.godot/imported/bckg_1_n.png-1cf7724ed33080017c91cee120d27210.ctex"
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_34muw"]
+diffuse_texture = ExtResource("16_q53o6")
+normal_texture = SubResource("CompressedTexture2D_k0bt7")
+
+[sub_resource type="Animation" id="Animation_rpwb5"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jt8lj"]
+_data = {
+"Idle": SubResource("Animation_rpwb5")
+}
 
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_p1q1t")
 
-[node name="Background" type="TextureRect" parent="."]
-offset_right = 600.0
-offset_bottom = 1079.0
-texture = ExtResource("1_k6eto")
-expand_mode = 3
-stretch_mode = 4
-
-[node name="Background2" type="TextureRect" parent="."]
-z_index = 3
-offset_left = 407.0
-offset_top = 295.0
-offset_right = 651.0
-offset_bottom = 525.0
-texture = ExtResource("2_rfoh7")
-expand_mode = 3
-stretch_mode = 4
-
 [node name="Animations" type="Node2D" parent="."]
 
-[node name="FireWork_Launcher" parent="Animations" instance=ExtResource("3_ttlhm")]
-rotation = -0.42237
+[node name="PointLight2D" type="PointLight2D" parent="Animations"]
+position = Vector2(293, 391)
+energy = 1.56
+blend_mode = 2
+texture = ExtResource("8_tu4hk")
+texture_scale = 28.6
+height = 190.0
+metadata/_edit_lock_ = true
 
-[node name="Bouton_Container" type="VBoxContainer" parent="."]
-anchors_preset = 12
-anchor_top = 1.0
+[node name="Bckg_8" type="Sprite2D" parent="Animations"]
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_ffe6f")
+
+[node name="Bckg_7" type="Sprite2D" parent="Animations"]
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("CanvasTexture_hsh2i")
+
+[node name="Clouds2" type="GPUParticles2D" parent="Animations"]
+position = Vector2(275, 0)
+process_material = SubResource("ParticleProcessMaterial_4bvnn")
+texture = SubResource("CanvasTexture_ol2iq")
+lifetime = 30.0
+explosiveness = 0.21
+randomness = 0.29
+visibility_rect = Rect2(0, 0, 1000, 1000)
+
+[node name="Bckg_6" type="Sprite2D" parent="Animations"]
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("CanvasTexture_u1bew")
+
+[node name="Clouds1" type="GPUParticles2D" parent="Animations"]
+process_material = SubResource("ParticleProcessMaterial_4bvnn")
+texture = SubResource("CanvasTexture_mk2yh")
+lifetime = 30.0
+explosiveness = 0.21
+randomness = 0.29
+visibility_rect = Rect2(0, 0, 1000, 1000)
+
+[node name="Clouds3" type="GPUParticles2D" parent="Animations"]
+position = Vector2(148, 0)
+process_material = SubResource("ParticleProcessMaterial_4bvnn")
+texture = SubResource("CanvasTexture_hh4qh")
+lifetime = 30.0
+explosiveness = 0.21
+randomness = 0.29
+visibility_rect = Rect2(0, 0, 1000, 1000)
+
+[node name="Bckg_5" type="Sprite2D" parent="Animations"]
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("CanvasTexture_q1x5v")
+
+[node name="Bckg_4" type="Sprite2D" parent="Animations"]
+material = ExtResource("8_cnotl")
+position = Vector2(300, 875.22)
+rotation = 3.14159
+scale = Vector2(2.5, 0.948055)
+texture = ExtResource("6_hwuir")
+
+[node name="FireWork_Launcher" parent="Animations" instance=ExtResource("3_ttlhm")]
+position = Vector2(34, 188)
+
+[node name="Bckg_3" type="Sprite2D" parent="Animations"]
+z_index = 2
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("CanvasTexture_4hasq")
+
+[node name="Bckg_2" type="Sprite2D" parent="Animations"]
+z_index = 2
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("CanvasTexture_vi01t")
+
+[node name="Bckg_1_1" type="Sprite2D" parent="Animations"]
+z_index = 2
+material = SubResource("ShaderMaterial_i7k1i")
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("CanvasTexture_ldp04")
+
+[node name="Bckg_1_2" type="Sprite2D" parent="Animations"]
+z_index = 2
+material = SubResource("ShaderMaterial_r5y1a")
+position = Vector2(300, 540)
+scale = Vector2(2.5, 2.5)
+texture = SubResource("CanvasTexture_34muw")
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -347.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="UI"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -300.0
+offset_top = -336.0
+offset_right = -150.0
+offset_bottom = -313.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 30
+scale = Vector2(4, 4)
+text = "HANABI'S QUEST"
+horizontal_alignment = 1
 
-[node name="Start_Button" type="Button" parent="Bouton_Container"]
-layout_mode = 2
+[node name="Start_Button" type="Button" parent="UI"]
+z_index = 10
+layout_mode = 0
+offset_top = 1.0
+offset_right = 600.0
+offset_bottom = 1079.0
 theme_override_colors/font_color = Color(0.941176, 0.882353, 0.34902, 1)
 theme_override_font_sizes/font_size = 56
-text = "Click / Tap to Start"
 flat = true
 
-[node name="TextureRect" type="TextureRect" parent="Bouton_Container/Start_Button"]
-show_behind_parent = true
-custom_minimum_size = Vector2(0, 80)
+[node name="Label" type="Label" parent="UI/Start_Button"]
+modulate = Color(1, 1, 1, 0.786891)
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_d0oaf")
-expand_mode = 3
-
-[node name="Exit_Button" type="Button" parent="Bouton_Container"]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.866667, 0.780392, 0, 1)
-theme_override_font_sizes/font_size = 56
-text = "Exit"
-flat = true
-icon_alignment = 1
-expand_icon = true
-
-[node name="TextureRect" type="TextureRect" parent="Bouton_Container/Exit_Button"]
-show_behind_parent = true
-custom_minimum_size = Vector2(0, 80)
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("3_d0oaf")
-expand_mode = 3
-
-[node name="Credit" type="Label" parent="."]
-anchors_preset = 12
+anchors_preset = 7
+anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = -23.0
+offset_left = -300.0
+offset_top = -215.0
+offset_right = -100.0
+offset_bottom = -188.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(3, 3)
+text = "- Click / Tap to Start -"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Start_Button/Label"]
+libraries = {
+"": SubResource("AnimationLibrary_jt8lj")
+}
+
+[node name="Exit_Button" type="TextureButton" parent="UI"]
+z_index = 10
+layout_mode = 0
+offset_left = 565.0
+offset_top = 10.0
+offset_right = 589.0
+offset_bottom = 34.0
+scale = Vector2(1.2, 1.2)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("18_2q28v")
+
+[node name="Credit" type="Label" parent="UI"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -101.0
+offset_right = 151.0
 grow_horizontal = 2
 grow_vertical = 0
 text = "A Game By  : StrangeJourney & Sakd'Os
@@ -97,5 +331,9 @@ Music By : PercheSoleil
 V0.1 - Juillet 2024"
 horizontal_alignment = 1
 
-[connection signal="button_up" from="Bouton_Container/Start_Button" to="." method="_on_start_button_button_up"]
-[connection signal="button_down" from="Bouton_Container/Exit_Button" to="." method="_on_exit_button_button_down"]
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_4i8js")
+autoplay = true
+
+[connection signal="button_up" from="UI/Start_Button" to="." method="_on_start_button_button_up"]
+[connection signal="button_down" from="UI/Exit_Button" to="." method="_on_exit_button_button_down"]

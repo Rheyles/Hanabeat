@@ -37,7 +37,7 @@ func _ready():
 		rocket_start_time.append(0)
 		newFuse.first_node.burnt.connect(_on_Fuse_burnt)
 	
-	#get_parent().connect_rocket(self)
+	get_parent().connect_rocket(self)
 
 
 ### LOGIC
