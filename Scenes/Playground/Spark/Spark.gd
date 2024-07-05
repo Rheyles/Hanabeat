@@ -1,4 +1,5 @@
-extends Node2D
+extends Area2D
+class_name Spark
 
 @onready var spark_shape_cast : ShapeCast2D = $sparkShapeCast
 

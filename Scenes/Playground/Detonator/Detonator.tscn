@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://be2ph6eey4l2r"]
+[gd_scene load_steps=51 format=3 uid="uid://be2ph6eey4l2r"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/Detonator/Detonator.gd" id="1_yja46"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_clxi5"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://i6868jej4u1a" path="res://Ressources/Sprites/Detonator/tail0002.png" id="4_w3ajo"]
 [ext_resource type="Texture2D" uid="uid://3trrklcuykec" path="res://Ressources/Sprites/Detonator/tail0004.png" id="5_ymsv0"]
 [ext_resource type="Texture2D" uid="uid://bnsgcbbbwpbud" path="res://Ressources/Sprites/Detonator/tail0006.png" id="6_ko4sg"]
+[ext_resource type="Texture2D" uid="uid://dnav6jws5njpe" path="res://Ressources/Sprites/Detonator/flame_spot.png" id="6_pbtwp"]
 [ext_resource type="Texture2D" uid="uid://8b0pqnru0amk" path="res://Ressources/Sprites/Detonator/tail0008.png" id="7_7bs8y"]
 [ext_resource type="Texture2D" uid="uid://0rq8f02kgoir" path="res://Ressources/Sprites/Detonator/tail0010.png" id="8_57jd1"]
 [ext_resource type="Texture2D" uid="uid://cdagftxewjq0x" path="res://Ressources/Sprites/Detonator/Detonator.png" id="9_xiah3"]
@@ -240,6 +241,10 @@ position = Vector2(0, 4)
 scale = Vector2(1.85417, 1.85417)
 texture = ExtResource("2_clxi5")
 
+[node name="FlameSpot" type="Sprite2D" parent="."]
+z_index = -3
+texture = ExtResource("6_pbtwp")
+
 [node name="ClickArea" type="Area2D" parent="."]
 metadata/_edit_lock_ = true
 
@@ -257,11 +262,13 @@ texture = ExtResource("2_cn5er")
 position = Vector2(0, -31)
 
 [node name="Tail" type="AnimatedSprite2D" parent="."]
+z_index = 10
 sprite_frames = SubResource("SpriteFrames_4lbuy")
 frame = 5
 frame_progress = 1.0
 
 [node name="Dragon" type="AnimatedSprite2D" parent="."]
+z_index = 10
 sprite_frames = SubResource("SpriteFrames_w6xk1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dragon"]
@@ -274,6 +281,7 @@ z_index = 10
 sprite_frames = SubResource("SpriteFrames_njp3r")
 
 [node name="Reset" type="Sprite2D" parent="."]
+z_index = 10
 position = Vector2(0, 5)
 texture = ExtResource("22_04vev")
 

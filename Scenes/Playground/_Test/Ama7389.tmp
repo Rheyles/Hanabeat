@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bl1ysox3p23xy"]
+[gd_scene load_steps=4 format=3 uid="uid://bl1ysox3p23xy"]
 
 [ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_svc0v"]
 [ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_jind2"]
-[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Playground/Fuse/Fuse.tscn" id="3_3r2bv"]
 [ext_resource type="PackedScene" uid="uid://bv7eb6g5604um" path="res://Scenes/Playground/Puddle/puddle.tscn" id="3_6h4ck"]
 
 [node name="AmazingScene" instance=ExtResource("1_svc0v")]
@@ -21,23 +20,12 @@ rotation = 0.113446
 position = Vector2(132, 472)
 rotation = -0.225147
 
-[node name="Fuse_Scene" parent="." index="7" instance=ExtResource("3_3r2bv")]
-position = Vector2(200, 293)
-
-[node name="Puddle" parent="." index="8" instance=ExtResource("3_6h4ck")]
+[node name="Puddle" parent="." index="7" instance=ExtResource("3_6h4ck")]
 position = Vector2(239, 727)
-is_water = false
-
-[node name="BackMenuButton" parent="UI" index="0"]
-metadata/_edit_lock_ = true
-
-[node name="Back_To_Menu" parent="UI" index="1"]
-metadata/_edit_lock_ = true
 
 [node name="Label" parent="UI" index="2"]
 offset_bottom = 97.0
 vertical_alignment = 1
-metadata/_edit_lock_ = true
 
-[node name="MusicPlayer" parent="." index="10"]
+[node name="MusicPlayer" parent="." index="9"]
 volume_db = -16.746

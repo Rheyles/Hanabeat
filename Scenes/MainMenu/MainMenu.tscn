@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_p1q1t"]
 [ext_resource type="Texture2D" uid="uid://d1fbk2ji0pum7" path="res://Ressources/Sprites/Menu/sky.png" id="2_ffe6f"]
 [ext_resource type="Texture2D" uid="uid://bou71h2j1wgx4" path="res://Ressources/Sprites/Menu/bckg_7.png" id="3_j3fe6"]
-[ext_resource type="PackedScene" uid="uid://c4osw4w5md8xx" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="3_ttlhm"]
+[ext_resource type="PackedScene" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="3_ttlhm"]
 [ext_resource type="Texture2D" uid="uid://c4o3s003ka0dn" path="res://Ressources/Sprites/Menu/bckg_6.png" id="4_6phnm"]
 [ext_resource type="Texture2D" uid="uid://bj6ri6gk5gxrf" path="res://Ressources/Sprites/Menu/nuage_2.png" id="4_mx0bp"]
 [ext_resource type="Texture2D" uid="uid://dnxldtrmjlpqs" path="res://Ressources/Sprites/Menu/nuage_2_n.png" id="5_a0q5g"]

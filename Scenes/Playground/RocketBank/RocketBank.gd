@@ -1,16 +1,11 @@
 extends Node2D
 
-@export var fuse_scene : Resource
 @export var rocket_sound : Resource
 
-@export_range (1, 8) var fuses_nb :int = 4
-var margin_x : float = 80.0
-var margin_y : float = 45.0
-
 var rocket_id = 0
+var rocket_start_time = 0
 
-var fuses = []
-var rocket_start_time = []
+@onready var fuse = $Fuse_Scene
 
 @onready var flame_sprite = $Sprites/Flame
 @onready var rocket_sprite = $Sprites/RocketHolder/Rocket
@@ -29,16 +24,9 @@ func _ready():
 	flame_sprite.visible = false
 	flame_sprite.animation_finished.connect(_on_Flame_animation_finished)
 	
-	var fuse_origin = - ((fuses_nb - 1) * margin_x) / 2
-	for i in range(fuses_nb):
-		var newFuse = fuse_scene.instantiate()
-		add_child(newFuse)
-		newFuse.position.x = fuse_origin + (i * margin_x)
-		newFuse.position.y = margin_y
-		newFuse.fuse_idx = i
-		rocket_start_time.append(0)
-		newFuse.first_node.burnt.connect(_on_Fuse_burnt)
-	
+	fuse.fuse_idx = rocket_id
+	fuse.first_node.burnt.connect(_on_Fuse_burnt)
+
 	get_parent().connect_rocket(self)
 
 
