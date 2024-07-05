@@ -12,3 +12,4 @@ signal language_changed()
 
 signal has_detonated(new_value)
 signal spark_nb_changed(value)
+signal fuse_node_nb_changed(value)

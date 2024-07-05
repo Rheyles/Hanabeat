@@ -94,7 +94,7 @@ func _on_Slice(start:Vector2, end:Vector2)->void:
 	
 	if last_node_idx != 0 :
 		for _i in range(len(fuseNode_list) - last_node_idx):
-			fuseNode_list[last_node_idx].queue_free()
+			fuseNode_list[last_node_idx].destroy()
 			fuseNode_list.remove_at(last_node_idx)
 	update_gradient()
 	fuseNode_list.back().get_node("Sprite2D").visible = true

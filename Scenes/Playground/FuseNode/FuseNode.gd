@@ -22,12 +22,17 @@ signal burnt(fuse_idx, fuseNode_idx)
 ### BUILT-IN
 
 func _ready():
+	EVENTS.emit_signal("fuse_node_nb_changed", 1)
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	click_area.mouse_entered.connect(_on_ClickArea_mouse_entered)
 	click_area.mouse_exited.connect(_on_ClickArea_mouse_exited)
 	_renameAtInstantiate()
 
 ### LOGIC
+	
+func destroy():
+	EVENTS.emit_signal("fuse_node_nb_changed", -1)
+	queue_free()
 
 func _renameAtInstantiate():
 	self.name = "FuseNode_" + str(fuseNode_idx)

@@ -931,6 +931,7 @@ shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
 [node name="AmazingScene" instance=ExtResource("1_svc0v")]
+node_nb_max = 200
 
 [node name="Herb" parent="Decorations" index="0"]
 material = SubResource("ShaderMaterial_3hmkf")

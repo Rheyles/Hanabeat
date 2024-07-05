@@ -1,5 +1,6 @@
 extends Node2D
 
+@export_range(0, 20000) var node_nb_max : int = 500
 @export var fuse_sound : Resource
 
 @onready var music_player = $MusicPlayer
@@ -27,6 +28,7 @@ func set_last_score(new_val : int)->void:
 		PLAYER.current_data['score_by_level'][0] = best_score
 		PLAYER.save_data(PLAYER.player_file_path)
 		##
+
 
 ### BUILT-IN
 # Called when the node enters the scene tree for the first time.

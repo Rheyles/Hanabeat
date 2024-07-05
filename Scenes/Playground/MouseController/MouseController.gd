@@ -12,6 +12,7 @@ var hovered_fuse : Node2D
 
 var fuse_list = []
 
+var nb_fuse_nodes : int = 0
 var last_node_pos : Vector2 = Vector2.ZERO
 
 var slice_start : Vector2 = Vector2.ZERO
@@ -23,6 +24,7 @@ signal slice_fuse(start, end)
 
 func _ready():
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
+	EVENTS.fuse_node_nb_changed.connect(_on_EVENTS_fuse_node_nb_changed)
 
 func _process(_delta)-> void:
 	
@@ -50,7 +52,6 @@ func _process(_delta)-> void:
 		
 	if pressed :
 		if current_fuse && mouse_is_on_last_fuseNode:
-			current_fuse.fuseNode_list.back().get_node("Sprite2D").visible = false
 			_create_fuse()
 		elif slice_start != Vector2.ZERO:
 			_update_slice_fuse()
@@ -68,21 +69,25 @@ func _create_fuse():
 	var last_node_pos_mem = last_node_pos
 	
 	for i in range(1, nb_new_nodes + 1) :
-		var node_pos = last_node_pos_mem + (trajectory_vec*i*GAME.MIN_NODE_DIST) - current_fuse.global_position
+		if nb_fuse_nodes >= get_parent().node_nb_max :
+			print('You can\'t draw more fuse !')
+		else:
+			current_fuse.fuseNode_list.back().get_node("Sprite2D").visible = false
+			var node_pos = last_node_pos_mem + (trajectory_vec*i*GAME.MIN_NODE_DIST) - current_fuse.global_position
+			
+			var newNode = fuseNode.instantiate()
+			newNode.position = node_pos + current_fuse.global_position
+			last_node_pos = newNode.position
+			newNode.parent_fuse_ref = current_fuse
+			newNode.rotation = trajectory_vec.angle()
+			add_child(newNode)
+			current_fuse.fuseNode_list.append(newNode)
+			newNode.fuseNode_idx = current_fuse.fuseNode_list.size()-1
+			
+			newNode.get_node("ClickArea").mouse_entered.connect(_On_mouse_enter_fuseNode)
+			newNode.get_node("ClickArea").mouse_exited.connect(_On_mouse_exit_fuseNode)
 		
-		var newNode = fuseNode.instantiate()
-		newNode.position = node_pos + current_fuse.global_position
-		last_node_pos = newNode.position
-		newNode.parent_fuse_ref = current_fuse
-		newNode.rotation = trajectory_vec.angle()
-		add_child(newNode)
-		current_fuse.fuseNode_list.append(newNode)
-		newNode.fuseNode_idx = current_fuse.fuseNode_list.size()-1
-		
-		newNode.get_node("ClickArea").mouse_entered.connect(_On_mouse_enter_fuseNode)
-		newNode.get_node("ClickArea").mouse_exited.connect(_On_mouse_exit_fuseNode)
-		
-		current_fuse.update_gradient()
+	current_fuse.update_gradient()
 
 func _prep_slice_fuse():
 	slice_start = get_local_mouse_position()
@@ -115,3 +120,6 @@ func _on_EVENTS_has_detonated(_new_value:bool)->void:
 	hovered_fuse = current_fuse
 	current_fuse = null
 	mouse_is_on_last_fuseNode = false
+
+func _on_EVENTS_fuse_node_nb_changed(value:int)->void:
+	nb_fuse_nodes += value
