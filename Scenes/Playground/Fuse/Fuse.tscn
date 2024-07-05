@@ -11,3 +11,5 @@ script = ExtResource("1_ej8a2")
 fuseNode_scene = ExtResource("2_l5reh")
 first_node_sprite = ExtResource("2_fke7y")
 first_node_burnt_sprite = ExtResource("3_j34mc")
+
+[node name="PremadeFuse" type="Line2D" parent="."]

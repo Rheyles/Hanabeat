@@ -4,7 +4,10 @@ extends Node2D
 
 @onready var music_player = $MusicPlayer
 @onready var sound_player = $SoundPlayer
-@onready var back_to_menu = $UI/Back_To_Menu
+@onready var firework_visualizer = $FireworkVisualizer
+@onready var firework_animation = $FireworkVisualizer/AnimationPlayer
+@onready var back_to_menu = $FireworkVisualizer/UI/Back_To_Menu
+
 
 var rockets = []
 var rockets_times = []
@@ -28,6 +31,8 @@ func set_last_score(new_val : int)->void:
 ### BUILT-IN
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	firework_visualizer.visible = false
+	
 	GAME.has_detonated = false
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	EVENTS.spark_nb_changed.connect(_on_EVENTS_spark_nb_changed)
@@ -98,6 +103,8 @@ func _on_Rocket_rocket_start(id,time)->void:
 		if score < GAME.WIN_MARGIN * 100:
 			print("You won !")
 			back_to_menu.set_message("Congrats ! Back to menu ?")
-			back_to_menu.visible = true
+			await get_tree().create_timer(3.0).timeout
+			firework_animation.play("fly_in",-1,1.0)
+			firework_visualizer.visible = true
 		else:
 			print("It didn\'t work... Try again !")

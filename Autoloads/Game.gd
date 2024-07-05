@@ -4,6 +4,8 @@ extends Node
 ## This autoload contains all the method and variable used along the game
 var WIN_MARGIN : float = 5.0
 
+var MIN_NODE_DIST : float = 10
+
 var button_clicked = false
 
 var has_detonated:bool = false : set=set_has_detonated

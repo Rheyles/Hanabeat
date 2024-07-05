@@ -12,7 +12,6 @@ var hovered_fuse : Node2D
 
 var fuse_list = []
 
-var minNodeDistance : float = 10
 var last_node_pos : Vector2 = Vector2.ZERO
 
 var slice_start : Vector2 = Vector2.ZERO
@@ -64,12 +63,12 @@ func _connectFirstFuseNode(newNode):
 
 func _create_fuse():
 	var distance_to_mouse = last_node_pos.distance_to(get_local_mouse_position())
-	var nb_new_nodes = floor(distance_to_mouse/minNodeDistance)
+	var nb_new_nodes = floor(distance_to_mouse/GAME.MIN_NODE_DIST)
 	var trajectory_vec = (get_local_mouse_position() - last_node_pos).normalized()
 	var last_node_pos_mem = last_node_pos
 	
 	for i in range(1, nb_new_nodes + 1) :
-		var node_pos = last_node_pos_mem + (trajectory_vec*i*minNodeDistance) - current_fuse.global_position
+		var node_pos = last_node_pos_mem + (trajectory_vec*i*GAME.MIN_NODE_DIST) - current_fuse.global_position
 		
 		var newNode = fuseNode.instantiate()
 		newNode.position = node_pos + current_fuse.global_position
