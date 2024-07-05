@@ -1,6 +1,8 @@
 extends Node2D
 
 @export var spark_scene : Resource
+@export var detonator_sound : Resource
+@export var reset_sound : Resource
 
 @onready var spark_spawn = $SparkSpawn
 @onready var click_area = $ClickArea
@@ -11,6 +13,8 @@ extends Node2D
 @onready var flame_sprite = $FlameSprite
 @onready var reset_sprite = $Reset
 @onready var reset_anim = $Reset/AnimationPlayer
+
+@onready var sound_player = $AudioStreamPlayer
 
 var mouse_is_in : bool = false
 var is_ignite : bool = false
@@ -41,10 +45,12 @@ func _process(_delta):
 		dragon_anim_sprite.stop()
 		flame_sprite.play("default")
 		dragon_anim_sprite.play("Idle")
+		play_sound("detonator")
 	
 	elif Input.is_action_just_pressed('left_click') and mouse_is_in and GAME.has_detonated :
 		GAME.has_detonated = false
 		reset_sprite.visible = false
+		play_sound("reset")
 
 ### LOGIC
 
@@ -53,6 +59,15 @@ func create_spark() -> void:
 	var newSpark = spark_scene.instantiate()
 	get_parent().add_child(newSpark)
 	newSpark.global_position = spark_spawn.global_position
+
+func play_sound(sound_name:String)->void:
+	if sound_name == "detonator":
+		sound_player.stream = detonator_sound
+		sound_player.pitch_scale = 1.71
+	elif sound_name == "reset":
+		sound_player.stream = reset_sound
+		sound_player.pitch_scale = 1.0
+	sound_player.play()
 
 ### SIGNAL RESPONSES
 

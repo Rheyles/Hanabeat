@@ -1,12 +1,17 @@
 extends Node2D
 
+@export var fuse_sound : Resource
+
 @onready var music_player = $MusicPlayer
+@onready var sound_player = $SoundPlayer
 
 var rockets = []
 var rockets_times = []
 
 var last_score = -1 : set=set_last_score
 var best_score = -1
+
+var nb_spark:int = 0
 
 ### ACCESSORS
 
@@ -24,6 +29,8 @@ func set_last_score(new_val : int)->void:
 func _ready():
 	GAME.has_detonated = false
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
+	EVENTS.spark_nb_changed.connect(_on_EVENTS_spark_nb_changed)
+	sound_player.finished.connect(_on_SoundPlayer_finished)
 	music_player.finished.connect(_on_MusicPlayer_finished)
 	music_player.play()
 	## TEMP pour debug
@@ -63,6 +70,18 @@ func _on_EVENTS_has_detonated(new_value:bool)->void:
 
 func _on_MusicPlayer_finished()->void:
 	music_player.play()
+
+func _on_EVENTS_spark_nb_changed(value : int) -> void:
+	if nb_spark == 0 and value >0 :
+		sound_player.stream = fuse_sound
+		sound_player.play()
+	nb_spark += value
+	if nb_spark <= 0:
+		sound_player.stop() 
+
+func _on_SoundPlayer_finished() -> void:
+	if sound_player.stream == fuse_sound:
+		sound_player.play()
 
 func _on_Rocket_rocket_start(id,time)->void:
 	rockets_times[id] = time

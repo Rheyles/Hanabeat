@@ -8,13 +8,12 @@ var spark_delay : float = 0.1
 
 func _ready():
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
-	
 	_stepBurn()
 
 ### LOGIC
 
 func _stepBurn(): 
-	
+	EVENTS.emit_signal("spark_nb_changed",1)
 	await get_tree().create_timer(spark_delay).timeout
 
 	spark_shape_cast.force_shapecast_update()
@@ -25,10 +24,14 @@ func _stepBurn():
 			collider_fuse_node._burn()
 		i -= 1
 	
+	destroy()
+
+func destroy():
+	EVENTS.emit_signal("spark_nb_changed",-1)
 	queue_free()
 
 ### SIGNAL LOGICS
 
 func _on_EVENTS_has_detonated(new_value:bool)->void:
 	if not new_value:
-		queue_free()
+		destroy()

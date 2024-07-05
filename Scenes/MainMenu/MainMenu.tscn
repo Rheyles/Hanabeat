@@ -224,6 +224,18 @@ tracks/15/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../MusicPlayer:volume_db")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-80.0, 0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifi5s"]
 _data = {
@@ -360,7 +372,7 @@ libraries = {
 [node name="Animations" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="Animations"]
-position = Vector2(293, 391)
+position = Vector2(293, -689)
 energy = 1.56
 blend_mode = 2
 texture = ExtResource("8_tu4hk")
@@ -369,17 +381,17 @@ height = 190.0
 metadata/_edit_lock_ = true
 
 [node name="Bckg_8" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, 108)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_ffe6f")
 
 [node name="Bckg_7" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, 0)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_hsh2i")
 
 [node name="Clouds2" type="GPUParticles2D" parent="Animations"]
-position = Vector2(275, 0)
+position = Vector2(275, -594)
 process_material = SubResource("ParticleProcessMaterial_4bvnn")
 texture = SubResource("CanvasTexture_ol2iq")
 lifetime = 30.0
@@ -388,11 +400,12 @@ randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="Bckg_6" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, -108)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_u1bew")
 
 [node name="Clouds1" type="GPUParticles2D" parent="Animations"]
+position = Vector2(0, -702)
 process_material = SubResource("ParticleProcessMaterial_4bvnn")
 texture = SubResource("CanvasTexture_mk2yh")
 lifetime = 30.0
@@ -401,7 +414,7 @@ randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="Clouds3" type="GPUParticles2D" parent="Animations"]
-position = Vector2(148, 0)
+position = Vector2(148, -756)
 process_material = SubResource("ParticleProcessMaterial_4bvnn")
 texture = SubResource("CanvasTexture_hh4qh")
 lifetime = 30.0
@@ -410,33 +423,34 @@ randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="Bckg_5" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, -216)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_q1x5v")
 
 [node name="Bckg_4" type="Sprite2D" parent="Animations"]
 material = ExtResource("8_cnotl")
-position = Vector2(300, 875.22)
+position = Vector2(300, 11.22)
 rotation = 3.14159
 scale = Vector2(2.5, 0.948055)
 texture = ExtResource("6_hwuir")
 
 [node name="FireWork_Launcher" parent="Animations" instance=ExtResource("3_ttlhm")]
-position = Vector2(34, 188)
+position = Vector2(34, -784)
 
 [node name="Bckg_3" type="Sprite2D" parent="Animations"]
 z_index = 2
-position = Vector2(300, 540)
+position = Vector2(300, -432)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_4hasq")
 
 [node name="Bckg_2" type="Sprite2D" parent="Animations"]
 z_index = 2
-position = Vector2(300, 540)
+position = Vector2(300, -540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_vi01t")
 
 [node name="Branchs" type="Node2D" parent="Animations"]
+position = Vector2(0, -540)
 
 [node name="Bckg_1_1" type="Sprite2D" parent="Animations/Branchs"]
 z_index = 2
@@ -453,12 +467,14 @@ scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_34muw")
 
 [node name="Transition" type="Sprite2D" parent="Animations"]
+modulate = Color(0, 0, 0, 1)
 z_index = 50
-position = Vector2(300, 1620)
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("25_wipus")
 
 [node name="UI" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -556,6 +572,7 @@ horizontal_alignment = 1
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_4i8js")
 autoplay = true
+bus = &"Music"
 
 [connection signal="button_up" from="UI/Start_Button" to="." method="_on_start_button_button_up"]
 [connection signal="button_down" from="UI/Exit_Button" to="." method="_on_exit_button_button_down"]
