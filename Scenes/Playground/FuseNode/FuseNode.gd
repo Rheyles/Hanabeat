@@ -7,7 +7,7 @@ class_name FuseNode
 @export var firstfuse_not_burnt_sprite = Resource
 @export var firstfuse_burnt_sprite = Resource
 
-@onready var area2D = $Area2D
+@onready var click_area = $ClickArea
 @onready var fuse_sprite = $fuseSprite
 
 var parent_fuse_ref
@@ -23,8 +23,8 @@ signal burnt(fuse_idx, fuseNode_idx)
 
 func _ready():
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
-	area2D.mouse_entered.connect(_on_ClickArea_mouse_entered)
-	area2D.mouse_exited.connect(_on_ClickArea_mouse_exited)
+	click_area.mouse_entered.connect(_on_ClickArea_mouse_entered)
+	click_area.mouse_exited.connect(_on_ClickArea_mouse_exited)
 	_renameAtInstantiate()
 
 ### LOGIC

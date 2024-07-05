@@ -159,9 +159,7 @@ _data = {
 [node name="RocketBank" type="Node2D"]
 z_index = 5
 script = ExtResource("1_p215p")
-fuse_scene = ExtResource("2_a5mi3")
 rocket_sound = ExtResource("3_5d1gi")
-fuses_nb = 1
 metadata/_edit_lock_ = true
 
 [node name="Sprites" type="Node2D" parent="."]
@@ -198,3 +196,6 @@ libraries = {
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 pitch_scale = 0.75
 bus = &"Sounds"
+
+[node name="Fuse_Scene" parent="." instance=ExtResource("2_a5mi3")]
+position = Vector2(0, 45)

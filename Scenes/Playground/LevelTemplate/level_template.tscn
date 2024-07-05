@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://c53tww0tg17d2"]
+[gd_scene load_steps=41 format=3 uid="uid://c53tww0tg17d2"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/level_template.gd" id="1_4a27f"]
 [ext_resource type="Texture2D" uid="uid://d112k4f6d4g27" path="res://Ressources/Sprites/Background/Background.png" id="1_qjqsj"]
 [ext_resource type="AudioStream" uid="uid://dlfhh3xn2hnck" path="res://Ressources/Sounds/Fuse/fuse.wav" id="2_qt6a6"]
 [ext_resource type="PackedScene" uid="uid://dsjhobxnt5ch6" path="res://Scenes/Playground/MouseController/MouseController.tscn" id="2_xs0eq"]
 [ext_resource type="PackedScene" uid="uid://be2ph6eey4l2r" path="res://Scenes/Playground/Detonator/Detonator.tscn" id="3_jg835"]
+[ext_resource type="PackedScene" uid="uid://bhd8lll1dxddf" path="res://Scenes/Playground/Decorations/herb.tscn" id="4_o2qkc"]
 [ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="4_wjenm"]
 [ext_resource type="Script" path="res://Scenes/Playground/_Test/BackMenuButton.gd" id="6_ll2ol"]
 [ext_resource type="PackedScene" uid="uid://chraxbg00x6ry" path="res://Scenes/Playground/UI/Back_to_menu_Popup/Back_to_Menu_Popup.tscn" id="7_82nld"]
@@ -25,6 +26,832 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Shader" id="Shader_mt278"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5y4y3"]
+resource_local_to_scene = true
+shader = SubResource("Shader_mt278")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 3.0
+
+[sub_resource type="Shader" id="Shader_2fh0x"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1k03"]
+resource_local_to_scene = true
+shader = SubResource("Shader_2fh0x")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_onjbp"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_060dr"]
+resource_local_to_scene = true
+shader = SubResource("Shader_onjbp")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_86rhc"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w1vvs"]
+resource_local_to_scene = true
+shader = SubResource("Shader_86rhc")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_oratv"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5grh1"]
+resource_local_to_scene = true
+shader = SubResource("Shader_oratv")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_rddt3"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iiwts"]
+resource_local_to_scene = true
+shader = SubResource("Shader_rddt3")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_xvcvb"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gf4ls"]
+resource_local_to_scene = true
+shader = SubResource("Shader_xvcvb")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_8l4a8"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j1nwa"]
+resource_local_to_scene = true
+shader = SubResource("Shader_8l4a8")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_184hu"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8k3jl"]
+resource_local_to_scene = true
+shader = SubResource("Shader_184hu")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_vfhir"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3psnf"]
+resource_local_to_scene = true
+shader = SubResource("Shader_vfhir")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_v4b41"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6jlax"]
+resource_local_to_scene = true
+shader = SubResource("Shader_v4b41")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_5kcy0"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_54huj"]
+resource_local_to_scene = true
+shader = SubResource("Shader_5kcy0")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_yqgwx"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hx4db"]
+resource_local_to_scene = true
+shader = SubResource("Shader_yqgwx")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
+[sub_resource type="Shader" id="Shader_nr7mn"]
+resource_local_to_scene = true
+code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
+// original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
+//
+// speed - The speed of the wind movement.
+// minStrength - The minimal strength of the wind movement.
+// maxStrength - The maximal strength of the wind movement.
+// strengthScale - Scalefactor for the wind strength.
+// interval - The time between minimal and maximal strength changes.
+// detail - The detail (number of waves) of the wind movement.
+// distortion - The strength of geometry distortion.
+// heightOffset - The height where the wind begins to move. By default 0.0.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+// Wind settings.
+uniform float speed = 1.0;
+uniform float minStrength : hint_range(0.0, 1.0) = 0.05;
+uniform float maxStrength : hint_range(0.0, 1.0) = 0.01;
+uniform float strengthScale = 100.0;
+uniform float interval = 3.5;
+uniform float detail = 1.0;
+uniform float distortion : hint_range(0.0, 1.0);
+uniform float heightOffset : hint_range(0.0, 1.0);
+
+// With the offset value, you can if you want different moves for each asset. Just put a random value (1, 2, 3) in the editor. Don't forget to mark the material as unique if you use this
+uniform float offset = 0; 
+
+
+float getWind(vec2 vertex, vec2 uv, float time){
+    float diff = pow(maxStrength - minStrength, 2.0);
+    float strength = clamp(minStrength + diff + sin(time / interval) * diff, minStrength, maxStrength) * strengthScale;
+    float wind = (sin(time) + cos(time * detail)) * strength * max(0.0, (1.0-uv.y) - heightOffset);
+    
+    return wind; 
+}
+
+void vertex() {
+    vec4 pos = MODEL_MATRIX * vec4(0.0, 0.0, 0.0, 1.0);
+    float time = TIME * speed + offset;
+    //float time = TIME * speed + pos.x * pos.y  ; not working when moving...
+    VERTEX.x += getWind(VERTEX.xy, UV, time);
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_knsne"]
+resource_local_to_scene = true
+shader = SubResource("Shader_nr7mn")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.015
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 3.0
+shader_parameter/distortion = 1.0
+shader_parameter/heightOffset = 0.25
+shader_parameter/offset = 1.0
+
 [node name="LevelTemplate" type="Node2D"]
 script = ExtResource("1_4a27f")
 fuse_sound = ExtResource("2_qt6a6")
@@ -40,6 +867,80 @@ position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_uuwv3")
 metadata/_edit_lock_ = true
+
+[node name="Decorations" type="Node2D" parent="."]
+
+[node name="Herb" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_5y4y3")
+position = Vector2(49, 418)
+
+[node name="Herb2" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_c1k03")
+position = Vector2(43, 449)
+
+[node name="Herb3" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_060dr")
+position = Vector2(60, 470)
+
+[node name="Herb15" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_060dr")
+position = Vector2(595, 419)
+
+[node name="Herb16" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_060dr")
+position = Vector2(581, 402)
+
+[node name="Herb17" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_060dr")
+position = Vector2(593, 448)
+
+[node name="Herb18" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_060dr")
+position = Vector2(578, 435)
+
+[node name="Herb4" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_w1vvs")
+position = Vector2(41, 474)
+
+[node name="Herb5" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_5grh1")
+position = Vector2(6, 468)
+
+[node name="Herb6" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_iiwts")
+position = Vector2(30, 543)
+
+[node name="Herb10" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_gf4ls")
+position = Vector2(88, 940)
+
+[node name="Herb11" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_j1nwa")
+position = Vector2(103, 955)
+
+[node name="Herb12" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_8k3jl")
+position = Vector2(3, 1019)
+
+[node name="Herb13" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_3psnf")
+position = Vector2(29, 972)
+
+[node name="Herb7" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_6jlax")
+position = Vector2(564, 804)
+
+[node name="Herb8" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_54huj")
+position = Vector2(575, 809)
+
+[node name="Herb9" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_hx4db")
+position = Vector2(562, 825)
+
+[node name="Herb14" parent="Decorations" instance=ExtResource("4_o2qkc")]
+material = SubResource("ShaderMaterial_knsne")
+position = Vector2(607, 841)
 
 [node name="MouseController" parent="." instance=ExtResource("2_xs0eq")]
 unique_name_in_owner = true

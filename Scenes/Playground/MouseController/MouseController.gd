@@ -1,4 +1,5 @@
 extends Node2D
+class_name MouseController
 
 @export var fuseNode : Resource
 
@@ -58,8 +59,8 @@ func _process(_delta)-> void:
 ###LOGIC
 
 func _connectFirstFuseNode(newNode):
-	newNode.get_node("Area2D").mouse_entered.connect(_On_mouse_enter_fuseNode)
-	newNode.get_node("Area2D").mouse_exited.connect(_On_mouse_exit_fuseNode)
+	newNode.get_node("ClickArea").mouse_entered.connect(_On_mouse_enter_fuseNode)
+	newNode.get_node("ClickArea").mouse_exited.connect(_On_mouse_exit_fuseNode)
 
 func _create_fuse():
 	var distance_to_mouse = last_node_pos.distance_to(get_local_mouse_position())
@@ -76,12 +77,11 @@ func _create_fuse():
 		newNode.parent_fuse_ref = current_fuse
 		newNode.rotation = trajectory_vec.angle()
 		add_child(newNode)
-		#newNode.reparent(current_fuse)
 		current_fuse.fuseNode_list.append(newNode)
 		newNode.fuseNode_idx = current_fuse.fuseNode_list.size()-1
 		
-		newNode.get_node("Area2D").mouse_entered.connect(_On_mouse_enter_fuseNode)
-		newNode.get_node("Area2D").mouse_exited.connect(_On_mouse_exit_fuseNode)
+		newNode.get_node("ClickArea").mouse_entered.connect(_On_mouse_enter_fuseNode)
+		newNode.get_node("ClickArea").mouse_exited.connect(_On_mouse_exit_fuseNode)
 		
 		current_fuse.update_gradient()
 
