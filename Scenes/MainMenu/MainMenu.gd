@@ -15,9 +15,9 @@ func _ready():
 
 func _on_start_button_button_up():
 #Load Lvl menu
-	$AnimationPlayer.play("fly_in",-1,-1.0,true)
+	$AnimationPlayer.play("fly_in",-1,-2.0,true)
 	await $AnimationPlayer.animation_finished
-	GAME.goto_scene("res://Scenes/Playground/_Test/AmazingScene.tscn")
+	GAME.goto_scene("res://Scenes/LevelSelectionMenu/level_selection_menu.tscn")
 
 
 func _on_exit_button_button_down():

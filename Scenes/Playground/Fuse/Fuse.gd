@@ -72,3 +72,4 @@ func _on_Slice(start:Vector2, end:Vector2)->void:
 func _on_EVENTS_has_detonated(new_value:bool)->void:
 	if not new_value :
 		update_gradient()
+		fuseNode_list.back().get_node("Sprite2D").visible = true

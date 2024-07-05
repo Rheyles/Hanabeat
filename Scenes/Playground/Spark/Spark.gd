@@ -2,7 +2,7 @@ extends Node2D
 
 @onready var spark_shape_cast : ShapeCast2D = $sparkShapeCast
 
-var spark_delay : float = 0.1
+var spark_delay : float = 0.05
 
 ### BUILT-IN
 

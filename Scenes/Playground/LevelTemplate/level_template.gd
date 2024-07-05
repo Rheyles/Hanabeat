@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var music_player = $MusicPlayer
 @onready var sound_player = $SoundPlayer
+@onready var back_to_menu = $UI/Back_To_Menu
 
 var rockets = []
 var rockets_times = []
@@ -96,5 +97,7 @@ func _on_Rocket_rocket_start(id,time)->void:
 		print("Your score : " + str(score))
 		if score < GAME.WIN_MARGIN * 100:
 			print("You won !")
+			back_to_menu.set_message("Congrats ! Back to menu ?")
+			back_to_menu.visible = true
 		else:
 			print("It didn\'t work... Try again !")

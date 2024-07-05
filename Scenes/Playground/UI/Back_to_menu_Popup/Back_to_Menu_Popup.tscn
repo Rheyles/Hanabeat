@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://chraxbg00x6ry"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/UI/Back_to_menu_Popup/Back_to_Menu_Popup.gd" id="1_3nds5"]
-[ext_resource type="Texture2D" uid="uid://dxydqx7n6hfof" path="res://Ressources/Sprites/Placeholders/PlaceHolder_Square.png" id="1_p861y"]
-[ext_resource type="Texture2D" uid="uid://ck4rsrulf7obj" path="res://Ressources/Sprites/Placeholders/LevelSelectionButton.png" id="2_nsyno"]
+[ext_resource type="Texture2D" uid="uid://r37iiflfqw5j" path="res://Ressources/Sprites/Menu/UI_PopUp_BG.png" id="2_dxxlr"]
+[ext_resource type="Texture2D" uid="uid://deufj4cvdwfo6" path="res://Ressources/Sprites/Menu/UI_Button_BG.png" id="3_hxctr"]
 
 [node name="Back_To_Menu" type="Control"]
 layout_mode = 3
@@ -42,11 +42,11 @@ anchor_bottom = 0.5
 offset_left = -200.0
 offset_top = -290.18
 offset_right = 200.0
-offset_bottom = -130.179
+offset_bottom = -100.584
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(200, 80)
-texture = ExtResource("1_p861y")
+texture = ExtResource("2_dxxlr")
 expand_mode = 1
 
 [node name="Label" type="Label" parent="TextureRect"]
@@ -54,13 +54,16 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -63.5
-offset_right = 63.5
-offset_bottom = 23.0
+offset_left = -183.5
+offset_top = 29.11
+offset_right = 183.5
+offset_bottom = 93.11
 grow_horizontal = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -20
 theme_override_font_sizes/font_size = 46
 text = "Leave the level ?"
+autowrap_mode = 1
 
 [node name="QuitButton" type="Button" parent="TextureRect"]
 custom_minimum_size = Vector2(188.07, 74.43)
@@ -71,31 +74,34 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -94.035
-offset_top = -74.43
+offset_top = -64.78
 offset_right = 94.035
+offset_bottom = 19.22
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 55
 text = "OK !"
 flat = true
+icon_alignment = 1
 expand_icon = true
 
 [node name="TextureRect" type="TextureRect" parent="TextureRect/QuitButton"]
-custom_minimum_size = Vector2(200, 56.96)
+show_behind_parent = true
+custom_minimum_size = Vector2(200, 94.355)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -100.0
-offset_top = -32.0
-offset_right = 100.0
-offset_bottom = 32.0
+offset_left = -94.035
+offset_top = -42.0
+offset_right = 105.965
+offset_bottom = 52.355
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_nsyno")
+texture = ExtResource("3_hxctr")
 expand_mode = 1
 
 [connection signal="button_down" from="CancelButtonZone" to="." method="_on_cancel_button_zone_button_down"]

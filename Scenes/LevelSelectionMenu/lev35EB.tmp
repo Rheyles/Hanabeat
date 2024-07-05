@@ -1,29 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://c56iigfrq84ys"]
+[gd_scene load_steps=12 format=3 uid="uid://c56iigfrq84ys"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_selection_menu.gd" id="1_3o3ol"]
 [ext_resource type="Texture2D" uid="uid://dp25mba7vqxh" path="res://Ressources/Sprites/Menu/LevelSelection.png" id="1_om44h"]
-[ext_resource type="AudioStream" uid="uid://nq6johk67k04" path="res://Ressources/Sounds/Detonator/reset.wav" id="2_ay3qx"]
 [ext_resource type="FontFile" uid="uid://dmrpdxxwkj3cq" path="res://Ressources/Fonts/Miyoshi -Demo.ttf" id="2_mwxrw"]
 [ext_resource type="PackedScene" uid="uid://fmwt8lxc4ggs" path="res://Scenes/LevelSelectionMenu/level_button.tscn" id="3_kw8ho"]
 [ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="4_fyovw"]
 [ext_resource type="Texture2D" uid="uid://big3kieu5gfw1" path="res://Ressources/Sprites/Menu/transition_screen_2.png" id="4_sjiag"]
 [ext_resource type="Texture2D" uid="uid://b482blg1nrf4h" path="res://Ressources/Sprites/Menu/transition_screen_triangle.png" id="5_5ltlj"]
 [ext_resource type="Texture2D" uid="uid://dd3e4p7wu8qek" path="res://Ressources/Sprites/Menu/FlyingIslandDay.png" id="6_eghcy"]
-
-[sub_resource type="Animation" id="Animation_eybl5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Animation/transi_BG1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(300, 939)]
-}
 
 [sub_resource type="Animation" id="Animation_vrnth"]
 resource_name = "Transi_IN"
@@ -64,6 +48,21 @@ tracks/2/keys = {
 "values": [Vector2(300, 1025), Vector2(300, -325)]
 }
 
+[sub_resource type="Animation" id="Animation_eybl5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Animation/transi_BG1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(300, 939)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wd48s"]
 _data = {
 "RESET": SubResource("Animation_eybl5"),
@@ -72,7 +71,6 @@ _data = {
 
 [node name="LevelSelectionMenu" type="Node"]
 script = ExtResource("1_3o3ol")
-select_sound = ExtResource("2_ay3qx")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -144,11 +142,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="LevelButton1" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
+[node name="LevelButton" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 133.0
 offset_top = 875.0
 offset_right = 133.0
 offset_bottom = 875.0
+lvl_number = 0
 
 [node name="LevelButton2" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 254.0
@@ -220,7 +219,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Lvl_info_text" type="Label" parent="OtherUI/Lvl_info_display"]
+[node name="Label" type="Label" parent="OtherUI/Lvl_info_display"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -243,9 +242,4 @@ position = Vector2(-61, 318)
 scale = Vector2(3, 3)
 texture = ExtResource("6_eghcy")
 
-[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"Sounds"
-
-[connection signal="on_mouse_hover_lvl" from="SelectionButton/LevelButton1" to="." method="_on_level_button_on_mouse_hover_lvl"]
-[connection signal="on_mouse_hover_lvl" from="SelectionButton/LevelButton2" to="." method="_on_level_button_2_on_mouse_hover_lvl"]
 [connection signal="button_down" from="OtherUI/BackMenuButton" to="." method="_on_back_menu_button_button_down"]
