@@ -1,27 +1,29 @@
 [gd_scene load_steps=5 format=3 uid="uid://bv7eb6g5604um"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/Puddle/puddle.gd" id="1_ay3km"]
-[ext_resource type="Texture2D" uid="uid://68djx37jruo5" path="res://Ressources/Sprites/Placeholders/new_gradient_texture_2d.tres" id="1_luxus"]
+[ext_resource type="Texture2D" uid="uid://c62luwmrvcadp" path="res://Ressources/Sprites/Puddles/puddles.png" id="3_1txib"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6scxb"]
-size = Vector2(81, 81)
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxcmy"]
+radius = 31.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lp651"]
-size = Vector2(81, 81)
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5xvt"]
+radius = 32.0
 
 [node name="Puddle" type="Area2D"]
 z_index = -5
 script = ExtResource("1_ay3km")
+oil_modulate = Color(1, 0.403922, 0.278431, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_6scxb")
+visible = false
+shape = SubResource("CircleShape2D_kxcmy")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.314961, 1.32813)
-texture = ExtResource("1_luxus")
+texture = ExtResource("3_1txib")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
-shape = SubResource("RectangleShape2D_lp651")
+visible = false
+shape = SubResource("CircleShape2D_k5xvt")
 target_position = Vector2(0, 0)
 margin = 2.0
 collision_mask = 2

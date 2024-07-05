@@ -1001,8 +1001,8 @@ rotation = -0.225147
 position = Vector2(200, 293)
 
 [node name="Puddle" parent="." index="8" instance=ExtResource("3_6h4ck")]
-position = Vector2(239, 727)
-is_water = false
+position = Vector2(289, 536)
+scale = Vector2(2.5, 2.5)
 
 [node name="Detonator" parent="." index="9"]
 z_index = 0
