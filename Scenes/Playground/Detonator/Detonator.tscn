@@ -27,7 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://bqkfnhqubn8ld" path="res://Ressources/Sprites/Detonator/reset.png" id="22_04vev"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_q2avd"]
-radius = 31.0161
+radius = 22.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ujj1"]
 atlas = ExtResource("3_ruw1x")
@@ -249,7 +249,6 @@ texture = ExtResource("6_pbtwp")
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ClickArea"]
-visible = false
 shape = SubResource("CircleShape2D_q2avd")
 
 [node name="AreaSprite" type="Sprite2D" parent="ClickArea"]
