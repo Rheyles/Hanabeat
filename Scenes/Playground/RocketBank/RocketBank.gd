@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var fuse_scene : Resource
+@export var rocket_sound : Resource
 
 @export_range (1, 8) var fuses_nb :int = 4
 var margin_x : float = 80.0
@@ -14,6 +15,7 @@ var rocket_start_time = []
 @onready var flame_sprite = $Sprites/Flame
 @onready var rocket_sprite = $Sprites/RocketHolder/Rocket
 @onready var rocket_animation = $Sprites/RocketHolder/AnimationPlayer
+@onready var sound_player = $AudioStreamPlayer
 
 signal rocket_start(id,time)
 
@@ -50,6 +52,8 @@ func _on_Fuse_burnt(_fuse_idx:int, _line_point_ref:int) -> void:
 	rocket_start_time = Time.get_ticks_msec()
 	emit_signal("rocket_start",rocket_id,rocket_start_time)
 	rocket_animation.play("Starting")
+	sound_player.stream = rocket_sound
+	sound_player.play()
 	
 func _on_RocketAnimation_animation_finished(anim_name:String) -> void:
 	if anim_name == "Starting":
@@ -62,9 +66,11 @@ func _on_Flame_animation_finished() -> void:
 		flame_sprite.play("Going")
 		rocket_animation.play("going")
 
-func _on_EVENTS_has_detonated(_new_value:bool)->void:
-	rocket_animation.play("idle")
-	flame_sprite.stop()
-	flame_sprite.visible = false
-	$Sprites.position = Vector2.ZERO
-	rocket_start_time = 0
+func _on_EVENTS_has_detonated(new_value:bool)->void:
+	if not new_value:
+		rocket_animation.play("idle")
+		flame_sprite.stop()
+		flame_sprite.visible = false
+		$Sprites.position = Vector2.ZERO
+		rocket_start_time = 0
+		sound_player.stop()
