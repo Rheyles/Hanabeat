@@ -7,12 +7,12 @@ extends Node
 @onready var sound_player = $SoundPlayer
 
 func _ready():
+	get_node("SelectionButton/LevelButton0").on_mouse_hover_lvl.connect(_On_Mouse_Over_Lvl)
 	get_node("SelectionButton/LevelButton1").on_mouse_hover_lvl.connect(_On_Mouse_Over_Lvl)
 	get_node("SelectionButton/LevelButton2").on_mouse_hover_lvl.connect(_On_Mouse_Over_Lvl)
 	get_node("SelectionButton/LevelButton3").on_mouse_hover_lvl.connect(_On_Mouse_Over_Lvl)
 	get_node("SelectionButton/LevelButton4").on_mouse_hover_lvl.connect(_On_Mouse_Over_Lvl)
 	get_node("SelectionButton/LevelButton5").on_mouse_hover_lvl.connect(_On_Mouse_Over_Lvl)
-	get_node("SelectionButton/LevelButton6").on_mouse_hover_lvl.connect(_On_Mouse_Over_Lvl)
 
 func play_sound(sound_name:String)->void:
 	if sound_name == "select":

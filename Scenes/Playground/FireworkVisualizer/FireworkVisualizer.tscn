@@ -366,7 +366,7 @@ libraries = {
 [node name="Animations" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="Animations"]
-position = Vector2(293, -689)
+position = Vector2(293, 391)
 energy = 1.56
 blend_mode = 2
 texture = ExtResource("2_x4yde")
@@ -374,17 +374,17 @@ texture_scale = 28.6
 height = 190.0
 
 [node name="Bckg_8" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 108)
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_mk8yp")
 
 [node name="Bckg_7" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 0)
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_kawfk")
 
 [node name="Clouds2" type="GPUParticles2D" parent="Animations"]
-position = Vector2(275, -594)
+position = Vector2(275, 0)
 process_material = SubResource("ParticleProcessMaterial_8bgga")
 texture = SubResource("CanvasTexture_se7bk")
 lifetime = 30.0
@@ -393,12 +393,11 @@ randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="Bckg_6" type="Sprite2D" parent="Animations"]
-position = Vector2(300, -108)
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_0lluf")
 
 [node name="Clouds1" type="GPUParticles2D" parent="Animations"]
-position = Vector2(0, -702)
 process_material = SubResource("ParticleProcessMaterial_8bgga")
 texture = SubResource("CanvasTexture_mcj56")
 lifetime = 30.0
@@ -407,7 +406,7 @@ randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="Clouds3" type="GPUParticles2D" parent="Animations"]
-position = Vector2(148, -756)
+position = Vector2(148, 0)
 process_material = SubResource("ParticleProcessMaterial_8bgga")
 texture = SubResource("CanvasTexture_lg6kx")
 lifetime = 30.0
@@ -416,36 +415,35 @@ randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="Bckg_5" type="Sprite2D" parent="Animations"]
-position = Vector2(300, -216)
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_l132a")
 
 [node name="Bckg_4" type="Sprite2D" parent="Animations"]
 material = ExtResource("14_5dbbx")
-position = Vector2(300, 11.22)
+position = Vector2(300, 875.22)
 rotation = 3.14159
 scale = Vector2(2.5, 0.948055)
 texture = ExtResource("15_wjqug")
 
 [node name="FireWork_Launcher" parent="Animations" instance=ExtResource("16_srxr8")]
 z_index = 1
-position = Vector2(300, -784)
+position = Vector2(300, 840)
 
 [node name="Bckg_3" type="Sprite2D" parent="Animations"]
-z_index = 2
-position = Vector2(300, -432)
+z_index = 4
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_yee0l")
 
 [node name="Bckg_2" type="Sprite2D" parent="Animations"]
-z_index = 2
-position = Vector2(300, -540)
+z_index = 4
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_8pdre")
 
 [node name="Branchs" type="Node2D" parent="Animations"]
 z_index = 2
-position = Vector2(0, -540)
 
 [node name="Bckg_1_1" type="Sprite2D" parent="Animations/Branchs"]
 z_index = 2
@@ -462,21 +460,17 @@ scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_om3ol")
 
 [node name="Transition" type="Sprite2D" parent="Animations"]
-modulate = Color(0, 0, 0, 1)
 z_index = 50
-position = Vector2(300, 540)
+position = Vector2(300, 1620)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("25_jep8d")
 
 [node name="UI" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -1080.0
-offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -497,6 +491,5 @@ text = "Test"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_k6yt0")
-volume_db = -80.0
 autoplay = true
 bus = &"Music"

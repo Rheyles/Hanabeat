@@ -1,105 +1,12 @@
-[gd_scene load_steps=64 format=3 uid="uid://c53tww0tg17d2"]
+[gd_scene load_steps=44 format=3 uid="uid://bwsdr6nwwkf23"]
 
-[ext_resource type="Shader" path="res://Scenes/Playground/LevelTemplate/vignet.gdshader" id="1_0cqeb"]
-[ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/level_template.gd" id="1_4a27f"]
-[ext_resource type="Texture2D" uid="uid://d112k4f6d4g27" path="res://Ressources/Sprites/Background/Background.png" id="1_qjqsj"]
-[ext_resource type="AudioStream" uid="uid://dlfhh3xn2hnck" path="res://Ressources/Sounds/Fuse/fuse.wav" id="2_qt6a6"]
-[ext_resource type="PackedScene" uid="uid://dsjhobxnt5ch6" path="res://Scenes/Playground/MouseController/MouseController.tscn" id="2_xs0eq"]
-[ext_resource type="PackedScene" uid="uid://be2ph6eey4l2r" path="res://Scenes/Playground/Detonator/Detonator.tscn" id="3_jg835"]
-[ext_resource type="Texture2D" uid="uid://big3kieu5gfw1" path="res://Ressources/Sprites/Menu/transition_screen_2.png" id="3_k7qk5"]
-[ext_resource type="PackedScene" uid="uid://q7fs5dydbjnl" path="res://Scenes/Playground/UI/DialogBox/DialogBox.tscn" id="3_lkggc"]
-[ext_resource type="Texture2D" uid="uid://b482blg1nrf4h" path="res://Ressources/Sprites/Menu/transition_screen_triangle.png" id="4_0yaw0"]
-[ext_resource type="PackedScene" uid="uid://bhd8lll1dxddf" path="res://Scenes/Playground/Decorations/herb.tscn" id="4_o2qkc"]
-[ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="4_wjenm"]
-[ext_resource type="Script" path="res://Scenes/Playground/_Test/BackMenuButton.gd" id="6_ll2ol"]
-[ext_resource type="PackedScene" uid="uid://chraxbg00x6ry" path="res://Scenes/Playground/UI/Back_to_menu_Popup/Back_to_Menu_Popup.tscn" id="7_82nld"]
-[ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/Background.gd" id="7_h5ss4"]
-[ext_resource type="AudioStream" uid="uid://duf4el721dpdq" path="res://Ressources/Musics/Without_rain_Hanabeat.wav" id="8_vrd8f"]
-[ext_resource type="PackedScene" uid="uid://bgbsfii0i3web" path="res://Scenes/Playground/FireworkVisualizer/FireworkVisualizer.tscn" id="11_hfnta"]
-[ext_resource type="Texture2D" uid="uid://dnav6jws5njpe" path="res://Ressources/Sprites/Detonator/flame_spot.png" id="11_srj2h"]
-[ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/RetryButton.gd" id="12_788uw"]
-[ext_resource type="Texture2D" uid="uid://deufj4cvdwfo6" path="res://Ressources/Sprites/Menu/UI_Button_BG.png" id="13_w6umg"]
+[ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_ux0ys"]
+[ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_15w4x"]
+[ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/RocketBank.gdshader" id="3_pitbf"]
+[ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/blink.gdshader" id="4_gevtr"]
+[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Playground/Fuse/Fuse.tscn" id="5_t5xsv"]
 
-[sub_resource type="Animation" id="Animation_eybl5"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Animation/transi_BG1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(300, 939)]
-}
-
-[sub_resource type="Animation" id="Animation_vrnth"]
-resource_name = "Transi_IN"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visuals/Animation/transi_BG1:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(303, 843), Vector2(300, -407)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Visuals/Animation/transi_BG2:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(300, 983), Vector2(300, -350)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Visuals/Animation/transi_BG3:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(300, 1025), Vector2(300, -325)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_wd48s"]
-_data = {
-"RESET": SubResource("Animation_eybl5"),
-"Transi_IN": SubResource("Animation_vrnth")
-}
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1fto"]
-render_priority = 0
-shader = ExtResource("1_0cqeb")
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_xfxnr"]
-atlas = ExtResource("1_qjqsj")
-region = Rect2(0, 0, 240, 432)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_uuwv3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_xfxnr")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="Shader" id="Shader_rjmxs"]
+[sub_resource type="Shader" id="Shader_plulj"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -147,7 +54,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5y4y3"]
 resource_local_to_scene = true
-shader = SubResource("Shader_rjmxs")
+shader = SubResource("Shader_plulj")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -158,7 +65,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 3.0
 
-[sub_resource type="Shader" id="Shader_k311r"]
+[sub_resource type="Shader" id="Shader_tq5fe"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -206,7 +113,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1k03"]
 resource_local_to_scene = true
-shader = SubResource("Shader_k311r")
+shader = SubResource("Shader_tq5fe")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -217,7 +124,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_ynxvy"]
+[sub_resource type="Shader" id="Shader_xf2pn"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -265,7 +172,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_060dr"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ynxvy")
+shader = SubResource("Shader_xf2pn")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -276,7 +183,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_23ang"]
+[sub_resource type="Shader" id="Shader_35gip"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -324,7 +231,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpyat"]
 resource_local_to_scene = true
-shader = SubResource("Shader_23ang")
+shader = SubResource("Shader_35gip")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -335,7 +242,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_oj4sx"]
+[sub_resource type="Shader" id="Shader_0oqga"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -383,7 +290,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yv3ur"]
 resource_local_to_scene = true
-shader = SubResource("Shader_oj4sx")
+shader = SubResource("Shader_0oqga")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -394,7 +301,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_w1hxr"]
+[sub_resource type="Shader" id="Shader_fv21i"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -442,7 +349,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bd83b"]
 resource_local_to_scene = true
-shader = SubResource("Shader_w1hxr")
+shader = SubResource("Shader_fv21i")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -453,7 +360,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_b381g"]
+[sub_resource type="Shader" id="Shader_pa5d1"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -501,7 +408,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_igjge"]
 resource_local_to_scene = true
-shader = SubResource("Shader_b381g")
+shader = SubResource("Shader_pa5d1")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -512,7 +419,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_7ua4e"]
+[sub_resource type="Shader" id="Shader_ehdq7"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -560,7 +467,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w1vvs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_7ua4e")
+shader = SubResource("Shader_ehdq7")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -571,7 +478,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_ml1kk"]
+[sub_resource type="Shader" id="Shader_cvqgj"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -619,7 +526,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5grh1"]
 resource_local_to_scene = true
-shader = SubResource("Shader_ml1kk")
+shader = SubResource("Shader_cvqgj")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -630,7 +537,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_1pq6m"]
+[sub_resource type="Shader" id="Shader_bcy7b"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -678,7 +585,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iiwts"]
 resource_local_to_scene = true
-shader = SubResource("Shader_1pq6m")
+shader = SubResource("Shader_bcy7b")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -689,7 +596,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_lax72"]
+[sub_resource type="Shader" id="Shader_5j68i"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -737,7 +644,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gf4ls"]
 resource_local_to_scene = true
-shader = SubResource("Shader_lax72")
+shader = SubResource("Shader_5j68i")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -748,7 +655,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_61k5r"]
+[sub_resource type="Shader" id="Shader_p5lds"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -796,7 +703,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j1nwa"]
 resource_local_to_scene = true
-shader = SubResource("Shader_61k5r")
+shader = SubResource("Shader_p5lds")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -807,7 +714,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_0k51f"]
+[sub_resource type="Shader" id="Shader_aaj8o"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -855,7 +762,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8k3jl"]
 resource_local_to_scene = true
-shader = SubResource("Shader_0k51f")
+shader = SubResource("Shader_aaj8o")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -866,7 +773,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_mnwyf"]
+[sub_resource type="Shader" id="Shader_72n5i"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -914,7 +821,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3psnf"]
 resource_local_to_scene = true
-shader = SubResource("Shader_mnwyf")
+shader = SubResource("Shader_72n5i")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -925,7 +832,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_feso6"]
+[sub_resource type="Shader" id="Shader_k1vkf"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -973,7 +880,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6jlax"]
 resource_local_to_scene = true
-shader = SubResource("Shader_feso6")
+shader = SubResource("Shader_k1vkf")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -984,7 +891,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_fo30m"]
+[sub_resource type="Shader" id="Shader_re12p"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -1032,7 +939,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_54huj"]
 resource_local_to_scene = true
-shader = SubResource("Shader_fo30m")
+shader = SubResource("Shader_re12p")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -1043,7 +950,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_okvba"]
+[sub_resource type="Shader" id="Shader_rermi"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -1091,7 +998,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hx4db"]
 resource_local_to_scene = true
-shader = SubResource("Shader_okvba")
+shader = SubResource("Shader_rermi")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -1102,7 +1009,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_q5t88"]
+[sub_resource type="Shader" id="Shader_lby4q"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -1150,7 +1057,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knsne"]
 resource_local_to_scene = true
-shader = SubResource("Shader_q5t88")
+shader = SubResource("Shader_lby4q")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -1161,334 +1068,164 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Animation" id="Animation_vjofd"]
-resource_name = "no_fuse_left"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1), Vector2(1.2, 1.2), Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.905269, 3.34509e-06, 1.15514e-06, 1), Color(1, 1, 1, 1), Color(0.905882, 0, 0, 1), Color(1, 1, 1, 1)]
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p0ns3"]
+resource_local_to_scene = true
+shader = ExtResource("3_pitbf")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+shader_parameter/h_frames = 1.0
+shader_parameter/v_frames = 2.0
+shader_parameter/hasPrint = false
+shader_parameter/replaceGreen = Color(0.8, 0, 0, 1)
+shader_parameter/replaceRed = Color(0, 0.427451, 0.607843, 1)
+shader_parameter/replaceBlue = Color(1, 1, 1, 1)
+shader_parameter/replaceYellow = null
+shader_parameter/replaceMagenta = null
+shader_parameter/replaceCyan = null
+shader_parameter/replaceWhite = null
+shader_parameter/replaceGrey = null
+shader_parameter/replaceBlack = null
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ywnnj"]
-_data = {
-"no_fuse_left": SubResource("Animation_vjofd")
-}
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hw11x"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("4_gevtr")
 
-[node name="LevelTemplate" type="Node2D"]
-script = ExtResource("1_4a27f")
-fuse_sound = ExtResource("2_qt6a6")
-dialog_box_scene = ExtResource("3_lkggc")
+[node name="Level3" instance=ExtResource("1_ux0ys")]
+lvl_id = 3
+node_nb_max = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_wd48s")
-}
-autoplay = "Transi_IN"
-
-[node name="Visuals" type="Node2D" parent="."]
-z_index = 10
-
-[node name="Animation" type="Node2D" parent="Visuals"]
-z_index = 10
-position = Vector2(0, -25)
-
-[node name="transi_BG1" type="Sprite2D" parent="Visuals/Animation"]
-z_index = 10
-position = Vector2(300, 939)
-scale = Vector2(3, 4.085)
-texture = ExtResource("3_k7qk5")
-
-[node name="transi_BG2" type="Sprite2D" parent="Visuals/Animation"]
-self_modulate = Color(0.216886, 0.0689838, 0.400885, 1)
-z_index = 9
-position = Vector2(300, -350)
-scale = Vector2(3, 3.55)
-texture = ExtResource("4_0yaw0")
-
-[node name="transi_BG3" type="Sprite2D" parent="Visuals/Animation"]
-self_modulate = Color(0.345001, 0.112334, 0.52101, 1)
-z_index = 8
-position = Vector2(300, -325)
-scale = Vector2(3, 3.55)
-texture = ExtResource("4_0yaw0")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-editor_draw_drag_margin = true
-metadata/_edit_lock_ = true
-
-[node name="Background" type="AnimatedSprite2D" parent="."]
-z_index = -10
-material = SubResource("ShaderMaterial_q1fto")
-position = Vector2(300, 540)
-scale = Vector2(2.5, 2.5)
-sprite_frames = SubResource("SpriteFrames_uuwv3")
-script = ExtResource("7_h5ss4")
-metadata/_edit_lock_ = true
-
-[node name="Decorations" type="Node2D" parent="."]
-
-[node name="Herb" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb" parent="Decorations" index="0"]
 material = SubResource("ShaderMaterial_5y4y3")
-position = Vector2(49, 418)
 
-[node name="Herb2" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb2" parent="Decorations" index="1"]
 material = SubResource("ShaderMaterial_c1k03")
-position = Vector2(43, 449)
 
-[node name="Herb3" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb3" parent="Decorations" index="2"]
 material = SubResource("ShaderMaterial_060dr")
-position = Vector2(60, 470)
 
-[node name="Herb15" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb15" parent="Decorations" index="3"]
 material = SubResource("ShaderMaterial_fpyat")
-position = Vector2(595, 419)
 
-[node name="Herb16" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb16" parent="Decorations" index="4"]
 material = SubResource("ShaderMaterial_yv3ur")
-position = Vector2(581, 402)
 
-[node name="Herb17" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb17" parent="Decorations" index="5"]
 material = SubResource("ShaderMaterial_bd83b")
-position = Vector2(593, 448)
 
-[node name="Herb18" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb18" parent="Decorations" index="6"]
 material = SubResource("ShaderMaterial_igjge")
-position = Vector2(578, 435)
 
-[node name="Herb4" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb4" parent="Decorations" index="7"]
 material = SubResource("ShaderMaterial_w1vvs")
-position = Vector2(41, 474)
 
-[node name="Herb5" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb5" parent="Decorations" index="8"]
 material = SubResource("ShaderMaterial_5grh1")
-position = Vector2(6, 468)
 
-[node name="Herb6" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb6" parent="Decorations" index="9"]
 material = SubResource("ShaderMaterial_iiwts")
-position = Vector2(30, 543)
 
-[node name="Herb10" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb10" parent="Decorations" index="10"]
 material = SubResource("ShaderMaterial_gf4ls")
-position = Vector2(88, 940)
 
-[node name="Herb11" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb11" parent="Decorations" index="11"]
 material = SubResource("ShaderMaterial_j1nwa")
-position = Vector2(103, 955)
 
-[node name="Herb12" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb12" parent="Decorations" index="12"]
 material = SubResource("ShaderMaterial_8k3jl")
-position = Vector2(3, 1019)
 
-[node name="Herb13" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb13" parent="Decorations" index="13"]
 material = SubResource("ShaderMaterial_3psnf")
-position = Vector2(29, 972)
 
-[node name="Herb7" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb7" parent="Decorations" index="14"]
 material = SubResource("ShaderMaterial_6jlax")
-position = Vector2(564, 804)
 
-[node name="Herb8" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb8" parent="Decorations" index="15"]
 material = SubResource("ShaderMaterial_54huj")
-position = Vector2(575, 809)
 
-[node name="Herb9" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb9" parent="Decorations" index="16"]
 material = SubResource("ShaderMaterial_hx4db")
-position = Vector2(562, 825)
 
-[node name="Herb14" parent="Decorations" instance=ExtResource("4_o2qkc")]
+[node name="Herb14" parent="Decorations" index="17"]
 material = SubResource("ShaderMaterial_knsne")
-position = Vector2(607, 841)
 
-[node name="MouseController" parent="." instance=ExtResource("2_xs0eq")]
-unique_name_in_owner = true
+[node name="RocketBank" parent="." index="8" instance=ExtResource("2_15w4x")]
+position = Vector2(450, 390)
+rotation = 0.20944
+
+[node name="Rocket" parent="RocketBank/Sprites/RocketHolder" index="0"]
+material = SubResource("ShaderMaterial_p0ns3")
+
+[node name="ShadowMask" parent="RocketBank/Sprites/RocketHolder" index="1"]
+material = SubResource("ShaderMaterial_hw11x")
+
+[node name="PremadeFuse" parent="RocketBank/Fuse_Scene" index="0"]
+points = PackedVector2Array(0, 0, -200, 390)
+
+[node name="RocketBank3" parent="." index="9" instance=ExtResource("2_15w4x")]
+position = Vector2(150, 390)
+rotation = -0.20944
+
+[node name="Rocket" parent="RocketBank3/Sprites/RocketHolder" index="0"]
+material = SubResource("ShaderMaterial_p0ns3")
+
+[node name="ShadowMask" parent="RocketBank3/Sprites/RocketHolder" index="1"]
+material = SubResource("ShaderMaterial_hw11x")
+
+[node name="PremadeFuse" parent="RocketBank3/Fuse_Scene" index="0"]
+points = PackedVector2Array(0, 0, 200, 390)
+
+[node name="RocketBank2" parent="." index="10" instance=ExtResource("2_15w4x")]
+position = Vector2(305, 260)
+
+[node name="Rocket" parent="RocketBank2/Sprites/RocketHolder" index="0"]
+material = SubResource("ShaderMaterial_p0ns3")
+
+[node name="ShadowMask" parent="RocketBank2/Sprites/RocketHolder" index="1"]
+material = SubResource("ShaderMaterial_hw11x")
+
+[node name="PremadeFuse" parent="RocketBank2/Fuse_Scene" index="0"]
+points = PackedVector2Array(0, 0, 0, 580)
+
+[node name="Fuse_Scene" parent="." index="11" instance=ExtResource("5_t5xsv")]
+position = Vector2(228, 339)
+
+[node name="PremadeFuse" parent="Fuse_Scene" index="0"]
+points = PackedVector2Array(0, 0, 288, 344)
+
+[node name="Fuse_Scene2" parent="." index="12" instance=ExtResource("5_t5xsv")]
+position = Vector2(381, 335)
+
+[node name="PremadeFuse" parent="Fuse_Scene2" index="0"]
+points = PackedVector2Array(0, 0, -295, 324)
+
+[node name="Fuse_Scene3" parent="." index="13" instance=ExtResource("5_t5xsv")]
+position = Vector2(75, 494)
+
+[node name="PremadeFuse" parent="Fuse_Scene3" index="0"]
+points = PackedVector2Array(0, 0, 227, 357)
+
+[node name="Fuse_Scene4" parent="." index="14" instance=ExtResource("5_t5xsv")]
+position = Vector2(513, 488)
+
+[node name="PremadeFuse" parent="Fuse_Scene4" index="0"]
+points = PackedVector2Array(0, 0, -206, 390)
+
+[node name="Label" parent="UI" index="2"]
 metadata/_edit_lock_ = true
 
-[node name="Detonator" parent="." instance=ExtResource("3_jg835")]
-unique_name_in_owner = true
-position = Vector2(307, 969)
-scale = Vector2(2.5, 2.5)
+[node name="FuseLeftGauge" parent="UI" index="3"]
 metadata/_edit_lock_ = true
 
-[node name="FlameSpot" type="Sprite2D" parent="."]
-z_index = -4
-position = Vector2(307, 969)
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("11_srj2h")
-
-[node name="UI" type="Control" parent="."]
-z_index = 7
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="BackMenuButton" type="TextureButton" parent="UI"]
-z_index = 7
-layout_mode = 0
-offset_left = 464.0
-offset_top = 13.0
-offset_right = 592.0
-offset_bottom = 141.0
-texture_normal = ExtResource("4_wjenm")
-flip_h = true
-flip_v = true
-script = ExtResource("6_ll2ol")
-
-[node name="Back_To_Menu" parent="UI" instance=ExtResource("7_82nld")]
-visible = false
-z_index = 7
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 300.0
-offset_top = 566.0
-offset_right = 300.0
-offset_bottom = 566.0
-
-[node name="CancelButtonZone" parent="UI/Back_To_Menu" index="0"]
-offset_left = -318.0
-offset_top = -579.0
-offset_right = 309.0
-offset_bottom = 530.0
-
-[node name="Label" type="Label" parent="UI"]
-z_index = 7
-layout_mode = 0
-offset_left = 24.0
-offset_top = 22.0
-offset_right = 203.0
-offset_bottom = 124.0
-text = "Best score :
-Last score :"
-
-[node name="FuseLeftGauge" type="Control" parent="UI"]
-z_index = 7
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-pivot_offset = Vector2(300, 25)
-
-[node name="Label" type="Label" parent="UI/FuseLeftGauge"]
-z_index = 5
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.5
-offset_left = 216.0
-offset_top = 18.0
-offset_right = 383.0
-offset_bottom = 41.0
-grow_horizontal = 2
-text = "Fuse left :"
-horizontal_alignment = 1
-
-[node name="ProgressBar" type="ProgressBar" parent="UI/FuseLeftGauge"]
-z_index = 5
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 177.0
-offset_top = 52.0
-offset_right = 412.0
-offset_bottom = 79.0
-grow_horizontal = 2
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FuseLeftGauge"]
-libraries = {
-"": SubResource("AnimationLibrary_ywnnj")
-}
-
-[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("8_vrd8f")
-autoplay = true
-bus = &"Music"
-
-[node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
-bus = &"Sounds"
-
-[node name="FireworkVisualizer" parent="." instance=ExtResource("11_hfnta")]
-visible = false
-z_index = 20
-
-[node name="Back_To_Menu" parent="FireworkVisualizer/UI" index="1" instance=ExtResource("7_82nld")]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = 321.0
-offset_top = 1024.0
-offset_right = 321.0
-offset_bottom = 1024.0
-grow_vertical = 0
-
-[node name="RetryButton" type="Button" parent="FireworkVisualizer/UI" index="2"]
-custom_minimum_size = Vector2(188.07, 74.43)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 223.0
-offset_top = 971.0
-offset_right = 411.07
-offset_bottom = 1055.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 55
-text = "Retry"
-flat = true
-icon_alignment = 1
-expand_icon = true
-script = ExtResource("12_788uw")
-
-[node name="TextureRect" type="TextureRect" parent="FireworkVisualizer/UI/RetryButton"]
-show_behind_parent = true
-custom_minimum_size = Vector2(200, 94.355)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -94.035
-offset_top = -42.0
-offset_right = 105.965
-offset_bottom = 52.355
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("13_w6umg")
-expand_mode = 1
-metadata/_edit_lock_ = true
-
+[editable path="RocketBank"]
+[editable path="RocketBank/Fuse_Scene"]
+[editable path="RocketBank3"]
+[editable path="RocketBank3/Fuse_Scene"]
+[editable path="RocketBank2"]
+[editable path="RocketBank2/Fuse_Scene"]
+[editable path="Fuse_Scene"]
+[editable path="Fuse_Scene2"]
+[editable path="Fuse_Scene3"]
+[editable path="Fuse_Scene4"]
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]

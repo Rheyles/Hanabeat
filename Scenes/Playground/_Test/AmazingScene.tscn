@@ -990,34 +990,34 @@ material = SubResource("ShaderMaterial_2t4an")
 [node name="Detonator" parent="." index="6"]
 z_index = 0
 
-[node name="RocketBank" parent="." index="7" instance=ExtResource("2_jind2")]
-position = Vector2(302, 256)
+[node name="RocketBank" parent="." index="8" instance=ExtResource("2_jind2")]
+position = Vector2(299, 219)
 
-[node name="RocketBank2" parent="." index="8" instance=ExtResource("2_jind2")]
+[node name="RocketBank2" parent="." index="9" instance=ExtResource("2_jind2")]
 position = Vector2(492, 333)
 rotation = 0.113446
 
-[node name="RocketBank3" parent="." index="9" instance=ExtResource("2_jind2")]
+[node name="RocketBank3" parent="." index="10" instance=ExtResource("2_jind2")]
 position = Vector2(132, 472)
 rotation = -0.225147
 
-[node name="Fuse_Scene" parent="." index="10" instance=ExtResource("3_3r2bv")]
+[node name="Fuse_Scene" parent="." index="11" instance=ExtResource("3_3r2bv")]
 position = Vector2(200, 293)
 
 [node name="PremadeFuse" parent="Fuse_Scene" index="0"]
 points = PackedVector2Array(0, 0, 52, 5, 107, 28, 145, 69, 176, 107, 202, 159, 204, 216)
 
-[node name="Puddle" parent="." index="11" instance=ExtResource("3_6h4ck")]
+[node name="Puddle" parent="." index="12" instance=ExtResource("3_6h4ck")]
 position = Vector2(289, 536)
 scale = Vector2(2.5, 2.5)
 
-[node name="Puddle2" parent="." index="12" instance=ExtResource("3_6h4ck")]
+[node name="Puddle2" parent="." index="13" instance=ExtResource("3_6h4ck")]
 position = Vector2(391, 756)
 rotation = 2.37016
 scale = Vector2(2.5, 2.5)
 is_water = false
 
-[node name="UI" parent="." index="13"]
+[node name="UI" parent="." index="14"]
 z_index = 20
 metadata/_edit_lock_ = true
 
@@ -1041,7 +1041,6 @@ offset_bottom = 524.0
 metadata/_edit_lock_ = true
 
 [node name="Label" parent="UI" index="2"]
-layout_mode = 0
 offset_left = 14.0
 offset_top = 14.0
 offset_right = 193.0
@@ -1049,8 +1048,9 @@ offset_bottom = 111.0
 vertical_alignment = 1
 metadata/_edit_lock_ = true
 
-[node name="MusicPlayer" parent="." index="14"]
+[node name="MusicPlayer" parent="." index="15"]
 volume_db = -16.746
 
 [editable path="Fuse_Scene"]
+[editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]

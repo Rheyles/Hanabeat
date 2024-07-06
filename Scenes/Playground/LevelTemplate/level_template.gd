@@ -1,8 +1,10 @@
 extends Node2D
 class_name Level
 
+@export var lvl_id : int = 0
 @export_range(0, 20000) var node_nb_max : int = 500
 @export var fuse_sound : Resource
+@export var dialog_box_scene : Resource
 
 @onready var music_player = $MusicPlayer
 @onready var sound_player = $SoundPlayer
@@ -17,6 +19,7 @@ class_name Level
 @onready var fuse_left_gauge = $UI/FuseLeftGauge/ProgressBar
 @onready var fuse_left_gauge_anim = $UI/FuseLeftGauge/AnimationPlayer
 
+var detonator_dialog_pos = Vector2.ZERO
 
 var rockets = []
 var rockets_times = []
@@ -33,7 +36,7 @@ func set_last_score(new_val : int)->void:
 	if new_val < best_score or best_score==-1:
 		best_score = last_score
 		## TEMP pour debug
-		PLAYER.current_data['score_by_level'][0] = best_score
+		PLAYER.current_data['score_by_level'][lvl_id] = best_score
 		PLAYER.save_data(PLAYER.player_file_path)
 		##
 
@@ -47,12 +50,13 @@ func _ready():
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	EVENTS.spark_nb_changed.connect(_on_EVENTS_spark_nb_changed)
 	EVENTS.fuse_node_nb_changed.connect(_on_EVENTS_fuse_node_nb_changed)
+	EVENTS.play_pop_up_dialog.connect(_on_EVENTS_play_pop_up_dialog)
 	sound_player.finished.connect(_on_SoundPlayer_finished)
 	music_player.finished.connect(_on_MusicPlayer_finished)
 	music_player.play()
 	## TEMP pour debug
 	PLAYER.load_data(PLAYER.player_file_path)
-	best_score = PLAYER.current_data['score_by_level'][0]
+	best_score = PLAYER.current_data['score_by_level'][lvl_id]
 	##
 	update_score_display()
 	transition_animation.play("Transi_IN", -1, 1.0)
@@ -60,6 +64,10 @@ func _ready():
 	fuse_left_gauge.min_value = 0
 	fuse_left_gauge.max_value = node_nb_max
 	fuse_left_gauge.set_value_no_signal(node_nb_max - get_node("%MouseController").nb_fuse_nodes)
+	
+	detonator_dialog_pos = $Detonator.global_position
+	detonator_dialog_pos.y -= 50.0
+	create_pop_up_dialog('C\'est parti mon kiki kiki kiki kiki kiki kiki kiki kiki kiki kiki kiki !',detonator_dialog_pos)
 
 ### LOGIC
 
@@ -80,6 +88,11 @@ func update_score_display()->void:
 		$UI/Label.text += '-'
 	else :
 		$UI/Label.text += str(last_score)
+
+func create_pop_up_dialog(text:String, pos:Vector2)->void:
+	var new_box = dialog_box_scene.instantiate()
+	add_child(new_box)
+	new_box.display_text(text, pos)
 
 ### SIGNAL RESPONSES
 
@@ -121,6 +134,7 @@ func _on_Rocket_rocket_start(id,time)->void:
 		print("Your score : " + str(score))
 		if score < GAME.WIN_MARGIN * 100:
 			print("You won !")
+			create_pop_up_dialog('Tu as réussi, bien joué !',detonator_dialog_pos)
 			back_to_menu.set_message("Congrats ! Back to menu ?")
 			await get_tree().create_timer(3.0).timeout
 			transition_animation.play("Transi_IN",-1,-1.0,true)
@@ -129,4 +143,8 @@ func _on_Rocket_rocket_start(id,time)->void:
 			firework_animation.play("fly_in",-1,1.0)
 			firework_visualizer.visible = true
 		else:
+			create_pop_up_dialog('Ca n\'a pas fonctionné, dommage... Essaie encore une fois !',detonator_dialog_pos)
 			print("It didn\'t work... Try again !")
+
+func _on_EVENTS_play_pop_up_dialog(text : String, pos: Vector2) -> void:
+	create_pop_up_dialog(text, pos)

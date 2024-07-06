@@ -17,9 +17,8 @@ load_path = "res://.godot/imported/PlaceHolder_Circle.png-2bdf646b27c971193892b0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hwbd2"]
 resource_local_to_scene = true
+render_priority = 0
 shader = ExtResource("8_sxap7")
-shader_parameter/flash_color = Color(1, 1, 1, 1)
-shader_parameter/flash_value = 0.0
 
 [sub_resource type="Animation" id="Animation_rvwkn"]
 length = 0.001
