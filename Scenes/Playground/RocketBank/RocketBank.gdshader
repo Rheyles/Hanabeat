@@ -1,6 +1,9 @@
 shader_type canvas_item;
 render_mode blend_mix, unshaded;
 
+uniform vec4 flash_color : source_color;
+uniform float flash_value : hint_range(0.0, 1.0, 0.1) = 0;
+
 // EXACT QUANTITY OF HORIZONTAL FRAMES OF THE FULL IMAGE
 uniform float h_frames = 1.0;
 // EXACT QUANTITY OF VERTICAL FRAMES OF THE FULL IMAGE
@@ -60,5 +63,9 @@ void fragment() {
 		// BLACK
 		else if(distance(COLOR, vec4(0.0, 0.0, 0.0, 1.0)) < 0.005)
 			COLOR = replace(vec4(1.0, 1.0, 1.0, 1.0), replaceBlack, transfer);
+		
+		vec4 texture_color = texture(TEXTURE, UV);
+	    COLOR = mix(COLOR, flash_color, flash_value);
+	    COLOR.a = texture_color.a;
 	}
 }

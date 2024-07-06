@@ -70,13 +70,14 @@ func _create_fuse():
 	
 	for i in range(1, nb_new_nodes + 1) :
 		if nb_fuse_nodes >= get_parent().node_nb_max :
-			print('You can\'t draw more fuse !')
+			if not get_parent().fuse_left_gauge_anim.is_playing():
+				get_parent().fuse_left_gauge_anim.play('no_fuse_left')
 		else:
 			current_fuse.fuseNode_list.back().get_node("Sprite2D").visible = false
-			var node_pos = last_node_pos_mem + (trajectory_vec*i*GAME.MIN_NODE_DIST) - current_fuse.global_position
+			var node_pos = last_node_pos_mem + (trajectory_vec*i*GAME.MIN_NODE_DIST)
 			
 			var newNode = fuseNode.instantiate()
-			newNode.position = node_pos + current_fuse.global_position
+			newNode.position = node_pos
 			last_node_pos = newNode.position
 			newNode.parent_fuse_ref = current_fuse
 			newNode.rotation = trajectory_vec.angle()

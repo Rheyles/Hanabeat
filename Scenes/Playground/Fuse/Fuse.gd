@@ -36,23 +36,25 @@ func _createFirstFuseNode():
 	GAME.current_scene.get_node("%MouseController")._connectFirstFuseNode(newNode)
 
 func init_premade_fuse():
-	var last_node_pos = Vector2.ZERO
-	var mouse_controller = get_tree().current_scene.get_node("%MouseController")
+	var last_node_pos = global_position
+	var mouse_controller = GAME.current_scene.get_node("%MouseController")
+	
 	for p in premade_fuse.get_point_count():
-		var distance_to_next_point = last_node_pos.distance_to(premade_fuse.get_point_position(p))
+		var distance_to_next_point = last_node_pos.distance_to(premade_fuse.get_point_position(p) + global_position)
 		var nb_new_nodes = floor(distance_to_next_point/GAME.MIN_NODE_DIST)
-		var trajectory_vec = (premade_fuse.get_point_position(p) - last_node_pos).normalized()
+		var trajectory_vec = (premade_fuse.get_point_position(p) + global_position - last_node_pos).normalized()
 		var last_node_pos_mem = last_node_pos
 		
 		for i in range(1, nb_new_nodes + 1) :
+			fuseNode_list.back().get_node("Sprite2D").visible = false
 			var node_pos = last_node_pos_mem + (trajectory_vec*i*GAME.MIN_NODE_DIST) - global_position
 			
 			var newNode = fuseNode_scene.instantiate()
-			newNode.position = node_pos + global_position
-			last_node_pos = newNode.position
+			mouse_controller.add_child(newNode)
+			newNode.global_position = node_pos + global_position
+			last_node_pos = newNode.global_position
 			newNode.parent_fuse_ref = self
 			newNode.rotation = trajectory_vec.angle()
-			add_child(newNode)
 			fuseNode_list.append(newNode)
 			newNode.fuseNode_idx = fuseNode_list.size()-1
 			
@@ -63,7 +65,7 @@ func init_premade_fuse():
 
 func resetFuse():
 	for i in range(len(fuseNode_list)):
-		fuseNode_list[i].queue_free()
+		fuseNode_list[i].destroy()
 	fuseNode_list.clear()
 	_createFirstFuseNode()
 

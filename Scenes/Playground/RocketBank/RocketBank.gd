@@ -56,6 +56,8 @@ func _on_Flame_animation_finished() -> void:
 
 func _on_EVENTS_has_detonated(new_value:bool)->void:
 	if not new_value:
+		rocket_animation.play("RESET")
+		await rocket_animation.animation_finished
 		rocket_animation.play("idle")
 		flame_sprite.stop()
 		flame_sprite.visible = false

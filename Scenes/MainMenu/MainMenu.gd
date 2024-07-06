@@ -6,8 +6,6 @@ extends Node
 
 func _ready():
 	$FireworkVisualizer/UI/Start_Button/Label/AnimationPlayer.play("Idle")
-	music_player.finished.connect(_on_MusicPlayer_finished)
-	music_player.play()
 	$FireworkVisualizer/AnimationPlayer.play("fly_in",-1,1.0)
 
 
@@ -24,6 +22,3 @@ func _on_exit_button_button_down():
 #Full Quit the game
 	get_tree().quit()
 
-
-func _on_MusicPlayer_finished()->void:
-	music_player.play()

@@ -1,13 +1,21 @@
 extends Node2D
+class_name Level
 
 @export_range(0, 20000) var node_nb_max : int = 500
 @export var fuse_sound : Resource
 
 @onready var music_player = $MusicPlayer
 @onready var sound_player = $SoundPlayer
+
 @onready var firework_visualizer = $FireworkVisualizer
 @onready var firework_animation = $FireworkVisualizer/AnimationPlayer
 @onready var back_to_menu = $FireworkVisualizer/UI/Back_To_Menu
+
+@onready var transition_animation = $AnimationPlayer
+@onready var transition = $Visuals/Animation
+
+@onready var fuse_left_gauge = $UI/FuseLeftGauge/ProgressBar
+@onready var fuse_left_gauge_anim = $UI/FuseLeftGauge/AnimationPlayer
 
 
 var rockets = []
@@ -38,6 +46,7 @@ func _ready():
 	GAME.has_detonated = false
 	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	EVENTS.spark_nb_changed.connect(_on_EVENTS_spark_nb_changed)
+	EVENTS.fuse_node_nb_changed.connect(_on_EVENTS_fuse_node_nb_changed)
 	sound_player.finished.connect(_on_SoundPlayer_finished)
 	music_player.finished.connect(_on_MusicPlayer_finished)
 	music_player.play()
@@ -46,6 +55,11 @@ func _ready():
 	best_score = PLAYER.current_data['score_by_level'][0]
 	##
 	update_score_display()
+	transition_animation.play("Transi_IN", -1, 1.0)
+	
+	fuse_left_gauge.min_value = 0
+	fuse_left_gauge.max_value = node_nb_max
+	fuse_left_gauge.set_value_no_signal(node_nb_max - get_node("%MouseController").nb_fuse_nodes)
 
 ### LOGIC
 
@@ -87,6 +101,9 @@ func _on_EVENTS_spark_nb_changed(value : int) -> void:
 	if nb_spark <= 0:
 		sound_player.stop() 
 
+func _on_EVENTS_fuse_node_nb_changed(_value:int)->void:
+	fuse_left_gauge.set_value_no_signal(node_nb_max - get_node("%MouseController").nb_fuse_nodes)
+
 func _on_SoundPlayer_finished() -> void:
 	if sound_player.stream == fuse_sound:
 		sound_player.play()
@@ -106,6 +123,9 @@ func _on_Rocket_rocket_start(id,time)->void:
 			print("You won !")
 			back_to_menu.set_message("Congrats ! Back to menu ?")
 			await get_tree().create_timer(3.0).timeout
+			transition_animation.play("Transi_IN",-1,-1.0,true)
+			await transition_animation.animation_finished
+			transition.visible = false
 			firework_animation.play("fly_in",-1,1.0)
 			firework_visualizer.visible = true
 		else:

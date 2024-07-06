@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://81yg5m76kgvo"]
+[gd_scene load_steps=34 format=3 uid="uid://81yg5m76kgvo"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/RocketBank/RocketBank.gd" id="1_p215p"]
 [ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Playground/Fuse/Fuse.tscn" id="2_a5mi3"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bbtffavmehfww" path="res://Ressources/Sprites/Rocket/rocket_fire0014.png" id="6_m71hs"]
 [ext_resource type="Texture2D" uid="uid://d0qqpicni4wbq" path="res://Ressources/Sprites/Rocket/Rocket_shadow.png" id="7_503mq"]
 [ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/RocketBank.gdshader" id="11_ooyx1"]
+[ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/blink.gdshader" id="12_7ds8o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1he5e"]
 atlas = ExtResource("3_vihje")
@@ -85,8 +86,16 @@ animations = [{
 "speed": 12.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kc05m"]
+shader = ExtResource("12_7ds8o")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 1.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5xlkf"]
+resource_local_to_scene = true
 shader = ExtResource("11_ooyx1")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 shader_parameter/h_frames = 1.0
 shader_parameter/v_frames = 2.0
 shader_parameter/hasPrint = false
@@ -100,9 +109,42 @@ shader_parameter/replaceWhite = null
 shader_parameter/replaceGrey = null
 shader_parameter/replaceBlack = null
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppgud"]
+resource_local_to_scene = true
+shader = ExtResource("12_7ds8o")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_ifsu3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ShadowMask:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_vfxhb"]
 resource_name = "Starting"
-length = 0.75
+length = 0.65
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -110,10 +152,34 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.75),
+"times": PackedFloat32Array(0, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(1, 1), Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket:material:shader_parameter/flash_value")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ShadowMask:material:shader_parameter/flash_value")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_8uofg"]
@@ -151,6 +217,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w4207"]
 _data = {
+"RESET": SubResource("Animation_ifsu3"),
 "Starting": SubResource("Animation_vfxhb"),
 "going": SubResource("Animation_8uofg"),
 "idle": SubResource("Animation_3n8nw")
@@ -180,12 +247,15 @@ metadata/_edit_lock_ = true
 
 [node name="RocketHolder" type="Node2D" parent="Sprites"]
 z_index = 6
+material = SubResource("ShaderMaterial_kc05m")
+scale = Vector2(1.1, 1.1)
 
 [node name="Rocket" type="Sprite2D" parent="Sprites/RocketHolder"]
 material = SubResource("ShaderMaterial_5xlkf")
 texture = ExtResource("6_140b0")
 
 [node name="ShadowMask" type="Sprite2D" parent="Sprites/RocketHolder"]
+material = SubResource("ShaderMaterial_ppgud")
 texture = ExtResource("7_503mq")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprites/RocketHolder"]
