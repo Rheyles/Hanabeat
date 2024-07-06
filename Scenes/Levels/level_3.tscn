@@ -1088,8 +1088,9 @@ shader_parameter/replaceBlack = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hw11x"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("4_gevtr")
+shader_parameter/flash_color = null
+shader_parameter/flash_value = 0.0
 
 [node name="Level3" instance=ExtResource("1_ux0ys")]
 lvl_id = 3

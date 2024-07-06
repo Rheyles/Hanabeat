@@ -87,8 +87,9 @@ animations = [{
 }]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kc05m"]
-render_priority = 0
 shader = ExtResource("12_7ds8o")
+shader_parameter/flash_color = null
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5xlkf"]
 resource_local_to_scene = true
@@ -110,8 +111,9 @@ shader_parameter/replaceBlack = null
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppgud"]
 resource_local_to_scene = true
-render_priority = 0
 shader = ExtResource("12_7ds8o")
+shader_parameter/flash_color = null
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="Animation" id="Animation_ifsu3"]
 length = 0.001
