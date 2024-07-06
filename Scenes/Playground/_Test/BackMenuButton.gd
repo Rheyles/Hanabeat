@@ -6,6 +6,7 @@ extends TextureButton
 
 func _ready():
 	button_down.connect(_on_button_down)
+	back_to_menu_scene.visible = false
 
 
 ### SIGNAL RESPONSES

@@ -2,6 +2,7 @@ extends Area2D
 
 @export var is_water : bool = true
 @export var oil_modulate : Color
+@export var vapor_scene : Resource
 
 @onready var shape_cast = $ShapeCast2D
 
@@ -15,6 +16,9 @@ func _ready():
 func _on_area_entered(area:Area2D)->void:
 	if is_water:
 		if area is Spark:
+			var vapor = vapor_scene.instantiate()
+			vapor.global_position = area.global_position
+			GAME.current_scene.get_node("%MouseController").add_child(vapor)
 			area.destroy()
 	else:
 		shape_cast.force_shapecast_update()

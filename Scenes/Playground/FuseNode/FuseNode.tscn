@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyei080hdqt5s"]
+[gd_scene load_steps=15 format=3 uid="uid://dyei080hdqt5s"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/FuseNode/FuseNode.gd" id="1_fijev"]
 [ext_resource type="Texture2D" uid="uid://kpmlrc810cu1" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_fuseNodeTest.png" id="2_t3rpw"]
@@ -7,12 +7,56 @@
 [ext_resource type="Texture2D" uid="uid://wl81jedt4gjo" path="res://Ressources/Sprites/Fuses/fuse_burnt_firstfuseNodeTest.png" id="4_2jagd"]
 [ext_resource type="Texture2D" uid="uid://ddjhkif6tgidm" path="res://Ressources/Sprites/Fuses/fuse_not_burnt_firstfuseNodeTest.png" id="5_03jx8"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="7_3esm0"]
+[ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/blink.gdshader" id="8_sxap7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_17tk0"]
 radius = 18.0278
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4u2rx"]
 load_path = "res://.godot/imported/PlaceHolder_Circle.png-2bdf646b27c971193892b0e896a8a939.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hwbd2"]
+resource_local_to_scene = true
+shader = ExtResource("8_sxap7")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="Animation" id="Animation_rvwkn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fuseSprite:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_b3y1j"]
+resource_name = "flash"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("fuseSprite:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhj83"]
+_data = {
+"RESET": SubResource("Animation_rvwkn"),
+"flash": SubResource("Animation_b3y1j")
+}
 
 [node name="FuseNode" type="Node2D"]
 script = ExtResource("1_fijev")
@@ -41,4 +85,10 @@ z_index = -2
 texture = ExtResource("7_3esm0")
 
 [node name="fuseSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_hwbd2")
 texture = ExtResource("2_t3rpw")
+
+[node name="FlashPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_vhj83")
+}
