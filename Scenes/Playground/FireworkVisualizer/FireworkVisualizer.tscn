@@ -1,16 +1,13 @@
-[gd_scene load_steps=46 format=3 uid="uid://bgbsfii0i3web"]
+[gd_scene load_steps=44 format=3 uid="uid://bgbsfii0i3web"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/FireworkVisualizer/FireworkVisualizer.gd" id="1_jmui5"]
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="2_x4yde"]
 [ext_resource type="Texture2D" uid="uid://d1fbk2ji0pum7" path="res://Ressources/Sprites/Menu/sky.png" id="3_mk8yp"]
 [ext_resource type="Texture2D" uid="uid://bou71h2j1wgx4" path="res://Ressources/Sprites/Menu/bckg_7.png" id="4_euooh"]
 [ext_resource type="Texture2D" uid="uid://vux6ffayprm" path="res://Ressources/Sprites/Menu/bckg_7_n.png" id="5_x4b4o"]
-[ext_resource type="Texture2D" uid="uid://bj6ri6gk5gxrf" path="res://Ressources/Sprites/Menu/nuage_2.png" id="6_35q3y"]
-[ext_resource type="Texture2D" uid="uid://dnxldtrmjlpqs" path="res://Ressources/Sprites/Menu/nuage_2_n.png" id="7_r46o2"]
 [ext_resource type="Texture2D" uid="uid://c4o3s003ka0dn" path="res://Ressources/Sprites/Menu/bckg_6.png" id="8_basmo"]
 [ext_resource type="Texture2D" uid="uid://ik0dqm7cojk8" path="res://Ressources/Sprites/Menu/bckg_6_n.png" id="9_pr0am"]
 [ext_resource type="Texture2D" uid="uid://c43n17e8ag1qq" path="res://Ressources/Sprites/Menu/nuage_1.png" id="10_e8268"]
-[ext_resource type="Texture2D" uid="uid://ddjeoni6cq5le" path="res://Ressources/Sprites/Menu/nuage_1_n.png" id="11_cwoj5"]
 [ext_resource type="Texture2D" uid="uid://d2ej5k0nqahhx" path="res://Ressources/Sprites/Menu/bckg_5.png" id="12_38qw6"]
 [ext_resource type="Texture2D" uid="uid://bevss48ykool4" path="res://Ressources/Sprites/Menu/bckg_5_n.png" id="13_2iwsb"]
 [ext_resource type="Material" uid="uid://btq6lijikjd6c" path="res://Scenes/MainMenu/Shadermaterial.tres" id="14_5dbbx"]
@@ -26,6 +23,33 @@
 [ext_resource type="Texture2D" uid="uid://ckm0jngbywerp" path="res://Ressources/Sprites/Menu/bckg_1_2.png" id="24_gklif"]
 [ext_resource type="Texture2D" uid="uid://bifthvqjbtxap" path="res://Ressources/Sprites/Menu/transition_screen.png" id="25_jep8d"]
 [ext_resource type="AudioStream" uid="uid://cnouokacnm5xc" path="res://Ressources/Musics/Sample_slowversion.wav" id="26_k6yt0"]
+
+[sub_resource type="Animation" id="Animation_s3kfu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Clouds3b:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(82, 69)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Clouds4b:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 467)]
+}
 
 [sub_resource type="Animation" id="Animation_ok44v"]
 resource_name = "fly_in"
@@ -129,126 +153,115 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Clouds3:position")
+tracks/8/path = NodePath("Bckg_6:position")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(148, -756), Vector2(148, 0)]
+"values": [Vector2(300, -108), Vector2(300, 540)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Clouds1:position")
+tracks/9/path = NodePath("Bckg_7:position")
 tracks/9/interp = 2
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -702), Vector2(0, 0)]
+"values": [Vector2(300, 0), Vector2(300, 540)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Bckg_6:position")
+tracks/10/path = NodePath("Bckg_8:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(300, -108), Vector2(300, 540)]
+"values": [Vector2(300, 108), Vector2(300, 540)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Clouds2:position")
+tracks/11/path = NodePath("PointLight2D:position")
 tracks/11/interp = 2
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(275, -594), Vector2(275, 0)]
+"values": [Vector2(293, -689), Vector2(293, 391)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Bckg_7:position")
-tracks/12/interp = 2
+tracks/12/path = NodePath("../UI:modulate")
+tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 2.1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(300, 0), Vector2(300, 540)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Bckg_8:position")
-tracks/13/interp = 2
+tracks/13/path = NodePath("../MusicPlayer:volume_db")
+tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(300, 108), Vector2(300, 540)]
+"values": [-80.0, 0.0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("PointLight2D:position")
+tracks/14/path = NodePath("../UI:position")
 tracks/14/interp = 2
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(293, -689), Vector2(293, 391)]
+"values": [Vector2(0, -1080), Vector2(0, 0)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("../UI:modulate")
+tracks/15/path = NodePath("Clouds3b:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 2.1, 3),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Vector2(82, -672), Vector2(82, 69)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("../MusicPlayer:volume_db")
+tracks/16/path = NodePath("Clouds4b:position")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-80.0, 0.0]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("../UI:position")
-tracks/17/interp = 2
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -1080), Vector2(0, 0)]
+"values": [Vector2(8, -351), Vector2(8, 467)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifi5s"]
 _data = {
+"RESET": SubResource("Animation_s3kfu"),
 "fly_in": SubResource("Animation_ok44v")
 }
 
@@ -256,48 +269,59 @@ _data = {
 diffuse_texture = ExtResource("4_euooh")
 normal_texture = ExtResource("5_x4b4o")
 
-[sub_resource type="Gradient" id="Gradient_1iofh"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_0lluf"]
+diffuse_texture = ExtResource("8_basmo")
+normal_texture = ExtResource("9_pr0am")
+
+[sub_resource type="Gradient" id="Gradient_mwefn"]
 offsets = PackedFloat32Array(0, 0.227941, 0.772059, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 0.756863, 1, 1, 1, 0.756863, 1, 1, 1, 0)
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_lgaex"]
-gradient = SubResource("Gradient_1iofh")
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_y8gei"]
+gradient = SubResource("Gradient_mwefn")
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8bgga"]
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gwxx2"]
 lifetime_randomness = 0.37
 particle_flag_disable_z = true
-emission_shape_offset = Vector3(0, 200, 0)
-emission_shape_scale = Vector3(8.39, 500, 1)
+emission_shape_scale = Vector3(80, 10, 1)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 inherit_velocity_ratio = 1.0
-spread = 180.0
+spread = 0.0
+flatness = 0.687
+initial_velocity_min = 1.0
+initial_velocity_max = 1.5
+gravity = Vector3(0.2, 0, 0)
+scale_min = 0.5
+scale_max = 2.5
+color = Color(0.603922, 0.423529, 0.231373, 1)
+color_ramp = SubResource("GradientTexture1D_y8gei")
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_gx2sy"]
+diffuse_texture = ExtResource("10_e8268")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5xebx"]
+lifetime_randomness = 0.37
+particle_flag_disable_z = true
+emission_shape_scale = Vector3(1, 20, 1)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+inherit_velocity_ratio = 1.0
+spread = 30.113
 flatness = 0.687
 initial_velocity_min = 2.0
 initial_velocity_max = 2.0
 gravity = Vector3(1, 0, 0)
 scale_min = 0.5
 scale_max = 2.5
-color_ramp = SubResource("GradientTexture1D_lgaex")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_se7bk"]
-diffuse_texture = ExtResource("6_35q3y")
-normal_texture = ExtResource("7_r46o2")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_0lluf"]
-diffuse_texture = ExtResource("8_basmo")
-normal_texture = ExtResource("9_pr0am")
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_mcj56"]
-diffuse_texture = ExtResource("10_e8268")
-normal_texture = ExtResource("11_cwoj5")
+color = Color(0.878431, 0.878431, 0.878431, 1)
+color_ramp = SubResource("GradientTexture1D_y8gei")
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bfl4o"]
 load_path = "res://.godot/imported/nuage_3.png-0043b46cd0745f0908d9d4668c784265.ctex"
 
-[sub_resource type="CanvasTexture" id="CanvasTexture_lg6kx"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_7s41w"]
 diffuse_texture = SubResource("CompressedTexture2D_bfl4o")
-normal_texture = ExtResource("11_cwoj5")
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_l132a"]
 diffuse_texture = ExtResource("12_38qw6")
@@ -383,33 +407,28 @@ position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_kawfk")
 
-[node name="Clouds2" type="GPUParticles2D" parent="Animations"]
-position = Vector2(275, 0)
-process_material = SubResource("ParticleProcessMaterial_8bgga")
-texture = SubResource("CanvasTexture_se7bk")
-lifetime = 30.0
-explosiveness = 0.21
-randomness = 0.29
-visibility_rect = Rect2(0, 0, 1000, 1000)
-
 [node name="Bckg_6" type="Sprite2D" parent="Animations"]
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_0lluf")
 
-[node name="Clouds1" type="GPUParticles2D" parent="Animations"]
-process_material = SubResource("ParticleProcessMaterial_8bgga")
-texture = SubResource("CanvasTexture_mcj56")
+[node name="Clouds3b" type="GPUParticles2D" parent="Animations"]
+position = Vector2(82, 69)
+scale = Vector2(5, 5)
+process_material = SubResource("ParticleProcessMaterial_gwxx2")
+texture = SubResource("CanvasTexture_gx2sy")
 lifetime = 30.0
-explosiveness = 0.21
+explosiveness = 0.4
 randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
-[node name="Clouds3" type="GPUParticles2D" parent="Animations"]
-position = Vector2(148, 0)
-process_material = SubResource("ParticleProcessMaterial_8bgga")
-texture = SubResource("CanvasTexture_lg6kx")
-lifetime = 30.0
+[node name="Clouds4b" type="GPUParticles2D" parent="Animations"]
+position = Vector2(8, 467)
+scale = Vector2(5, 5)
+amount = 5
+process_material = SubResource("ParticleProcessMaterial_5xebx")
+texture = SubResource("CanvasTexture_7s41w")
+lifetime = 42.59
 explosiveness = 0.21
 randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
@@ -428,16 +447,19 @@ texture = ExtResource("15_wjqug")
 
 [node name="FireWork_Launcher" parent="Animations" instance=ExtResource("16_srxr8")]
 z_index = 1
-position = Vector2(300, 840)
+position = Vector2(307, 811)
+fireworks_scale_is_random = true
+fireworks_scale_range_min = 2.5
+fireworks_scale_range_max = 3.2
 
 [node name="Bckg_3" type="Sprite2D" parent="Animations"]
-z_index = 4
+z_index = 2
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_yee0l")
 
 [node name="Bckg_2" type="Sprite2D" parent="Animations"]
-z_index = 4
+z_index = 2
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_8pdre")
