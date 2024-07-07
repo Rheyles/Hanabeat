@@ -14,6 +14,7 @@ grow_vertical = 2
 script = ExtResource("1_3nds5")
 
 [node name="CancelButtonZone" type="Button" parent="."]
+z_index = 7
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -33,6 +34,7 @@ mouse_filter = 2
 color = Color(0.027451, 0.215686, 0.372549, 0.152941)
 
 [node name="TextureRect" type="TextureRect" parent="."]
+z_index = 7
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -66,6 +68,7 @@ text = "Leave the level ?"
 autowrap_mode = 1
 
 [node name="QuitButton" type="Button" parent="TextureRect"]
+z_index = 7
 custom_minimum_size = Vector2(188.07, 74.43)
 layout_mode = 1
 anchors_preset = 7

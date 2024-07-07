@@ -60,17 +60,7 @@ text = "HANABI'S QUEST"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Start_Button" type="Button" parent="FireworkVisualizer/UI" index="1"]
-z_index = 10
-layout_mode = 0
-offset_top = 1.0
-offset_right = 600.0
-offset_bottom = 1079.0
-theme_override_colors/font_color = Color(0.941176, 0.882353, 0.34902, 1)
-theme_override_font_sizes/font_size = 56
-flat = true
-
-[node name="Label" type="Label" parent="FireworkVisualizer/UI/Start_Button"]
+[node name="StartLabel" type="Label" parent="FireworkVisualizer/UI" index="1"]
 modulate = Color(1, 1, 1, 0.786891)
 layout_mode = 1
 anchors_preset = 7
@@ -79,16 +69,16 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -300.0
-offset_top = -215.0
+offset_top = -216.0
 offset_right = -100.0
-offset_bottom = -188.0
+offset_bottom = -189.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(3, 3)
 text = "- Click / Tap to Start -"
 horizontal_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FireworkVisualizer/UI/Start_Button/Label"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FireworkVisualizer/UI/StartLabel"]
 libraries = {
 "": SubResource("AnimationLibrary_jt8lj")
 }
@@ -124,7 +114,6 @@ Music By : PercheSoleil
 V0.1 - Juillet 2024"
 horizontal_alignment = 1
 
-[connection signal="button_up" from="FireworkVisualizer/UI/Start_Button" to="." method="_on_start_button_button_up"]
 [connection signal="button_down" from="FireworkVisualizer/UI/Exit_Button" to="." method="_on_exit_button_button_down"]
 
 [editable path="FireworkVisualizer"]

@@ -1,7 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://ha58pewxuub3"]
+[gd_scene load_steps=19 format=3 uid="uid://ha58pewxuub3"]
 
-[ext_resource type="Texture2D" uid="uid://eoivoo3yqfid" path="res://Ressources/Sprites/Placeholders/SparkleSprite.png" id="1_tcg8j"]
+[ext_resource type="Texture2D" uid="uid://d0n48x8msxbts" path="res://Ressources/Sprites/Fireworks/fw_particles0000.png" id="1_3b5d2"]
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="2_4sv1v"]
+[ext_resource type="Texture2D" uid="uid://dp5xgv4jjfkr8" path="res://Ressources/Sprites/Fireworks/fw_particles0002.png" id="2_o78uu"]
+[ext_resource type="Texture2D" uid="uid://cm80inxith3iy" path="res://Ressources/Sprites/Fireworks/fw_particles0004.png" id="3_6w66n"]
+[ext_resource type="Texture2D" uid="uid://bci1j607ho0hq" path="res://Ressources/Sprites/Fireworks/fw_particles0006.png" id="4_7wyx5"]
+[ext_resource type="Texture2D" uid="uid://coj6suyf783dp" path="res://Ressources/Sprites/Fireworks/fw_particles0008.png" id="5_82cr3"]
+[ext_resource type="Texture2D" uid="uid://bk3qt2c3ykfsf" path="res://Ressources/Sprites/Fireworks/fw_particles0010.png" id="6_411c8"]
+[ext_resource type="Texture2D" uid="uid://dordm50npoikk" path="res://Ressources/Sprites/Fireworks/fw_particles0012.png" id="7_lggk5"]
+[ext_resource type="Texture2D" uid="uid://b12ewu7vjmula" path="res://Ressources/Sprites/Fireworks/fw_particles0014.png" id="8_p6d0o"]
 
 [sub_resource type="Curve" id="Curve_ia6db"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -27,12 +34,33 @@ radial_velocity_min = 5.0
 radial_velocity_max = 50.0
 radial_velocity_curve = SubResource("CurveTexture_556ik")
 gravity = Vector3(0, 10, 0)
-scale_min = 0.03
-scale_max = 0.2
+scale_min = 0.3
+scale_max = 1.7
 color = Color(0.963752, 0.90348, 0, 1)
 alpha_curve = SubResource("CurveTexture_ya0js")
 hue_variation_min = -0.06
 hue_variation_max = 0.07
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_cncix"]
+frames = 8
+one_shot = true
+speed_scale = 4.0
+frame_0/texture = ExtResource("1_3b5d2")
+frame_0/duration = 0.05
+frame_1/texture = ExtResource("2_o78uu")
+frame_1/duration = 0.05
+frame_2/texture = ExtResource("3_6w66n")
+frame_2/duration = 0.05
+frame_3/texture = ExtResource("4_7wyx5")
+frame_3/duration = 0.05
+frame_4/texture = ExtResource("5_82cr3")
+frame_4/duration = 0.05
+frame_5/texture = ExtResource("6_411c8")
+frame_5/duration = 0.05
+frame_6/texture = ExtResource("7_lggk5")
+frame_6/duration = 0.05
+frame_7/texture = ExtResource("8_p6d0o")
+frame_7/duration = 0.05
 
 [sub_resource type="Animation" id="Animation_owvg8"]
 resource_name = "FireWorkExplosionQuit"
@@ -106,7 +134,7 @@ z_as_relative = false
 emitting = false
 amount = 60
 process_material = SubResource("ParticleProcessMaterial_erf4i")
-texture = ExtResource("1_tcg8j")
+texture = SubResource("AnimatedTexture_cncix")
 lifetime = 2.0
 one_shot = true
 explosiveness = 1.0
