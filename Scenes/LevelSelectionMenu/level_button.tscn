@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://fmwt8lxc4ggs"]
+[gd_scene load_steps=4 format=3 uid="uid://fmwt8lxc4ggs"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_button.gd" id="1_wh2eu"]
-[ext_resource type="Texture2D" uid="uid://deufj4cvdwfo6" path="res://Ressources/Sprites/Menu/UI_Button_BG.png" id="3_mc3yj"]
+[ext_resource type="Texture2D" uid="uid://c6v8ejhrmotyq" path="res://Ressources/Sprites/Menu/ButtonBannerSprite2.png" id="2_rxnxm"]
+[ext_resource type="PackedScene" uid="uid://c4osw4w5md8xx" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="2_xd1nr"]
 
 [node name="LevelButton" type="Control"]
 layout_mode = 3
@@ -9,21 +10,31 @@ anchors_preset = 0
 size_flags_horizontal = 0
 script = ExtResource("1_wh2eu")
 
+[node name="FireWork_Launcher" parent="." instance=ExtResource("2_xd1nr")]
+visible = false
+position = Vector2(0, -40)
+launch_timer = 1.0
+x_offset_range = 0
+shell_speed = 100
+shell_delay_is_random = false
+shell_delay = 0.6
+fireworks_scale_range_max = 0.8
+fireworks_light = false
+
 [node name="TextureButton" type="TextureButton" parent="."]
-self_modulate = Color(0.964706, 0.745098, 0.6, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -32.0
-offset_top = -32.0
-offset_right = 31.71
-offset_bottom = 33.185
+offset_left = -31.0
+offset_top = -44.0
+offset_right = 32.71
+offset_bottom = 46.72
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("3_mc3yj")
+texture_normal = ExtResource("2_rxnxm")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -34,14 +45,53 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -11.5
-offset_right = 20.0
-offset_bottom = 11.5
+offset_left = -25.0
+offset_top = -27.0
+offset_right = 19.0
+offset_bottom = 23.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 36
 text = "XX"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lvl_info_display" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Lvl_info_display"]
+layout_mode = 0
+offset_left = -49.0
+offset_top = 76.0
+offset_right = 44.48
+offset_bottom = 94.22
+color = Color(0.941176, 0.87451, 0.709804, 0.643137)
+
+[node name="Lvl_info_text" type="Label" parent="Lvl_info_display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -1.0
+offset_right = 136.0
+offset_bottom = 35.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.690891, 0.858994)
+theme_override_font_sizes/font_size = 26
+text = "BEST : XXX"
 horizontal_alignment = 1
 vertical_alignment = 1
 

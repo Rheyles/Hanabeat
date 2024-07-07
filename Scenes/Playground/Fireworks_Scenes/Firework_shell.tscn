@@ -7,12 +7,12 @@
 
 [node name="Firework_Shell" type="Node2D"]
 z_index = 1
-scale = Vector2(0.7, 0.7)
 script = ExtResource("1_ba1kr")
 fireWorkExplosion = ExtResource("2_bupcr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.011811, 0.125)
+z_as_relative = false
+scale = Vector2(0.02, 0.2)
 texture = ExtResource("1_jh2v2")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]

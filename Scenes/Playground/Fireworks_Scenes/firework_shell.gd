@@ -2,8 +2,13 @@ extends Node2D
 
 @export var fireWorkExplosion: Resource
 
+var timer_is_random : bool = true
 var timer: float = 1.4 #Delay Before explosion
+var fireworks_scale_is_random : bool = false
+var fireworks_scale_range_max : float = 1
+var fireworks_scale_range_min : float = 1
 var speed: float = 450 #movespeed during delay
+var fireworks_light : bool
 
 var colors = [Color(0, 0.706, 0.765),Color(0.964, 0.903, 0),Color(0.987, 0.366, 0.636)] #Turquoise / Jaune / Rose / Color Preset to pick from
 
@@ -13,13 +18,16 @@ var colors = [Color(0, 0.706, 0.765),Color(0.964, 0.903, 0),Color(0.987, 0.366, 
 func _ready():
 	var rng = RandomNumberGenerator.new()
 	rng.randomize()
-	timer = rng.randfn(1,0.2)
+	if timer_is_random:
+		timer = rng.randfn(1,0.2)
+	get_node("PointLight2D").visible = fireworks_light
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if timer > 0:
-		position += Vector2.UP * speed * delta
+		self.move_local_y(-speed * delta,false)
 		timer -= 1*delta
+		
 	if timer <= 0:
 		var newExplosion = fireWorkExplosion.instantiate()
 		add_child(newExplosion)
@@ -27,8 +35,15 @@ func _process(delta):
 		
 		newExplosion.global_position = self.global_position
 		var NewColor = colors[randi() % colors.size()]
+		if fireworks_scale_is_random:
+			var NewScale = randf_range(fireworks_scale_range_min, fireworks_scale_range_max)
+			newExplosion.scale = Vector2(NewScale,NewScale)
+		else:
+			newExplosion.scale = Vector2(fireworks_scale_range_max,fireworks_scale_range_max)
+		newExplosion.get_node("PointLight2D").visible = fireworks_light
 		newExplosion.get_node("GPUParticles2D").process_material.color = NewColor
 		newExplosion.get_node("PointLight2D").color = NewColor
 		newExplosion.get_node("GPUParticles2D").emitting = true
 		
 		queue_free()
+

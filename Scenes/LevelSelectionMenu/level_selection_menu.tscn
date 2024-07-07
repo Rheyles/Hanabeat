@@ -95,12 +95,14 @@ texture = ExtResource("1_om44h")
 offset = Vector2(120, 216)
 
 [node name="ColorRect" type="ColorRect" parent="Visuals/Background"]
+offset_top = 2.38853
 offset_right = 40.0
-offset_bottom = 40.0
+offset_bottom = 42.3885
 scale = Vector2(5.992, 1.39809)
 color = Color(0.243137, 0.34902, 0.6, 1)
 
 [node name="Label" type="Label" parent="Visuals"]
+visible = false
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -145,44 +147,44 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="LevelButton1" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 133.0
-offset_top = 875.0
-offset_right = 133.0
-offset_bottom = 875.0
+offset_left = 84.0
+offset_top = 878.0
+offset_right = 84.0
+offset_bottom = 878.0
 
 [node name="LevelButton2" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 254.0
-offset_top = 777.0
-offset_right = 254.0
-offset_bottom = 777.0
+offset_left = 154.0
+offset_top = 715.0
+offset_right = 154.0
+offset_bottom = 715.0
 lvl_number = 2
 
 [node name="LevelButton3" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 370.0
+offset_left = 294.0
 offset_top = 715.0
-offset_right = 370.0
+offset_right = 294.0
 offset_bottom = 715.0
 lvl_number = 3
 
 [node name="LevelButton4" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 431.0
-offset_top = 567.0
-offset_right = 431.0
-offset_bottom = 567.0
+offset_left = 414.0
+offset_top = 635.0
+offset_right = 414.0
+offset_bottom = 635.0
 lvl_number = 4
 
 [node name="LevelButton5" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 441.0
-offset_top = 431.0
-offset_right = 441.0
-offset_bottom = 431.0
+offset_left = 400.0
+offset_top = 442.0
+offset_right = 400.0
+offset_bottom = 442.0
 lvl_number = 10
 
 [node name="LevelButton6" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 463.0
-offset_top = 286.0
-offset_right = 463.0
-offset_bottom = 286.0
+offset_left = 447.0
+offset_top = 240.0
+offset_right = 447.0
+offset_bottom = 240.0
 lvl_number = 26
 
 [node name="OtherUI" type="Control" parent="."]
@@ -201,42 +203,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -128.0
-offset_top = -128.0
+offset_left = -93.0
+offset_top = -1095.0
+offset_right = 35.0
+offset_bottom = -967.0
 grow_horizontal = 0
 grow_vertical = 0
+scale = Vector2(0.720002, 0.828442)
 texture_normal = ExtResource("4_fyovw")
 flip_h = true
 flip_v = true
-
-[node name="Lvl_info_display" type="Control" parent="OtherUI"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -140.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-
-[node name="Lvl_info_text" type="Label" parent="OtherUI/Lvl_info_display"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -106.0
-offset_top = -11.5
-offset_right = 106.0
-offset_bottom = 11.5
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 26
-text = "Level XX Best Score : XXXXX"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Not_a_floating_Island" type="Sprite2D" parent="OtherUI"]
 position = Vector2(-61, 318)
