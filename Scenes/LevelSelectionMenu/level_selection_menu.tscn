@@ -147,16 +147,17 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="LevelButton0" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 463.0
-offset_top = 286.0
-offset_right = 463.0
-offset_bottom = 286.0
+offset_left = 444.0
+offset_top = 246.0
+offset_right = 444.0
+offset_bottom = 246.0
 
 [node name="LevelButton1" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 84.0
 offset_top = 878.0
 offset_right = 84.0
 offset_bottom = 878.0
+lvl_number = 1
 
 [node name="LevelButton2" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 154.0
@@ -185,13 +186,6 @@ offset_top = 442.0
 offset_right = 400.0
 offset_bottom = 442.0
 lvl_number = 10
-
-[node name="LevelButton6" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 447.0
-offset_top = 240.0
-offset_right = 447.0
-offset_bottom = 240.0
-lvl_number = 26
 
 [node name="OtherUI" type="Control" parent="."]
 layout_mode = 3
