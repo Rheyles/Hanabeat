@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://fmwt8lxc4ggs"]
+[gd_scene load_steps=5 format=3 uid="uid://fmwt8lxc4ggs"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_button.gd" id="1_wh2eu"]
+[ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_3oh7d"]
 [ext_resource type="Texture2D" uid="uid://c6v8ejhrmotyq" path="res://Ressources/Sprites/Menu/ButtonBannerSprite2.png" id="2_rxnxm"]
 [ext_resource type="PackedScene" uid="uid://c4osw4w5md8xx" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="2_xd1nr"]
 
@@ -9,6 +10,11 @@ layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 0
 script = ExtResource("1_wh2eu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.5, 46)
+scale = Vector2(2.95833, 0.666667)
+texture = ExtResource("2_3oh7d")
 
 [node name="FireWork_Launcher" parent="." instance=ExtResource("2_xd1nr")]
 visible = false

@@ -17,8 +17,12 @@ func _setScoreText():
 	var best_lvl_score = 0
 	if PLAYER.current_data['score_by_level'].size() >= lvl_number:
 		best_lvl_score = PLAYER.current_data['score_by_level'][lvl_number]
-		get_node("FireWork_Launcher").visible = true
-	lvl_score_text.text = "Best : " + str(best_lvl_score)
+		if best_lvl_score != -1 and best_lvl_score > GAME.WIN_MARGIN:
+			get_node("FireWork_Launcher").visible = true
+	if best_lvl_score == -1:
+		lvl_score_text.text = "Best : -"
+	else:
+		lvl_score_text.text = "Best : " + str(best_lvl_score)
 
 
 ### SIGNAL RESPONSES

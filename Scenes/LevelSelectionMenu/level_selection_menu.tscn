@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c56iigfrq84ys"]
+[gd_scene load_steps=26 format=3 uid="uid://c56iigfrq84ys"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_selection_menu.gd" id="1_3o3ol"]
 [ext_resource type="Texture2D" uid="uid://dp25mba7vqxh" path="res://Ressources/Sprites/Menu/LevelSelection.png" id="1_om44h"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://dy521m2iv3k8y" path="res://Ressources/Sprites/LevelSelection/ocean_2.png" id="6_ayhig"]
 [ext_resource type="Texture2D" uid="uid://dd3e4p7wu8qek" path="res://Ressources/Sprites/Menu/FlyingIslandDay.png" id="6_eghcy"]
 [ext_resource type="Texture2D" uid="uid://tj68uliiyhkl" path="res://Ressources/Sprites/LevelSelection/land_0.png" id="6_h7idw"]
+[ext_resource type="Texture2D" uid="uid://d0n48x8msxbts" path="res://Ressources/Sprites/Fireworks/fw_particles0000.png" id="6_n20jg"]
+[ext_resource type="Shader" path="res://Scenes/LevelSelectionMenu/cloud.gdshader" id="8_7dghd"]
 
 [sub_resource type="Animation" id="Animation_eybl5"]
 length = 0.001
@@ -74,6 +76,42 @@ _data = {
 "Transi_IN": SubResource("Animation_vrnth")
 }
 
+[sub_resource type="Gradient" id="Gradient_ewlyv"]
+offsets = PackedFloat32Array(0, 0.213235, 0.786765, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_oak41"]
+gradient = SubResource("Gradient_ewlyv")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_455al"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(300, 540, 1)
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_oak41")
+
+[sub_resource type="Gradient" id="Gradient_rsoov"]
+offsets = PackedFloat32Array(0, 0.602941, 0.845588, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_kf5pd"]
+frequency = 0.0028
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eti4q"]
+invert = true
+seamless = true
+seamless_blend_skirt = 0.165
+normalize = false
+color_ramp = SubResource("Gradient_rsoov")
+noise = SubResource("FastNoiseLite_kf5pd")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6ip4j"]
+shader = ExtResource("8_7dghd")
+shader_parameter/density = 0.198
+shader_parameter/speed = Vector2(-0.05, 0)
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_eti4q")
+
 [node name="LevelSelectionMenu" type="Node"]
 script = ExtResource("1_3o3ol")
 select_sound = ExtResource("2_ay3qx")
@@ -107,10 +145,29 @@ position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_ayhig")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Visuals"]
+position = Vector2(300, 540)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_455al")
+texture = ExtResource("6_n20jg")
+lifetime = 3.0
+explosiveness = 0.18
+randomness = 0.23
+
 [node name="Land0" type="Sprite2D" parent="Visuals"]
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_h7idw")
+
+[node name="ColorRect" type="ColorRect" parent="Visuals"]
+modulate = Color(0, 0, 0, 1)
+material = SubResource("ShaderMaterial_6ip4j")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Background" type="Sprite2D" parent="Visuals"]
 visible = false
@@ -179,10 +236,10 @@ offset_right = 444.0
 offset_bottom = 229.0
 
 [node name="LevelButton1" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 84.0
-offset_top = 878.0
-offset_right = 84.0
-offset_bottom = 878.0
+offset_left = 95.0
+offset_top = 860.0
+offset_right = 95.0
+offset_bottom = 860.0
 lvl_number = 1
 
 [node name="LevelButton2" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
