@@ -1,2 +1,5 @@
 id,fr,en
 TEST,test,test
+POPUP_LETS_GO,C'est parti !,Let's go!
+POPUP_WIN,Tu as réussi, bien joué !,You did it, well played!
+POPUP_LOSE,Ca n'a pas fonctionné, dommage... Essaie encore une fois !,It didn't work, bummer... Try again!

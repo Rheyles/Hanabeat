@@ -67,7 +67,7 @@ func _ready():
 	
 	detonator_dialog_pos = $Detonator.global_position
 	detonator_dialog_pos.y -= 50.0
-	create_pop_up_dialog('C\'est parti mon kiki kiki kiki kiki kiki kiki kiki kiki kiki kiki kiki !',detonator_dialog_pos)
+	create_pop_up_dialog(tr("POPUP_LETS_GO"),detonator_dialog_pos)
 
 ### LOGIC
 
@@ -134,7 +134,7 @@ func _on_Rocket_rocket_start(id,time)->void:
 		print("Your score : " + str(score))
 		if score < GAME.WIN_MARGIN * 100:
 			print("You won !")
-			create_pop_up_dialog('Tu as réussi, bien joué !',detonator_dialog_pos)
+			create_pop_up_dialog(tr("POPUP_WIN"),detonator_dialog_pos)
 			back_to_menu.set_message("Congrats ! Back to menu ?")
 			await get_tree().create_timer(3.0).timeout
 			transition_animation.play("Transi_IN",-1,-1.0,true)
@@ -143,7 +143,7 @@ func _on_Rocket_rocket_start(id,time)->void:
 			firework_animation.play("fly_in",-1,1.0)
 			firework_visualizer.visible = true
 		else:
-			create_pop_up_dialog('Ca n\'a pas fonctionné, dommage... Essaie encore une fois !',detonator_dialog_pos)
+			create_pop_up_dialog(tr("POPUP_LOSE"),detonator_dialog_pos)
 			print("It didn\'t work... Try again !")
 
 func _on_EVENTS_play_pop_up_dialog(text : String, pos: Vector2) -> void:

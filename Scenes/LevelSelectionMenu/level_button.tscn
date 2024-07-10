@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_button.gd" id="1_wh2eu"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_3oh7d"]
-[ext_resource type="Texture2D" uid="uid://c6v8ejhrmotyq" path="res://Ressources/Sprites/Menu/ButtonBannerSprite2.png" id="2_rxnxm"]
 [ext_resource type="PackedScene" uid="uid://c4osw4w5md8xx" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="2_xd1nr"]
+[ext_resource type="Texture2D" uid="uid://onubf0u2h4lh" path="res://Ressources/Sprites/Menu/ButtonBannerSprite3.png" id="4_qrcck"]
 
 [node name="LevelButton" type="Control"]
 layout_mode = 3
@@ -40,7 +40,7 @@ offset_right = 32.71
 offset_bottom = 46.72
 grow_horizontal = 2
 grow_vertical = 2
-texture_normal = ExtResource("2_rxnxm")
+texture_normal = ExtResource("4_qrcck")
 ignore_texture_size = true
 stretch_mode = 0
 
