@@ -50,6 +50,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(8, 467)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Clouds4b:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Clouds3b:emitting")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ok44v"]
 resource_name = "fly_in"
@@ -258,6 +282,30 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector2(8, -351), Vector2(8, 467)]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Clouds4b:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Clouds3b:emitting")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifi5s"]
 _data = {
@@ -447,7 +495,7 @@ texture = ExtResource("15_wjqug")
 
 [node name="FireWork_Launcher" parent="Animations" instance=ExtResource("16_srxr8")]
 z_index = 1
-position = Vector2(307, 811)
+position = Vector2(300, 840)
 fireworks_scale_is_random = true
 fireworks_scale_range_min = 2.5
 fireworks_scale_range_max = 3.2
@@ -493,8 +541,6 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2400.0
-offset_bottom = 4320.0
 grow_horizontal = 2
 grow_vertical = 2
 

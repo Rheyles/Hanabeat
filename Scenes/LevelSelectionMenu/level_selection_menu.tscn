@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c56iigfrq84ys"]
+[gd_scene load_steps=36 format=3 uid="uid://c56iigfrq84ys"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_selection_menu.gd" id="1_3o3ol"]
 [ext_resource type="Texture2D" uid="uid://dp25mba7vqxh" path="res://Ressources/Sprites/Menu/LevelSelection.png" id="1_om44h"]
@@ -15,7 +15,12 @@
 [ext_resource type="Texture2D" uid="uid://tj68uliiyhkl" path="res://Ressources/Sprites/LevelSelection/land_0.png" id="6_h7idw"]
 [ext_resource type="Texture2D" uid="uid://d0n48x8msxbts" path="res://Ressources/Sprites/Fireworks/fw_particles0000.png" id="6_n20jg"]
 [ext_resource type="Shader" path="res://Scenes/LevelSelectionMenu/cloud.gdshader" id="8_7dghd"]
-[ext_resource type="Texture2D" uid="uid://c27d4gwvbmo4r" path="res://Ressources/Sprites/LevelSelection/tori.png" id="8_xq1q3"]
+[ext_resource type="Texture2D" uid="uid://bxf1fe4h7vf0g" path="res://Ressources/Sprites/Menu/deco0.png" id="8_8yoql"]
+[ext_resource type="Texture2D" uid="uid://ea77p0yj6er1" path="res://Ressources/Sprites/Menu/deco1.png" id="9_7g26i"]
+[ext_resource type="Texture2D" uid="uid://dnn2blaqutdkr" path="res://Ressources/Sprites/Menu/deco2.png" id="10_1bc78"]
+[ext_resource type="Texture2D" uid="uid://dy2e6s0qqq5we" path="res://Ressources/Sprites/Menu/deco6.png" id="11_6eiyi"]
+[ext_resource type="Texture2D" uid="uid://3d0rbml7frpg" path="res://Ressources/Sprites/Menu/deco4.png" id="12_jdeyg"]
+[ext_resource type="Texture2D" uid="uid://i6xkh585qs8t" path="res://Ressources/Sprites/Menu/deco5.png" id="13_w5prt"]
 [ext_resource type="Texture2D" uid="uid://dhm3k7oa2du3g" path="res://Ressources/Sprites/Menu/flag_fr.png" id="17_6vtis"]
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/LangButtons.gd" id="17_454k2"]
 [ext_resource type="Texture2D" uid="uid://c0hp7qupj6l5x" path="res://Ressources/Sprites/Menu/flag_p.png" id="18_6mfxo"]
@@ -139,11 +144,13 @@ grow_vertical = 2
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_2yqe2")
+metadata/_edit_lock_ = true
 
 [node name="Ocean1" type="Sprite2D" parent="Visuals"]
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_0b6tv")
+metadata/_edit_lock_ = true
 
 [node name="Ocean2" type="Sprite2D" parent="Visuals"]
 position = Vector2(300, 540)
@@ -164,12 +171,43 @@ randomness = 0.23
 position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("6_h7idw")
+metadata/_edit_lock_ = true
 
-[node name="DecoTest" type="Sprite2D" parent="Visuals"]
-z_index = 5
-position = Vector2(136.364, 750)
+[node name="Deco0" type="Sprite2D" parent="Visuals"]
+z_index = 2
+position = Vector2(396, 650)
 scale = Vector2(2.26936, 2.45455)
-texture = ExtResource("8_xq1q3")
+texture = ExtResource("8_8yoql")
+
+[node name="Deco1" type="Sprite2D" parent="Visuals"]
+z_index = 2
+position = Vector2(283, 706)
+scale = Vector2(2.26936, 2.45455)
+texture = ExtResource("9_7g26i")
+
+[node name="Deco2" type="Sprite2D" parent="Visuals"]
+z_index = 2
+position = Vector2(144.364, 746)
+scale = Vector2(2.26936, 2.45455)
+texture = ExtResource("10_1bc78")
+
+[node name="Deco3" type="Sprite2D" parent="Visuals"]
+z_index = 2
+position = Vector2(116, 897)
+scale = Vector2(2.26936, 2.45455)
+texture = ExtResource("11_6eiyi")
+
+[node name="Deco4" type="Sprite2D" parent="Visuals"]
+z_index = 2
+position = Vector2(422, 466)
+scale = Vector2(2.26936, 2.45455)
+texture = ExtResource("12_jdeyg")
+
+[node name="Deco5" type="Sprite2D" parent="Visuals"]
+z_index = 2
+position = Vector2(411, 289)
+scale = Vector2(2.26936, 2.45455)
+texture = ExtResource("13_w5prt")
 
 [node name="ColorRect" type="ColorRect" parent="Visuals"]
 modulate = Color(0, 0, 0, 1)
@@ -247,6 +285,7 @@ offset_left = 458.0
 offset_top = 241.0
 offset_right = 458.0
 offset_bottom = 241.0
+metadata/_edit_lock_ = true
 
 [node name="LevelButton1" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 106.0
@@ -254,6 +293,7 @@ offset_top = 846.0
 offset_right = 106.0
 offset_bottom = 846.0
 lvl_number = 1
+metadata/_edit_lock_ = true
 
 [node name="LevelButton2" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 184.0
@@ -261,6 +301,7 @@ offset_top = 691.0
 offset_right = 184.0
 offset_bottom = 691.0
 lvl_number = 2
+metadata/_edit_lock_ = true
 
 [node name="LevelButton3" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 324.0
@@ -268,6 +309,7 @@ offset_top = 677.0
 offset_right = 324.0
 offset_bottom = 677.0
 lvl_number = 3
+metadata/_edit_lock_ = true
 
 [node name="LevelButton4" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 426.0
@@ -275,6 +317,7 @@ offset_top = 603.0
 offset_right = 426.0
 offset_bottom = 603.0
 lvl_number = 4
+metadata/_edit_lock_ = true
 
 [node name="LevelButton5" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 434.0
@@ -282,6 +325,7 @@ offset_top = 420.0
 offset_right = 434.0
 offset_bottom = 420.0
 lvl_number = 5
+metadata/_edit_lock_ = true
 
 [node name="OtherUI" type="Control" parent="."]
 layout_mode = 3
