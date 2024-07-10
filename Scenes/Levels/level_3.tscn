@@ -1212,9 +1212,6 @@ position = Vector2(513, 488)
 [node name="PremadeFuse" parent="Fuse_Scene4" index="0"]
 points = PackedVector2Array(0, 0, -206, 390)
 
-[node name="Label" parent="UI" index="2"]
-metadata/_edit_lock_ = true
-
 [node name="FuseLeftGauge" parent="UI" index="3"]
 metadata/_edit_lock_ = true
 
@@ -1230,3 +1227,4 @@ metadata/_edit_lock_ = true
 [editable path="Fuse_Scene4"]
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]
+[editable path="FireworkVisualizer/UI/Back_To_Menu"]

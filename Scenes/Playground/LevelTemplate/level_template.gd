@@ -59,6 +59,8 @@ func _ready():
 	best_score = PLAYER.current_data['score_by_level'][lvl_id]
 	##
 	update_score_display()
+	$UI/FuseLeftGauge/Label.text = tr("UI_FUSE_LEFT")
+	$FireworkVisualizer/MusicPlayer.volume_db = -80
 	transition_animation.play("Transi_IN", -1, 1.0)
 	
 	fuse_left_gauge.min_value = 0
@@ -78,16 +80,16 @@ func connect_rocket(rocket) -> void:
 	rocket.rocket_start.connect(_on_Rocket_rocket_start)
 	
 func update_score_display()->void:
-	$UI/Label.text = 'Best score : '
+	$UI/ScoreLabel.text = tr("UI_BEST_SCORE") + "\n  "
 	if best_score == -1:
-		$UI/Label.text += '-'
+		$UI/ScoreLabel.text += '-'
 	else :
-		$UI/Label.text += str(best_score)
-	$UI/Label.text += '\nLast score : '
+		$UI/ScoreLabel.text += str(best_score)
+	$UI/ScoreLabel.text += '\n' + tr("UI_LAST_SCORE") + "\n  "
 	if last_score == -1:
-		$UI/Label.text += '-'
+		$UI/ScoreLabel.text += '-'
 	else :
-		$UI/Label.text += str(last_score)
+		$UI/ScoreLabel.text += str(last_score)
 
 func create_pop_up_dialog(text:String, pos:Vector2)->void:
 	var new_box = dialog_box_scene.instantiate()

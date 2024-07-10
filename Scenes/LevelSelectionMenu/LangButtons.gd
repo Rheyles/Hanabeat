@@ -5,12 +5,18 @@ extends Control
 
 @onready var outline = $Outline
 
+var update_once : bool = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	fr_button.pressed.connect(_on_fr_pressed)
 	en_button.pressed.connect(_on_en_pressed)
 	update_display()
+
+func _process(_delta):
+	if update_once:
+		update_display()
+		update_once = false
 
 func change_lng(lng_idx : int) -> void:
 	LOCAL.change_lng_idx(lng_idx)
@@ -19,7 +25,6 @@ func change_lng(lng_idx : int) -> void:
 
 func update_display() -> void:
 	var current_lng = TranslationServer.get_locale()
-	print(current_lng)
 	if current_lng == "fr":
 		outline.position = fr_button.position
 	elif current_lng == "en":

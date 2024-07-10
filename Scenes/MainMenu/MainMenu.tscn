@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvfw5qix0u7x"]
+[gd_scene load_steps=10 format=3 uid="uid://dvfw5qix0u7x"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_p1q1t"]
 [ext_resource type="PackedScene" uid="uid://bgbsfii0i3web" path="res://Scenes/Playground/FireworkVisualizer/FireworkVisualizer.tscn" id="2_dd3d8"]
+[ext_resource type="FontVariation" uid="uid://de38ouo65xdu5" path="res://Ressources/Fonts/new_font_variation.tres" id="4_dso3o"]
+[ext_resource type="FontFile" uid="uid://chweua5osdxqa" path="res://Ressources/Fonts/Borgen.ttf" id="6_thvfe"]
 [ext_resource type="Texture2D" uid="uid://i4o3tockjltq" path="res://Ressources/Sprites/Placeholders/message-24-error.png" id="18_2q28v"]
 [ext_resource type="FontFile" uid="uid://dmrpdxxwkj3cq" path="res://Ressources/Fonts/Miyoshi -Demo.ttf" id="25_8qaia"]
 
@@ -27,10 +29,18 @@ _data = {
 "Idle": SubResource("Animation_rpwb5")
 }
 
+[sub_resource type="FontVariation" id="FontVariation_t5gd5"]
+base_font = ExtResource("6_thvfe")
+spacing_glyph = -1
+
 [node name="MainMenu" type="Node"]
 script = ExtResource("1_p1q1t")
 
 [node name="FireworkVisualizer" parent="." instance=ExtResource("2_dd3d8")]
+
+[node name="UI" parent="FireworkVisualizer" index="2"]
+offset_right = 600.0
+offset_bottom = 1080.0
 
 [node name="Title" type="Label" parent="FireworkVisualizer/UI" index="0"]
 z_index = 10
@@ -64,13 +74,16 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -300.0
-offset_top = -216.0
-offset_right = -100.0
-offset_bottom = -189.0
+offset_left = -382.0
+offset_top = -214.0
+offset_right = 386.0
+offset_bottom = -153.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(3, 3)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_dso3o")
+theme_override_font_sizes/font_size = 45
 text = "- Click / Tap to Start -"
 horizontal_alignment = 1
 
@@ -104,6 +117,10 @@ offset_top = -101.0
 offset_right = 151.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_t5gd5")
+theme_override_font_sizes/font_size = 26
 text = "A Game By  : StrangeJourney & Sakd'Os
 Music By : PercheSoleil
 

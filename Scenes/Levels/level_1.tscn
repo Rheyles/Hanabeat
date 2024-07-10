@@ -1,7 +1,8 @@
-[gd_scene load_steps=39 format=3 uid="uid://dsw6guhoy0eth"]
+[gd_scene load_steps=41 format=3 uid="uid://dsw6guhoy0eth"]
 
 [ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_anv1l"]
 [ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_67s1v"]
+[ext_resource type="FontFile" uid="uid://dvmld4siqwsqc" path="res://Ressources/Fonts/BorgenBold.ttf" id="3_y3ick"]
 
 [sub_resource type="Shader" id="Shader_plulj"]
 resource_local_to_scene = true
@@ -1065,6 +1066,10 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
+[sub_resource type="FontVariation" id="FontVariation_pg0hs"]
+base_font = ExtResource("3_y3ick")
+spacing_glyph = -3
+
 [node name="Level1" instance=ExtResource("1_anv1l")]
 lvl_id = 1
 
@@ -1132,6 +1137,21 @@ position = Vector2(297, 470)
 [node name="RocketBank2" parent="." index="10" instance=ExtResource("2_67s1v")]
 position = Vector2(130, 290)
 rotation = -0.20944
+
+[node name="UI" parent="FireworkVisualizer" index="2"]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="RetryButton" parent="FireworkVisualizer/UI" index="2"]
+offset_left = 232.0
+offset_right = 426.0
+theme_override_fonts/font = SubResource("FontVariation_pg0hs")
+
+[node name="TextureRect" parent="FireworkVisualizer/UI/RetryButton" index="0"]
+offset_left = -102.0
+offset_top = -46.0
+offset_right = 98.0
+offset_bottom = 48.355
 
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]

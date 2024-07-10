@@ -8,7 +8,8 @@ signal on_mouse_hover_lvl(lvl_number)
 
 func _ready():
 	if lvl_number < 10:
-		get_node("Label").text = "0" + str(lvl_number)
+		get_node("Label").text = str(lvl_number)
+		#get_node("Label").text = "0" + str(lvl_number)
 	else:
 		get_node("Label").text = str(lvl_number)
 	_setScoreText()

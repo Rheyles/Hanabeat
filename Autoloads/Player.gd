@@ -36,6 +36,8 @@ func reset_data():
 
 func save_data(path: String) -> void:
 	current_data['lng'] = TranslationServer.get_locale()
+	if not current_data['lng'] in LOCAL.available_lng:
+		current_data['lng'] = default_data['lng']
 	
 	var file = FileAccess.open(path, FileAccess.WRITE)
 	file.store_line(JSON.stringify(current_data))

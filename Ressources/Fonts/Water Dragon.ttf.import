@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dckitmo4yrr4k"
+path="res://.godot/imported/Water Dragon.ttf-63f212d43216c6cc726ee774e37a85fb.fontdata"
+
+[deps]
+
+source_file="res://Ressources/Fonts/Water Dragon.ttf"
+dest_files=["res://.godot/imported/Water Dragon.ttf-63f212d43216c6cc726ee774e37a85fb.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}

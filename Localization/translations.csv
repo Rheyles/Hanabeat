@@ -3,3 +3,7 @@ TEST,test,test
 POPUP_LETS_GO,"C'est parti !","Let's go!"
 POPUP_WIN,"Tu as réussi, bien joué !","You did it, well played!"
 POPUP_LOSE,"Ca n'a pas fonctionné, dommage... Essaie encore une fois !","It didn't work, bummer... Try again!"
+UI_BEST_SCORE,Meilleur score,Best score
+UI_LAST_SCORE,Dernier score,Last score
+UI_FUSE_LEFT,Mèche restante,Fuse left
+UI_LEAVE_LVL,Quitter le niveau ?,Leave the level ?

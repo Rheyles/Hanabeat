@@ -5,6 +5,7 @@ extends Node
 @onready var animationPlayer = $AnimationPlayer
 @onready var sound_player = $SoundPlayer
 
+
 func play_sound(sound_name:String)->void:
 	if sound_name == "select":
 		sound_player.stream = select_sound

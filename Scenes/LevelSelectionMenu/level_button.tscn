@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://fmwt8lxc4ggs"]
+[gd_scene load_steps=8 format=3 uid="uid://fmwt8lxc4ggs"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_button.gd" id="1_wh2eu"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_3oh7d"]
 [ext_resource type="PackedScene" uid="uid://c4osw4w5md8xx" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="2_xd1nr"]
 [ext_resource type="Texture2D" uid="uid://onubf0u2h4lh" path="res://Ressources/Sprites/Menu/ButtonBannerSprite3.png" id="4_qrcck"]
+[ext_resource type="FontFile" uid="uid://dckitmo4yrr4k" path="res://Ressources/Fonts/Water Dragon.ttf" id="5_c3e6r"]
+[ext_resource type="FontFile" uid="uid://dvmld4siqwsqc" path="res://Ressources/Fonts/BorgenBold.ttf" id="6_g27d4"]
+
+[sub_resource type="FontVariation" id="FontVariation_iop00"]
+base_font = ExtResource("6_g27d4")
+spacing_glyph = -3
 
 [node name="LevelButton" type="Control"]
 layout_mode = 3
@@ -52,14 +58,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -25.0
-offset_top = -27.0
+offset_top = -39.5
 offset_right = 19.0
-offset_bottom = 23.0
+offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 36
-text = "XX"
+theme_override_fonts/font = ExtResource("5_c3e6r")
+theme_override_font_sizes/font_size = 80
+text = "X"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -76,10 +83,10 @@ mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Lvl_info_display"]
 layout_mode = 0
-offset_left = -49.0
-offset_top = 76.0
-offset_right = 44.48
-offset_bottom = 94.22
+offset_left = -58.0
+offset_top = 65.0
+offset_right = 58.0
+offset_bottom = 94.0
 color = Color(0.941176, 0.87451, 0.709804, 0.643137)
 
 [node name="Lvl_info_text" type="Label" parent="Lvl_info_display"]
@@ -89,15 +96,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -76.0
-offset_top = -1.0
-offset_right = 136.0
-offset_bottom = 35.0
+offset_left = -70.0
+offset_top = -5.0
+offset_right = 129.0
+offset_bottom = 31.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.690891, 0.858994)
-theme_override_font_sizes/font_size = 26
-text = "BEST : XXX"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_iop00")
+theme_override_font_sizes/font_size = 32
+text = "BEST : XXXgffd"
 horizontal_alignment = 1
 vertical_alignment = 1
 

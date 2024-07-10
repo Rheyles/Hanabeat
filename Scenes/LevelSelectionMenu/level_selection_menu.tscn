@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://c56iigfrq84ys"]
+[gd_scene load_steps=33 format=3 uid="uid://c56iigfrq84ys"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_selection_menu.gd" id="1_3o3ol"]
 [ext_resource type="Texture2D" uid="uid://dp25mba7vqxh" path="res://Ressources/Sprites/Menu/LevelSelection.png" id="1_om44h"]
@@ -100,27 +100,10 @@ emission_box_extents = Vector3(300, 540, 1)
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("GradientTexture1D_oak41")
 
-[sub_resource type="Gradient" id="Gradient_rsoov"]
-offsets = PackedFloat32Array(0, 0.602941, 0.845588, 1)
-colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_kf5pd"]
-frequency = 0.0028
-domain_warp_enabled = true
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eti4q"]
-invert = true
-seamless = true
-seamless_blend_skirt = 0.165
-normalize = false
-color_ramp = SubResource("Gradient_rsoov")
-noise = SubResource("FastNoiseLite_kf5pd")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6ip4j"]
 shader = ExtResource("8_7dghd")
-shader_parameter/density = 0.198
-shader_parameter/speed = Vector2(-0.05, 0)
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_eti4q")
+shader_parameter/density = 0.25
+shader_parameter/speed = Vector2(0.02, 0.01)
 
 [node name="LevelSelectionMenu" type="Node"]
 script = ExtResource("1_3o3ol")
@@ -193,7 +176,7 @@ texture = ExtResource("10_1bc78")
 
 [node name="Deco3" type="Sprite2D" parent="Visuals"]
 z_index = 2
-position = Vector2(116, 897)
+position = Vector2(85, 908)
 scale = Vector2(2.26936, 2.45455)
 texture = ExtResource("11_6eiyi")
 
@@ -288,10 +271,10 @@ offset_bottom = 241.0
 metadata/_edit_lock_ = true
 
 [node name="LevelButton1" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
-offset_left = 106.0
-offset_top = 846.0
-offset_right = 106.0
-offset_bottom = 846.0
+offset_left = 105.0
+offset_top = 857.0
+offset_right = 105.0
+offset_bottom = 857.0
 lvl_number = 1
 metadata/_edit_lock_ = true
 
@@ -344,10 +327,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -93.0
-offset_top = -1095.0
-offset_right = 35.0
-offset_bottom = -967.0
+offset_left = -115.0
+offset_top = -1064.0
+offset_right = 13.0
+offset_bottom = -936.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.720002, 0.828442)

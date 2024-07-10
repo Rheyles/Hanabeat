@@ -1,8 +1,12 @@
 extends Control
 
 
-func set_message(message : String):
-	get_node("TextureRect/Label").text = message
+func _ready():
+	$TextureRect/Label.text = tr("UI_LEAVE_LVL")
+
+
+func set_message(message_id : String):
+	get_node("TextureRect/Label").text = tr(message_id)
 
 
 ### SIGNAL RESPONSES

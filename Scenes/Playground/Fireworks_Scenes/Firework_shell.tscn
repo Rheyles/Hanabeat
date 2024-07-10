@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="4_vrwgu"]
 
 [node name="Firework_Shell" type="Node2D"]
-z_index = 1
+z_index = 40
 script = ExtResource("1_ba1kr")
 fireWorkExplosion = ExtResource("2_bupcr")
 

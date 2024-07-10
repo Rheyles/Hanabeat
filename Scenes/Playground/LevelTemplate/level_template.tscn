@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://c53tww0tg17d2"]
+[gd_scene load_steps=68 format=3 uid="uid://c53tww0tg17d2"]
 
 [ext_resource type="Shader" path="res://Scenes/Playground/LevelTemplate/vignet.gdshader" id="1_0cqeb"]
 [ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/level_template.gd" id="1_4a27f"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dnav6jws5njpe" path="res://Ressources/Sprites/Detonator/flame_spot.png" id="11_srj2h"]
 [ext_resource type="Script" path="res://Scenes/Playground/LevelTemplate/RetryButton.gd" id="12_788uw"]
 [ext_resource type="Texture2D" uid="uid://deufj4cvdwfo6" path="res://Ressources/Sprites/Menu/UI_Button_BG.png" id="13_w6umg"]
+[ext_resource type="FontFile" uid="uid://dvmld4siqwsqc" path="res://Ressources/Fonts/BorgenBold.ttf" id="16_f08mv"]
 
 [sub_resource type="Animation" id="Animation_eybl5"]
 length = 0.001
@@ -103,7 +104,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Shader" id="Shader_3ce8x"]
+[sub_resource type="Shader" id="Shader_yfsyn"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -151,7 +152,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5y4y3"]
 resource_local_to_scene = true
-shader = SubResource("Shader_3ce8x")
+shader = SubResource("Shader_yfsyn")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -162,7 +163,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 3.0
 
-[sub_resource type="Shader" id="Shader_by7os"]
+[sub_resource type="Shader" id="Shader_26ukx"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -210,7 +211,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_c1k03"]
 resource_local_to_scene = true
-shader = SubResource("Shader_by7os")
+shader = SubResource("Shader_26ukx")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -221,7 +222,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_dvjxp"]
+[sub_resource type="Shader" id="Shader_kgxyt"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -269,7 +270,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_060dr"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dvjxp")
+shader = SubResource("Shader_kgxyt")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -280,7 +281,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_5btrw"]
+[sub_resource type="Shader" id="Shader_wdo0e"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -328,7 +329,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fpyat"]
 resource_local_to_scene = true
-shader = SubResource("Shader_5btrw")
+shader = SubResource("Shader_wdo0e")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -339,7 +340,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_2rjax"]
+[sub_resource type="Shader" id="Shader_lgbw8"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -387,7 +388,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yv3ur"]
 resource_local_to_scene = true
-shader = SubResource("Shader_2rjax")
+shader = SubResource("Shader_lgbw8")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -398,7 +399,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_eix0g"]
+[sub_resource type="Shader" id="Shader_5lbsm"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -446,7 +447,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bd83b"]
 resource_local_to_scene = true
-shader = SubResource("Shader_eix0g")
+shader = SubResource("Shader_5lbsm")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -457,7 +458,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_y3hpi"]
+[sub_resource type="Shader" id="Shader_h1vkd"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -505,7 +506,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_igjge"]
 resource_local_to_scene = true
-shader = SubResource("Shader_y3hpi")
+shader = SubResource("Shader_h1vkd")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -516,7 +517,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_54fib"]
+[sub_resource type="Shader" id="Shader_q00r6"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -564,7 +565,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w1vvs"]
 resource_local_to_scene = true
-shader = SubResource("Shader_54fib")
+shader = SubResource("Shader_q00r6")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -575,7 +576,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_0tnrt"]
+[sub_resource type="Shader" id="Shader_3h0gg"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -623,7 +624,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5grh1"]
 resource_local_to_scene = true
-shader = SubResource("Shader_0tnrt")
+shader = SubResource("Shader_3h0gg")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -634,7 +635,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_unshj"]
+[sub_resource type="Shader" id="Shader_mt24t"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -682,7 +683,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_iiwts"]
 resource_local_to_scene = true
-shader = SubResource("Shader_unshj")
+shader = SubResource("Shader_mt24t")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -693,7 +694,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_iv6p1"]
+[sub_resource type="Shader" id="Shader_ifd04"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -741,7 +742,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gf4ls"]
 resource_local_to_scene = true
-shader = SubResource("Shader_iv6p1")
+shader = SubResource("Shader_ifd04")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -752,7 +753,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_bbhcd"]
+[sub_resource type="Shader" id="Shader_l7hdj"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -800,7 +801,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j1nwa"]
 resource_local_to_scene = true
-shader = SubResource("Shader_bbhcd")
+shader = SubResource("Shader_l7hdj")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -811,7 +812,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_d1h7f"]
+[sub_resource type="Shader" id="Shader_7g6bf"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -859,7 +860,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8k3jl"]
 resource_local_to_scene = true
-shader = SubResource("Shader_d1h7f")
+shader = SubResource("Shader_7g6bf")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -870,7 +871,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_khvwh"]
+[sub_resource type="Shader" id="Shader_soavg"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -918,7 +919,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3psnf"]
 resource_local_to_scene = true
-shader = SubResource("Shader_khvwh")
+shader = SubResource("Shader_soavg")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -929,7 +930,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_yv3j0"]
+[sub_resource type="Shader" id="Shader_goj1c"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -977,7 +978,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6jlax"]
 resource_local_to_scene = true
-shader = SubResource("Shader_yv3j0")
+shader = SubResource("Shader_goj1c")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -988,7 +989,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_dax6k"]
+[sub_resource type="Shader" id="Shader_df573"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -1036,7 +1037,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_54huj"]
 resource_local_to_scene = true
-shader = SubResource("Shader_dax6k")
+shader = SubResource("Shader_df573")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -1047,7 +1048,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_t1qtj"]
+[sub_resource type="Shader" id="Shader_v5kk5"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -1095,7 +1096,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hx4db"]
 resource_local_to_scene = true
-shader = SubResource("Shader_t1qtj")
+shader = SubResource("Shader_v5kk5")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -1106,7 +1107,7 @@ shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
 
-[sub_resource type="Shader" id="Shader_exvie"]
+[sub_resource type="Shader" id="Shader_bjo67"]
 resource_local_to_scene = true
 code = "// original wind shader from https://github.com/Maujoe/godot-simple-wind-shader-2d/tree/master/assets/maujoe.simple_wind_shader_2d
 // original script modified by HungryProton so that the assets are moving differently : https://pastebin.com/VL3AfV8D
@@ -1154,7 +1155,7 @@ void vertex() {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_knsne"]
 resource_local_to_scene = true
-shader = SubResource("Shader_exvie")
+shader = SubResource("Shader_bjo67")
 shader_parameter/speed = 1.0
 shader_parameter/minStrength = 0.05
 shader_parameter/maxStrength = 0.015
@@ -1164,6 +1165,16 @@ shader_parameter/detail = 3.0
 shader_parameter/distortion = 1.0
 shader_parameter/heightOffset = 0.25
 shader_parameter/offset = 1.0
+
+[sub_resource type="FontVariation" id="FontVariation_isnkq"]
+base_font = ExtResource("16_f08mv")
+spacing_glyph = -2
+
+[sub_resource type="FontVariation" id="FontVariation_67unl"]
+base_font = ExtResource("16_f08mv")
+
+[sub_resource type="FontVariation" id="FontVariation_yc0wv"]
+base_font = ExtResource("16_f08mv")
 
 [sub_resource type="Animation" id="Animation_vjofd"]
 resource_name = "no_fuse_left"
@@ -1212,7 +1223,7 @@ autoplay = "Transi_IN"
 z_index = 15
 
 [node name="Animation" type="Node2D" parent="Visuals"]
-z_index = 15
+z_index = 50
 position = Vector2(0, -25)
 
 [node name="transi_BG1" type="Sprite2D" parent="Visuals/Animation"]
@@ -1351,10 +1362,10 @@ grow_vertical = 2
 [node name="BackMenuButton" type="TextureButton" parent="UI"]
 z_index = 7
 layout_mode = 0
-offset_left = 464.0
-offset_top = 13.0
-offset_right = 592.0
-offset_bottom = 141.0
+offset_left = 444.0
+offset_top = 3.0
+offset_right = 572.0
+offset_bottom = 131.0
 texture_normal = ExtResource("4_wjenm")
 flip_h = true
 flip_v = true
@@ -1380,15 +1391,19 @@ offset_top = -579.0
 offset_right = 309.0
 offset_bottom = 530.0
 
-[node name="Label" type="Label" parent="UI"]
-z_index = 7
+[node name="ScoreLabel" type="Label" parent="UI"]
+z_index = 20
 layout_mode = 0
-offset_left = 24.0
-offset_top = 22.0
-offset_right = 203.0
-offset_bottom = 124.0
-text = "Best score :
-Last score :"
+offset_left = 18.0
+offset_top = 20.0
+offset_right = 197.0
+offset_bottom = 133.0
+theme_override_fonts/font = SubResource("FontVariation_isnkq")
+theme_override_font_sizes/font_size = 25
+text = "Meilleur score 
+  - 
+Last score 
+  -"
 
 [node name="FuseLeftGauge" type="Control" parent="UI"]
 z_index = 7
@@ -1396,19 +1411,27 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
+offset_left = 5.0
+offset_top = 23.0
+offset_right = 5.0
+offset_bottom = 23.0
 grow_horizontal = 2
 pivot_offset = Vector2(300, 25)
 
 [node name="Label" type="Label" parent="UI/FuseLeftGauge"]
 z_index = 5
 layout_mode = 1
-anchors_preset = -1
+anchors_preset = 5
+anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 216.0
-offset_top = 18.0
-offset_right = 383.0
+offset_left = 210.0
+offset_top = 12.0
+offset_right = 380.0
 offset_bottom = 41.0
 grow_horizontal = 2
+pivot_offset = Vector2(85, 0)
+theme_override_fonts/font = SubResource("FontVariation_67unl")
+theme_override_font_sizes/font_size = 25
 text = "Fuse left :"
 horizontal_alignment = 1
 
@@ -1418,11 +1441,13 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 177.0
+offset_left = 209.0
 offset_top = 52.0
-offset_right = 412.0
-offset_bottom = 79.0
+offset_right = 381.0
+offset_bottom = 81.0
 grow_horizontal = 2
+theme_override_fonts/font = SubResource("FontVariation_yc0wv")
+theme_override_font_sizes/font_size = 24
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/FuseLeftGauge"]
 libraries = {
@@ -1438,20 +1463,21 @@ bus = &"Music"
 bus = &"Sounds"
 
 [node name="FireworkVisualizer" parent="." instance=ExtResource("11_hfnta")]
-visible = false
 z_index = 20
+
+[node name="FireWork_Launcher" parent="FireworkVisualizer/Animations" index="8"]
+z_index = 5
 
 [node name="Back_To_Menu" parent="FireworkVisualizer/UI" index="1" instance=ExtResource("7_82nld")]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-offset_left = 321.0
-offset_top = 1024.0
-offset_right = 321.0
-offset_bottom = 1024.0
-grow_vertical = 0
+offset_left = -1.0
+offset_top = 479.0
+offset_right = -1.0
+offset_bottom = 479.0
+
+[node name="CancelButtonZone" parent="FireworkVisualizer/UI/Back_To_Menu" index="0"]
+visible = false
+disabled = true
 
 [node name="RetryButton" type="Button" parent="FireworkVisualizer/UI" index="2"]
 custom_minimum_size = Vector2(188.07, 74.43)
@@ -1461,10 +1487,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 223.0
-offset_top = 971.0
-offset_right = 411.07
-offset_bottom = 1055.0
+offset_left = -94.035
+offset_top = -114.0
+offset_right = 94.035
+offset_bottom = -30.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -1496,3 +1522,4 @@ metadata/_edit_lock_ = true
 
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]
+[editable path="FireworkVisualizer/UI/Back_To_Menu"]
