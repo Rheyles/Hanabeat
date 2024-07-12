@@ -6,6 +6,11 @@ class_name Level
 @export var fuse_sound : Resource
 @export var dialog_box_scene : Resource
 
+@export var forground1 : Resource = null
+@export var forground1_n : Resource = null
+@export var forground2 : Resource = null
+@export var forground2_n : Resource = null
+
 @onready var music_player = $MusicPlayer
 @onready var sound_player = $SoundPlayer
 
@@ -18,6 +23,8 @@ class_name Level
 
 @onready var fuse_left_gauge = $UI/FuseLeftGauge/ProgressBar
 @onready var fuse_left_gauge_anim = $UI/FuseLeftGauge/AnimationPlayer
+
+@onready var timer = $Timer
 
 var detonator_dialog_pos = Vector2.ZERO
 
@@ -51,6 +58,7 @@ func _ready():
 	EVENTS.spark_nb_changed.connect(_on_EVENTS_spark_nb_changed)
 	EVENTS.fuse_node_nb_changed.connect(_on_EVENTS_fuse_node_nb_changed)
 	EVENTS.play_pop_up_dialog.connect(_on_EVENTS_play_pop_up_dialog)
+	timer.timeout.connect(_on_Timer_timeout)
 	sound_player.finished.connect(_on_SoundPlayer_finished)
 	music_player.finished.connect(_on_MusicPlayer_finished)
 	music_player.play()
@@ -62,6 +70,14 @@ func _ready():
 	$UI/FuseLeftGauge/Label.text = tr("UI_FUSE_LEFT")
 	$FireworkVisualizer/MusicPlayer.volume_db = -80
 	transition_animation.play("Transi_IN", -1, 1.0)
+	
+	if forground1 != null:
+		$FireworkVisualizer/Animations/Bckg_2.texture.diffuse_texture = forground1
+		$FireworkVisualizer/Animations/Bckg_2.texture.normal_texture = forground1_n
+	if forground2 != null:
+		$FireworkVisualizer/Animations/Bckg_3.texture.diffuse_texture = forground2
+		$FireworkVisualizer/Animations/Bckg_3.texture.normal_texture = forground2_n
+	
 	
 	fuse_left_gauge.min_value = 0
 	fuse_left_gauge.max_value = node_nb_max
@@ -102,6 +118,7 @@ func _on_EVENTS_has_detonated(new_value:bool)->void:
 	if new_value:
 		pass
 	else:
+		timer.stop()
 		for i in range(len(rockets_times)):
 			rockets_times[i] = 0
 
@@ -138,15 +155,17 @@ func _on_Rocket_rocket_start(id,time)->void:
 			print("You won !")
 			create_pop_up_dialog(tr("POPUP_WIN"),detonator_dialog_pos)
 			back_to_menu.set_message("Congrats ! Back to menu ?")
-			await get_tree().create_timer(3.0).timeout
-			transition_animation.play("Transi_IN",-1,-1.0,true)
-			await transition_animation.animation_finished
-			transition.visible = false
-			firework_animation.play("fly_in",-1,1.0)
-			firework_visualizer.visible = true
+			timer.start(3.0)
 		else:
 			create_pop_up_dialog(tr("POPUP_LOSE"),detonator_dialog_pos)
 			print("It didn\'t work... Try again !")
 
 func _on_EVENTS_play_pop_up_dialog(text : String, pos: Vector2) -> void:
 	create_pop_up_dialog(text, pos)
+
+func _on_Timer_timeout():
+	transition_animation.play("Transi_IN",-1,-1.0,true)
+	await transition_animation.animation_finished
+	transition.visible = false
+	firework_animation.play("fly_in",-1,1.0)
+	firework_visualizer.visible = true

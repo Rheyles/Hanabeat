@@ -16,7 +16,7 @@ radius = 18.0278
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_hwbd2"]
 resource_local_to_scene = true
 shader = ExtResource("8_sxap7")
-shader_parameter/flash_color = null
+shader_parameter/flash_color = Color(1, 1, 1, 1)
 shader_parameter/flash_value = 0.0
 
 [sub_resource type="Animation" id="Animation_rvwkn"]

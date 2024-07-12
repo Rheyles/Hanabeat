@@ -987,7 +987,7 @@ material = SubResource("ShaderMaterial_hg3fv")
 [node name="Herb14" parent="Decorations" index="17"]
 material = SubResource("ShaderMaterial_2t4an")
 
-[node name="Detonator" parent="." index="6"]
+[node name="Detonator" parent="." index="7"]
 z_index = 0
 
 [node name="RocketBank" parent="." index="8" instance=ExtResource("2_jind2")]
@@ -1017,7 +1017,7 @@ rotation = 2.37016
 scale = Vector2(2.5, 2.5)
 is_water = false
 
-[node name="UI" parent="." index="14"]
+[node name="UI" parent="." index="15"]
 z_index = 20
 metadata/_edit_lock_ = true
 
@@ -1040,9 +1040,10 @@ offset_right = 299.0
 offset_bottom = 524.0
 metadata/_edit_lock_ = true
 
-[node name="MusicPlayer" parent="." index="15"]
+[node name="MusicPlayer" parent="." index="16"]
 volume_db = -16.746
 
 [editable path="Fuse_Scene"]
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]
+[editable path="FireworkVisualizer/UI/Back_To_Menu"]

@@ -7,6 +7,8 @@ extends Node
 func _ready():
 	$FireworkVisualizer/UI/StartLabel/AnimationPlayer.play("Idle")
 	$FireworkVisualizer/AnimationPlayer.play("fly_in",-1,1.0)
+	$FireworkVisualizer/UI/StartLabel.text = tr("MM_START")
+	$FireworkVisualizer/UI/Credit.text = tr("MM_CREDITS")
 
 func _process(_delta):
 	if Input.is_action_just_pressed("left_click"):

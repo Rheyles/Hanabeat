@@ -1123,3 +1123,4 @@ material = SubResource("ShaderMaterial_knsne")
 
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]
+[editable path="FireworkVisualizer/UI/Back_To_Menu"]
