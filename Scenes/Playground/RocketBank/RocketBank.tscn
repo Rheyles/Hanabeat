@@ -1,10 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://81yg5m76kgvo"]
+[gd_scene load_steps=35 format=3 uid="uid://81yg5m76kgvo"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/RocketBank/RocketBank.gd" id="1_p215p"]
 [ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Playground/Fuse/Fuse.tscn" id="2_a5mi3"]
 [ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_m45pr"]
 [ext_resource type="Texture2D" uid="uid://b1lolwne405lt" path="res://Ressources/Sprites/Rocket/rocket_fire0000.png" id="2_wuqlk"]
 [ext_resource type="AudioStream" uid="uid://c618g2kveswi6" path="res://Ressources/Sounds/Rocket/rocket.wav" id="3_5d1gi"]
+[ext_resource type="AudioStream" uid="uid://bb5nwfygy1fwl" path="res://Ressources/Sounds/Rocket/minecraft-fireworks.wav" id="3_mw7ht"]
 [ext_resource type="Texture2D" uid="uid://x2hskeko08g5" path="res://Ressources/Sprites/Rocket/rocket_fire0008.png" id="3_vihje"]
 [ext_resource type="Texture2D" uid="uid://b00my5xx2860s" path="res://Ressources/Sprites/Rocket/rocket_fire0002.png" id="3_w5o4i"]
 [ext_resource type="Texture2D" uid="uid://d3bftikb2y2s8" path="res://Ressources/Sprites/Rocket/rocket_fire0010.png" id="4_d6d77"]
@@ -184,7 +185,6 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_8uofg"]
 resource_name = "going"
-length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -192,7 +192,7 @@ tracks/0/path = NodePath("..:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 4),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, -1000)]
@@ -227,6 +227,7 @@ _data = {
 z_index = 5
 script = ExtResource("1_p215p")
 rocket_sound = ExtResource("3_5d1gi")
+launch_sound = ExtResource("3_mw7ht")
 metadata/_edit_lock_ = true
 
 [node name="Sprites" type="Node2D" parent="."]

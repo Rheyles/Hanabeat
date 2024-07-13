@@ -6,6 +6,9 @@ extends Node
 @onready var sound_player = $SoundPlayer
 
 
+func _ready():
+	sound_player.play(GAME.from_position_scene_music)
+
 func play_sound(sound_name:String)->void:
 	if sound_name == "select":
 		sound_player.stream = select_sound

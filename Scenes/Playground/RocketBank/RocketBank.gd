@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var rocket_sound : Resource
+@export var launch_sound : Resource
 
 var rocket_id = 0
 var rocket_start_time = 0
@@ -53,6 +54,8 @@ func _on_Flame_animation_finished() -> void:
 	if flame_sprite.animation == "Starting":
 		flame_sprite.play("Going")
 		rocket_animation.play("going")
+		sound_player.stream = launch_sound
+		sound_player.play()
 
 func _on_EVENTS_has_detonated(new_value:bool)->void:
 	if not new_value:

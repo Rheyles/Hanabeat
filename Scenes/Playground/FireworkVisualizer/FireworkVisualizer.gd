@@ -6,7 +6,6 @@ extends Control
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	music_player.finished.connect(_on_MusicPlayer_finished)
-	music_player.play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -15,3 +14,7 @@ func _process(_delta):
 
 func _on_MusicPlayer_finished()->void:
 	music_player.play()
+
+func _music_fade_in(duration : float):
+	var tween_out = create_tween()
+	tween_out.tween_property(music_player,"volume_db",0,duration)

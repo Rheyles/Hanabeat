@@ -9,6 +9,9 @@ var MIN_NODE_DIST : float = 10
 var button_clicked = false
 
 var has_detonated:bool = false : set=set_has_detonated
+
+var from_position_scene_music : float
+
 ### ACCESSORS ###
 func set_has_detonated(new_value:bool) -> void:
 	has_detonated = new_value

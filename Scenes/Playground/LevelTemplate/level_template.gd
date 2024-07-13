@@ -16,6 +16,7 @@ class_name Level
 
 @onready var firework_visualizer = $FireworkVisualizer
 @onready var firework_animation = $FireworkVisualizer/AnimationPlayer
+@onready var firework_musicplayer = $FireworkVisualizer/MusicPlayer
 @onready var back_to_menu = $FireworkVisualizer/UI/Back_To_Menu
 
 @onready var transition_animation = $AnimationPlayer
@@ -68,7 +69,8 @@ func _ready():
 	##
 	update_score_display()
 	$UI/FuseLeftGauge/Label.text = tr("UI_FUSE_LEFT")
-	$FireworkVisualizer/MusicPlayer.volume_db = -80
+	firework_musicplayer.volume_db = -80
+	firework_animation.stop()
 	transition_animation.play("Transi_IN", -1, 1.0)
 	
 	if forground1 != null:
@@ -164,8 +166,11 @@ func _on_EVENTS_play_pop_up_dialog(text : String, pos: Vector2) -> void:
 	create_pop_up_dialog(text, pos)
 
 func _on_Timer_timeout():
+	print("On timer timeout")
+	timer.stop()
 	transition_animation.play("Transi_IN",-1,-1.0,true)
 	await transition_animation.animation_finished
+	music_player.volume_db = -80
 	transition.visible = false
 	firework_animation.play("fly_in",-1,1.0)
 	firework_visualizer.visible = true

@@ -237,55 +237,55 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("../MusicPlayer:volume_db")
-tracks/13/interp = 1
+tracks/13/path = NodePath("../UI:position")
+tracks/13/interp = 2
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-80.0, 0.0]
+"values": [Vector2(0, -1080), Vector2(0, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("../UI:position")
-tracks/14/interp = 2
+tracks/14/enabled = false
+tracks/14/path = NodePath("Clouds3b:position")
+tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, -1080), Vector2(0, 0)]
+"values": [Vector2(82, 69), Vector2(82, 69)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Clouds3b:position")
+tracks/15/enabled = false
+tracks/15/path = NodePath("Clouds4b:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(82, -672), Vector2(82, 69)]
+"values": [Vector2(8, 467), Vector2(8, 467)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Clouds4b:position")
+tracks/16/path = NodePath("Clouds4b:emitting")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(8, -351), Vector2(8, 467)]
+"update": 1,
+"values": [false, true]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Clouds4b:emitting")
+tracks/17/path = NodePath("Clouds3b:emitting")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
@@ -294,17 +294,19 @@ tracks/17/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/18/type = "value"
+tracks/18/type = "method"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Clouds3b:emitting")
+tracks/18/path = NodePath("..")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2.0],
+"method": &"_music_fade_in"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ifi5s"]
@@ -436,11 +438,12 @@ root_node = NodePath("../Animations")
 libraries = {
 "": SubResource("AnimationLibrary_ifi5s")
 }
+autoplay = "fly_in"
 
 [node name="Animations" type="Node2D" parent="."]
 
 [node name="PointLight2D" type="PointLight2D" parent="Animations"]
-position = Vector2(293, 391)
+position = Vector2(293, -689)
 energy = 1.56
 blend_mode = 2
 texture = ExtResource("2_x4yde")
@@ -448,17 +451,17 @@ texture_scale = 28.6
 height = 190.0
 
 [node name="Bckg_8" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, 108)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("3_mk8yp")
 
 [node name="Bckg_7" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, 0)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_kawfk")
 
 [node name="Bckg_6" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, -108)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_0lluf")
 
@@ -484,38 +487,39 @@ randomness = 0.29
 visibility_rect = Rect2(0, 0, 1000, 1000)
 
 [node name="Bckg_5" type="Sprite2D" parent="Animations"]
-position = Vector2(300, 540)
+position = Vector2(300, -216)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_l132a")
 
 [node name="Bckg_4" type="Sprite2D" parent="Animations"]
 material = ExtResource("14_5dbbx")
-position = Vector2(300, 875.22)
+position = Vector2(300, 11.22)
 rotation = 3.14159
 scale = Vector2(2.5, 0.948055)
 texture = ExtResource("15_wjqug")
 
 [node name="FireWork_Launcher" parent="Animations" instance=ExtResource("16_srxr8")]
 z_index = 1
-position = Vector2(300, 840)
+position = Vector2(300, -784)
 fireworks_scale_is_random = true
 fireworks_scale_range_min = 2.5
 fireworks_scale_range_max = 3.2
 
 [node name="Bckg_3" type="Sprite2D" parent="Animations"]
 z_index = 2
-position = Vector2(300, 540)
+position = Vector2(300, -432)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_yee0l")
 
 [node name="Bckg_2" type="Sprite2D" parent="Animations"]
 z_index = 2
-position = Vector2(300, 540)
+position = Vector2(300, -540)
 scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_8pdre")
 
 [node name="Branchs" type="Node2D" parent="Animations"]
 z_index = 2
+position = Vector2(0, -540)
 
 [node name="Bckg_1_1" type="Sprite2D" parent="Animations/Branchs"]
 z_index = 2
@@ -532,17 +536,19 @@ scale = Vector2(2.5, 2.5)
 texture = SubResource("CanvasTexture_om3ol")
 
 [node name="Transition" type="Sprite2D" parent="Animations"]
+modulate = Color(0, 0, 0, 1)
 z_index = 50
-position = Vector2(300, 1620)
+position = Vector2(300, 540)
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("25_jep8d")
 
 [node name="UI" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_direction = 1
 anchors_preset = 0
+offset_top = -1080.0
 offset_right = 600.0
-offset_bottom = 1080.0
 
 [node name="Label" type="Label" parent="UI"]
 visible = false
@@ -561,5 +567,6 @@ text = "Test"
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_k6yt0")
+volume_db = -50.6667
 autoplay = true
 bus = &"Music"

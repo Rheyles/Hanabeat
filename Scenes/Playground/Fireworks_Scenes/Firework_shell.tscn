@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://cusg415dvvmt2" path="res://Ressources/Sprites/light.png" id="4_vrwgu"]
 
 [node name="Firework_Shell" type="Node2D"]
-z_index = 40
+z_index = 1
+y_sort_enabled = true
 script = ExtResource("1_ba1kr")
 fireWorkExplosion = ExtResource("2_bupcr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_as_relative = false
 scale = Vector2(0.02, 0.2)
 texture = ExtResource("1_jh2v2")
 
