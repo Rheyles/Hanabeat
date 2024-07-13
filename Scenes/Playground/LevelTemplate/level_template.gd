@@ -148,12 +148,13 @@ func _on_Rocket_rocket_start(id,time)->void:
 	if 0 in rockets_times:
 		pass
 	else:
-		var score = rockets_times.max() - rockets_times.min()
+		var score = ((rockets_times.max() - rockets_times.min()) / Engine.get_frames_per_second() ) * 1000
 		set_last_score(score)
 		update_score_display()
 		print(rockets_times)
 		print("Your score : " + str(score))
-		if score < GAME.WIN_MARGIN * 100:
+		print(str(Engine.get_frames_per_second()) + " FPS ")
+		if score < GAME.WIN_MARGIN * 1000 :
 			print("You won !")
 			create_pop_up_dialog(tr("POPUP_WIN"),detonator_dialog_pos)
 			back_to_menu.set_message("Congrats ! Back to menu ?")

@@ -38,7 +38,8 @@ func _ready():
 ### SIGNAL RESPONSES
 
 func _on_Fuse_burnt(_fuse_idx:int, _line_point_ref:int) -> void:
-	rocket_start_time = Time.get_ticks_msec()
+	#rocket_start_time = Time.get_ticks_msec()
+	rocket_start_time = Engine.get_process_frames()
 	emit_signal("rocket_start",rocket_id,rocket_start_time)
 	rocket_animation.play("Starting")
 	sound_player.stream = rocket_sound

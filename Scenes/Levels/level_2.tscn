@@ -1,6 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://d27ijll41qs22"]
+[gd_scene load_steps=40 format=3 uid="uid://d27ijll41qs22"]
 
 [ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_vbe47"]
+[ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_ghlhp"]
+[ext_resource type="PackedScene" uid="uid://dvve77y48bbgn" path="res://Scenes/Playground/Fuse/Fuse.tscn" id="3_op4q4"]
 
 [sub_resource type="Shader" id="Shader_plulj"]
 resource_local_to_scene = true
@@ -1121,6 +1123,22 @@ material = SubResource("ShaderMaterial_hx4db")
 [node name="Herb14" parent="Decorations" index="17"]
 material = SubResource("ShaderMaterial_knsne")
 
+[node name="RocketBank" parent="." index="8" instance=ExtResource("2_ghlhp")]
+position = Vector2(240, 767)
+rotation = -0.253073
+
+[node name="RocketBank2" parent="." index="9" instance=ExtResource("2_ghlhp")]
+position = Vector2(369, 770)
+rotation = 0.336849
+
+[node name="Fuse_Scene" parent="." index="10" instance=ExtResource("3_op4q4")]
+position = Vector2(353, 812)
+
+[node name="PremadeFuse" parent="Fuse_Scene" index="0"]
+position = Vector2(1, 1)
+points = PackedVector2Array(-1, 1, 4, 19, 4, 35, -1, 47, -13, 61, -26, 72, -47, 80)
+
+[editable path="Fuse_Scene"]
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]
 [editable path="FireworkVisualizer/UI/Back_To_Menu"]

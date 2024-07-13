@@ -2,7 +2,7 @@ extends Node
 
 ## GAME
 ## This autoload contains all the method and variable used along the game
-var WIN_MARGIN : float = 5.0
+var WIN_MARGIN : float = 0.5
 
 var MIN_NODE_DIST : float = 10
 

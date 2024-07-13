@@ -1,7 +1,6 @@
-[gd_scene load_steps=37 format=3 uid="uid://c56iigfrq84ys"]
+[gd_scene load_steps=39 format=3 uid="uid://c56iigfrq84ys"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_selection_menu.gd" id="1_3o3ol"]
-[ext_resource type="Texture2D" uid="uid://dp25mba7vqxh" path="res://Ressources/Sprites/Menu/LevelSelection.png" id="1_om44h"]
 [ext_resource type="AudioStream" uid="uid://nq6johk67k04" path="res://Ressources/Sounds/Detonator/reset.wav" id="2_ay3qx"]
 [ext_resource type="FontFile" uid="uid://dmrpdxxwkj3cq" path="res://Ressources/Fonts/Miyoshi -Demo.ttf" id="2_mwxrw"]
 [ext_resource type="Texture2D" uid="uid://10s7qj4r1dxu" path="res://Ressources/Sprites/LevelSelection/ocean_0.png" id="3_2yqe2"]
@@ -25,6 +24,9 @@
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/LangButtons.gd" id="17_454k2"]
 [ext_resource type="Texture2D" uid="uid://c0hp7qupj6l5x" path="res://Ressources/Sprites/Menu/flag_p.png" id="18_6mfxo"]
 [ext_resource type="Texture2D" uid="uid://n8v1c6ujcege" path="res://Ressources/Sprites/Menu/flag_en.png" id="18_tiw86"]
+[ext_resource type="PackedScene" uid="uid://bwnf1v7cmaee6" path="res://Scenes/LevelSelectionMenu/tuto_animation.tscn" id="25_k2gup"]
+[ext_resource type="Texture2D" uid="uid://c005mrowk3i00" path="res://Ressources/Sprites/Placeholders/new_gradient_texture_2d2.tres" id="25_sxyhe"]
+[ext_resource type="FontVariation" uid="uid://cdaoxw51jws1v" path="res://Ressources/Fonts/new_font_variation.tres" id="26_7pi7y"]
 [ext_resource type="AudioStream" uid="uid://cnouokacnm5xc" path="res://Ressources/Musics/Sample_slowversion.wav" id="26_i2ffe"]
 
 [sub_resource type="Animation" id="Animation_eybl5"]
@@ -220,20 +222,6 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Background" type="Sprite2D" parent="Visuals"]
-visible = false
-z_index = -10
-scale = Vector2(2.5, 2.512)
-texture = ExtResource("1_om44h")
-offset = Vector2(120, 216)
-
-[node name="ColorRect" type="ColorRect" parent="Visuals/Background"]
-offset_top = 2.38853
-offset_right = 40.0
-offset_bottom = 42.3885
-scale = Vector2(5.992, 1.39809)
-color = Color(0.243137, 0.34902, 0.6, 1)
-
 [node name="Label" type="Label" parent="Visuals"]
 visible = false
 layout_mode = 1
@@ -262,14 +250,14 @@ texture = ExtResource("4_sjiag")
 [node name="transi_BG2" type="Sprite2D" parent="Visuals/Animation"]
 self_modulate = Color(0.0313726, 0.458824, 0.411765, 1)
 z_index = 9
-position = Vector2(300, 983)
+position = Vector2(300, -350)
 scale = Vector2(3, 3.55)
 texture = ExtResource("5_5ltlj")
 
 [node name="transi_BG3" type="Sprite2D" parent="Visuals/Animation"]
 self_modulate = Color(0.0470588, 0.564706, 0.509804, 1)
 z_index = 8
-position = Vector2(300, 1025)
+position = Vector2(300, -325)
 scale = Vector2(3, 3.55)
 texture = ExtResource("5_5ltlj")
 
@@ -394,6 +382,40 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 texture_normal = ExtResource("18_tiw86")
 metadata/_edit_lock_ = true
+
+[node name="Tuto UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 40.0
+offset_top = 130.0
+offset_right = 278.0
+offset_bottom = 486.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Tuto UI"]
+position = Vector2(98, 244)
+rotation = 3.14159
+scale = Vector2(1.18301, -6.94221)
+texture = ExtResource("25_sxyhe")
+
+[node name="TutoAnimation" parent="Tuto UI" instance=ExtResource("25_k2gup")]
+position = Vector2(-21, 111)
+scale = Vector2(0.869116, 0.83234)
+
+[node name="TutoText" type="Label" parent="Tuto UI"]
+layout_mode = 0
+offset_left = -21.0
+offset_top = 36.0
+offset_right = 286.0
+offset_bottom = 153.0
+theme_override_colors/font_outline_color = Color(0.227451, 0.258824, 0.27451, 1)
+theme_override_constants/outline_size = 2
+theme_override_constants/line_spacing = -12
+theme_override_fonts/font = ExtResource("26_7pi7y")
+theme_override_font_sizes/font_size = 34
+text = "Your Goal :
+Launch the rocket 
+at the same time ! "
+autowrap_mode = 1
 
 [node name="SoundPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("26_i2ffe")
