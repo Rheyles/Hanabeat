@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c1i4bns0ism3q"]
+[gd_scene load_steps=12 format=3 uid="uid://c1i4bns0ism3q"]
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/dialogue_systeme.gd" id="1_1a3qk"]
 [ext_resource type="PackedScene" uid="uid://d0bdt1hxeaugl" path="res://Scenes/LevelSelectionMenu/IntroDialogBox/IntroDialogBox.tscn" id="2_m3b23"]
+[ext_resource type="Texture2D" uid="uid://bno0ur0xvv2ed" path="res://Ressources/Sprites/DialogueSprite/Mushu Portrait1.png" id="3_dh3xh"]
 [ext_resource type="Texture2D" uid="uid://bquaeic5bua16" path="res://Ressources/Sprites/DialogueSprite/Mushu Portrait3.png" id="4_4k3vu"]
+[ext_resource type="Texture2D" uid="uid://dje0htpgwbg1" path="res://Ressources/Sprites/DialogueSprite/Mushu Portrait2.png" id="4_ydve5"]
 [ext_resource type="Texture2D" uid="uid://ceii4tg4mfw2u" path="res://Ressources/Sprites/Menu/UI_PopUp_BG2.png" id="5_25sxx"]
 [ext_resource type="Texture2D" uid="uid://b1et7sgv8pvj7" path="res://Ressources/Sprites/Menu/FlyingIsland-dialog.png" id="6_bgmxs"]
 
@@ -106,6 +108,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_1a3qk")
 dialog_box_scene = ExtResource("2_m3b23")
+character_sprite_list = [ExtResource("3_dh3xh"), ExtResource("4_ydve5"), ExtResource("4_4k3vu")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -132,16 +135,6 @@ position = Vector2(312, 505)
 scale = Vector2(2.32979, 2.92727)
 texture = ExtResource("5_25sxx")
 
-[node name="Button" type="Button" parent="Node2D"]
-custom_minimum_size = Vector2(174.01, 80.565)
-offset_left = 357.0
-offset_top = 619.0
-offset_right = 531.01
-offset_bottom = 699.565
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 31
-text = "Tap to End"
-
 [node name="FloatingIsland" type="Sprite2D" parent="."]
 z_index = 5
 position = Vector2(500, 960)
@@ -153,5 +146,3 @@ hframes = 2
 libraries = {
 "": SubResource("AnimationLibrary_3tdxq")
 }
-
-[connection signal="button_down" from="Node2D/Button" to="." method="_on_button_button_down"]
