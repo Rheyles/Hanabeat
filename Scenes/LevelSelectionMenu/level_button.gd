@@ -31,10 +31,10 @@ func _setScoreText():
 func _on_texture_button_button_down():
 	if LEVELS.levels.size() >= lvl_number:
 		GAME.current_scene.get_tree().current_scene.play_sound("select")
-		var animationPlayer = GAME.current_scene.get_node("AnimationPlayer")
-		animationPlayer.play("Transi_IN",-1,-1,true)
-		await animationPlayer.animation_finished
-		GAME.goto_scene(LEVELS.levels[lvl_number])
+		
+#Dialogue Logic
+		GAME.current_scene.get_tree().current_scene.get_node("%Tuto UI").visible = false
+		GAME.current_scene.get_tree().current_scene.get_node("%Dialogue_systeme").trigger_dialog(lvl_number)
 	else:
 		print("PAS de scène dans LEVELS.levels[] pour ce lvl_number")
 

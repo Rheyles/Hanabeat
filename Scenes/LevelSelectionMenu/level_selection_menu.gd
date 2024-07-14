@@ -4,6 +4,7 @@ extends Node
 
 @onready var animationPlayer = $AnimationPlayer
 @onready var sound_player = $SoundPlayer
+@onready var dialog_systeme = %Dialogue_systeme
 
 @onready var tuto_text1 = $"Tuto UI/TutoText"
 @onready var tuto_text2 = $"Tuto UI/TutoText2"
@@ -13,6 +14,7 @@ extends Node
 func _ready():
 	sound_player.play(GAME.from_position_scene_music)
 	sound_player.finished.connect(_on_SoundPlayer_finished)
+	dialog_systeme.dialog_end.connect(_on_lvl_dialog_end)
 	EVENTS.language_changed.connect(_on_EVENTS_language_changed)
 	tuto_anim.play("new_animation")
 	update_lng()
@@ -28,6 +30,11 @@ func update_lng():
 	tuto_text2.text = tr("LVL_SEL_TUTO_2")
 
 ### SIGNAL RESPONSES
+
+func _on_lvl_dialog_end(lvlNB : int):
+		animationPlayer.play("Transi_IN",-1,-1,true)
+		await animationPlayer.animation_finished
+		GAME.goto_scene(LEVELS.levels[lvlNB])
 
 func _on_back_menu_button_button_down():
 #Load Lvl menu

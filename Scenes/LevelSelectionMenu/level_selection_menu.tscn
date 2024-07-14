@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_selection_menu.gd" id="1_3o3ol"]
 [ext_resource type="AudioStream" uid="uid://nq6johk67k04" path="res://Ressources/Sounds/Detonator/reset.wav" id="2_ay3qx"]
-[ext_resource type="FontFile" uid="uid://dmrpdxxwkj3cq" path="res://Ressources/Fonts/Miyoshi -Demo.ttf" id="2_mwxrw"]
 [ext_resource type="Texture2D" uid="uid://10s7qj4r1dxu" path="res://Ressources/Sprites/LevelSelection/ocean_0.png" id="3_2yqe2"]
 [ext_resource type="PackedScene" uid="uid://fmwt8lxc4ggs" path="res://Scenes/LevelSelectionMenu/level_button.tscn" id="3_kw8ho"]
 [ext_resource type="Texture2D" uid="uid://biljxpf1iaphs" path="res://Ressources/Sprites/Placeholders/back.png" id="4_fyovw"]
@@ -10,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://b0lciv3dkqg15" path="res://Ressources/Sprites/LevelSelection/ocean_1.png" id="5_0b6tv"]
 [ext_resource type="Texture2D" uid="uid://b482blg1nrf4h" path="res://Ressources/Sprites/Menu/transition_screen_triangle.png" id="5_5ltlj"]
 [ext_resource type="Texture2D" uid="uid://dy521m2iv3k8y" path="res://Ressources/Sprites/LevelSelection/ocean_2.png" id="6_ayhig"]
-[ext_resource type="Texture2D" uid="uid://dd3e4p7wu8qek" path="res://Ressources/Sprites/Menu/FlyingIslandDay.png" id="6_eghcy"]
 [ext_resource type="Texture2D" uid="uid://tj68uliiyhkl" path="res://Ressources/Sprites/LevelSelection/land_0.png" id="6_h7idw"]
 [ext_resource type="Texture2D" uid="uid://d0n48x8msxbts" path="res://Ressources/Sprites/Fireworks/fw_particles0000.png" id="6_n20jg"]
 [ext_resource type="Shader" path="res://Scenes/LevelSelectionMenu/cloud.gdshader" id="8_7dghd"]
@@ -20,10 +18,12 @@
 [ext_resource type="Texture2D" uid="uid://dy2e6s0qqq5we" path="res://Ressources/Sprites/Menu/deco6.png" id="11_6eiyi"]
 [ext_resource type="Texture2D" uid="uid://3d0rbml7frpg" path="res://Ressources/Sprites/Menu/deco4.png" id="12_jdeyg"]
 [ext_resource type="Texture2D" uid="uid://i6xkh585qs8t" path="res://Ressources/Sprites/Menu/deco5.png" id="13_w5prt"]
+[ext_resource type="Texture2D" uid="uid://b1et7sgv8pvj7" path="res://Ressources/Sprites/Menu/FlyingIsland-dialog.png" id="14_u6jt1"]
 [ext_resource type="Texture2D" uid="uid://dhm3k7oa2du3g" path="res://Ressources/Sprites/Menu/flag_fr.png" id="17_6vtis"]
 [ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/LangButtons.gd" id="17_454k2"]
 [ext_resource type="Texture2D" uid="uid://c0hp7qupj6l5x" path="res://Ressources/Sprites/Menu/flag_p.png" id="18_6mfxo"]
 [ext_resource type="Texture2D" uid="uid://n8v1c6ujcege" path="res://Ressources/Sprites/Menu/flag_en.png" id="18_tiw86"]
+[ext_resource type="PackedScene" uid="uid://c1i4bns0ism3q" path="res://Scenes/LevelSelectionMenu/dialogue_systeme.tscn" id="25_g31yg"]
 [ext_resource type="FontVariation" uid="uid://cdaoxw51jws1v" path="res://Ressources/Fonts/new_font_variation.tres" id="26_7pi7y"]
 [ext_resource type="Texture2D" uid="uid://r37iiflfqw5j" path="res://Ressources/Sprites/Menu/UI_PopUp_BG.png" id="26_31rrp"]
 [ext_resource type="AudioStream" uid="uid://cnouokacnm5xc" path="res://Ressources/Musics/Sample_slowversion.wav" id="26_i2ffe"]
@@ -1049,6 +1049,13 @@ position = Vector2(436, 338)
 scale = Vector2(2.26936, 2.45455)
 texture = ExtResource("13_w5prt")
 
+[node name="FloatingIsland" type="Sprite2D" parent="Visuals"]
+z_index = 5
+position = Vector2(490.945, 969.905)
+scale = Vector2(2.375, 2.375)
+texture = ExtResource("14_u6jt1")
+hframes = 2
+
 [node name="ColorRect2" type="ColorRect" parent="Visuals"]
 layout_mode = 1
 anchors_preset = 15
@@ -1080,21 +1087,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
-
-[node name="Label" type="Label" parent="Visuals"]
-visible = false
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 50.31
-offset_bottom = 73.31
-grow_horizontal = 2
-scale = Vector2(1.00146, 1)
-theme_override_fonts/font = ExtResource("2_mwxrw")
-theme_override_font_sizes/font_size = 86
-text = "Level Selection"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Animation" type="Node2D" parent="Visuals"]
 z_index = 10
@@ -1198,11 +1190,6 @@ texture_normal = ExtResource("4_fyovw")
 flip_h = true
 flip_v = true
 
-[node name="Not_a_floating_Island" type="Sprite2D" parent="OtherUI"]
-position = Vector2(87.7614, -448.9)
-scale = Vector2(3, 3)
-texture = ExtResource("6_eghcy")
-
 [node name="LangButtons" type="Control" parent="OtherUI"]
 modulate = Color(1, 1, 1, 0.588235)
 layout_mode = 1
@@ -1237,7 +1224,12 @@ layout_mode = 2
 texture_normal = ExtResource("18_tiw86")
 metadata/_edit_lock_ = true
 
+[node name="Dialogue_systeme" parent="." instance=ExtResource("25_g31yg")]
+unique_name_in_owner = true
+visible = false
+
 [node name="Tuto UI" type="Control" parent="."]
+unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 55.0

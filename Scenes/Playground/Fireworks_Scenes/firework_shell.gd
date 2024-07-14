@@ -10,7 +10,7 @@ var fireworks_scale_range_min : float = 1
 var speed: float = 450 #movespeed during delay
 var fireworks_light : bool
 
-var colors = [Color(0, 0.706, 0.765),Color(0.964, 0.903, 0),Color(0.987, 0.366, 0.636)] #Turquoise / Jaune / Rose / Color Preset to pick from
+var colors = [Color(0, 0.706, 0.765),Color(0.964, 0.903, 0),Color(0.987, 0.366, 0.636), Color(0.094, 0.678, 0.522), Color(0.745, 0.855, 1), Color(0.873, 0.537, 0.447)] #Turquoise / Jaune / Rose / Vert / AlmostWhite / Automne Color Preset to pick from
 
 ### BUILT-IN
 
