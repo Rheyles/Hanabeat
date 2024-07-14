@@ -27,6 +27,13 @@ func _ready():
 	
 	fuse.fuse_idx = rocket_id
 	fuse.first_node.burnt.connect(_on_Fuse_burnt)
+	
+	randomize()
+	rocket_sprite.material.set_shader_parameter("replaceGreen",Color.from_hsv(randf(),1.0,0.8))
+	randomize()
+	rocket_sprite.material.set_shader_parameter("replaceRed",Color.from_hsv(randf(),1.0,0.61))
+	randomize()
+	rocket_sprite.material.set_shader_parameter("replaceBlue",Color.from_hsv(randf(),0.0,1.0))
 
 	get_parent().connect_rocket(self)
 

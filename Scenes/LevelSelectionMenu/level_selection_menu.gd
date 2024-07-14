@@ -9,6 +9,7 @@ extends Node
 @onready var tuto_text2 = $"Tuto UI/TutoText2"
 @onready var tuto_anim = $"Tuto UI/AnimatedSprite2D"
 
+var in_transition : bool = false
 
 func _ready():
 	sound_player.play(GAME.from_position_scene_music)
@@ -18,10 +19,12 @@ func _ready():
 	update_lng()
 
 func play_sound(sound_name:String)->void:
-	if sound_name == "select":
-		sound_player.stream = select_sound
-		sound_player.pitch_scale = 1
-	sound_player.play()
+	if not in_transition:
+		if sound_name == "select":
+			in_transition = true
+			sound_player.stream = select_sound
+			sound_player.pitch_scale = 1
+		sound_player.play()
 
 func update_lng():
 	tuto_text1.text = tr("LVL_SEL_TUTO_1")
@@ -37,7 +40,8 @@ func _on_back_menu_button_button_down():
 	GAME.goto_scene("res://Scenes/MainMenu/MainMenu.tscn")
 
 func _on_SoundPlayer_finished():
-	sound_player.play()
+	if not in_transition:
+		sound_player.play()
 
 func _on_EVENTS_language_changed():
 	update_lng()
