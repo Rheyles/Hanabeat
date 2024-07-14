@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://d0bdt1hxeaugl"]
+
+[ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/IntroDialogBox/IntroDialogBox.gd" id="1_5ny3q"]
+[ext_resource type="Texture2D" uid="uid://bwm5xihmvil8t" path="res://Scenes/LevelSelectionMenu/IntroDialogBox/IntroDialogBox.png" id="2_wncrc"]
+[ext_resource type="FontFile" uid="uid://dvmld4siqwsqc" path="res://Ressources/Fonts/BorgenBold.ttf" id="3_3rif0"]
+
+[sub_resource type="FontVariation" id="FontVariation_c4mnp"]
+base_font = ExtResource("3_3rif0")
+spacing_glyph = -1
+
+[node name="DialogBox" type="MarginContainer"]
+modulate = Color(1, 1, 1, 0)
+z_index = 15
+z_as_relative = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -41.0
+offset_right = 41.0
+offset_bottom = 97.0
+grow_horizontal = 2
+pivot_offset = Vector2(41, 0)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("1_5ny3q")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("2_wncrc")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="MarginContainer"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 1
+theme_override_fonts/font = SubResource("FontVariation_c4mnp")
+theme_override_font_sizes/font_size = 22
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="EndTimer" type="Timer" parent="."]
+wait_time = 3.5

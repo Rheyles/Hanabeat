@@ -1,0 +1,157 @@
+[gd_scene load_steps=10 format=3 uid="uid://c1i4bns0ism3q"]
+
+[ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/dialogue_systeme.gd" id="1_1a3qk"]
+[ext_resource type="PackedScene" uid="uid://d0bdt1hxeaugl" path="res://Scenes/LevelSelectionMenu/IntroDialogBox/IntroDialogBox.tscn" id="2_m3b23"]
+[ext_resource type="Texture2D" uid="uid://bquaeic5bua16" path="res://Ressources/Sprites/DialogueSprite/Mushu Portrait3.png" id="4_4k3vu"]
+[ext_resource type="Texture2D" uid="uid://ceii4tg4mfw2u" path="res://Ressources/Sprites/Menu/UI_PopUp_BG2.png" id="5_25sxx"]
+[ext_resource type="Texture2D" uid="uid://b1et7sgv8pvj7" path="res://Ressources/Sprites/Menu/FlyingIsland-dialog.png" id="6_bgmxs"]
+
+[sub_resource type="Animation" id="Animation_0q32k"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FloatingIsland:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_fvxew"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FloatingIsland:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w57rs"]
+resource_name = "Starting"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(426, 849), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.135, 0.135), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tdxq"]
+_data = {
+"Idle": SubResource("Animation_0q32k"),
+"RESET": SubResource("Animation_fvxew"),
+"Starting": SubResource("Animation_w57rs")
+}
+
+[node name="Dialogue_systeme" type="Control"]
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1a3qk")
+dialog_box_scene = ExtResource("2_m3b23")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0352941, 0.0823529, 0.0980392, 0.423529)
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="character" type="Sprite2D" parent="Node2D"]
+z_index = 1
+position = Vector2(298, 397)
+scale = Vector2(0.62989, 0.629891)
+texture = ExtResource("4_4k3vu")
+
+[node name="DialoguePos" type="Node2D" parent="Node2D"]
+position = Vector2(324, 591)
+
+[node name="Background" type="Sprite2D" parent="Node2D"]
+position = Vector2(312, 505)
+scale = Vector2(2.32979, 2.92727)
+texture = ExtResource("5_25sxx")
+
+[node name="Button" type="Button" parent="Node2D"]
+custom_minimum_size = Vector2(174.01, 80.565)
+offset_left = 357.0
+offset_top = 619.0
+offset_right = 531.01
+offset_bottom = 699.565
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 31
+text = "Tap to End"
+
+[node name="FloatingIsland" type="Sprite2D" parent="."]
+z_index = 5
+position = Vector2(500, 960)
+scale = Vector2(3.51923, 3.46946)
+texture = ExtResource("6_bgmxs")
+hframes = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3tdxq")
+}
+
+[connection signal="button_down" from="Node2D/Button" to="." method="_on_button_button_down"]

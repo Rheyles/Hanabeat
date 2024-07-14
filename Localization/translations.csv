@@ -10,7 +10,7 @@ UI_LEAVE_LVL,Quitter le niveau ?,Leave the level ?
 UI_RELOAD_HELP,Cliquez ici pour réessayer,Click here to retry
 UI_CONTINUE_LEVEL,Continuer le niveau,Continue the level
 UI_QUIT_TO_MENU,Retourner au menu,Return to menu
-LVL_SEL_TUTO_1,"Dessinez, coupez et brûlez les mèches...","Draw, cut and burn the fuses..."
+LVL_SEL_TUTO_1,"Dessinez, coupez si besoin et brûlez les mèches...","Draw, cut if needed and burn the fuses..."
 LVL_SEL_TUTO_2,"...pour faire partir toutes les fusées en même temps !","...to make all the rockets go off at once!"
 MM_START,- Cliquez pour commencer -,- Click / Tap to Start -
 MM_CREDITS,"Un jeu par : StrangeJourney & Sakd'Os
