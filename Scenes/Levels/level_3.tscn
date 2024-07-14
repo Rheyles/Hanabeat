@@ -1215,6 +1215,12 @@ points = PackedVector2Array(0, 0, -206, 390)
 [node name="FuseLeftGauge" parent="UI" index="3"]
 metadata/_edit_lock_ = true
 
+[node name="RetryButton" parent="FireworkVisualizer/UI" index="2"]
+theme_override_colors/font_hover_color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="QuitButton" parent="FireworkVisualizer/UI" index="3"]
+theme_override_colors/font_hover_color = Color(0.194349, 0.194349, 0.194349, 1)
+
 [editable path="RocketBank"]
 [editable path="RocketBank/Fuse_Scene"]
 [editable path="RocketBank3"]

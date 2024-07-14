@@ -95,6 +95,7 @@ offset_bottom = 19.22
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0.201527, 0.201527, 0.201527, 1)
 theme_override_fonts/font = SubResource("FontVariation_eqkf0")
 theme_override_font_sizes/font_size = 55
 text = " OK!"

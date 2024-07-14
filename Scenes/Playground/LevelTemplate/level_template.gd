@@ -18,6 +18,8 @@ class_name Level
 @onready var firework_animation = $FireworkVisualizer/AnimationPlayer
 @onready var firework_musicplayer = $FireworkVisualizer/MusicPlayer
 @onready var back_to_menu = $FireworkVisualizer/UI/Back_To_Menu
+@onready var retry_button = $FireworkVisualizer/UI/RetryButton
+@onready var quit_button = $FireworkVisualizer/UI/QuitButton
 
 @onready var transition_animation = $AnimationPlayer
 @onready var transition = $Visuals/Animation
@@ -37,16 +39,16 @@ var detonator_dialog_pos = Vector2.ZERO
 var rockets = []
 var rockets_times = []
 
-var last_score = -1 : set=set_last_score
-var best_score = -1
+var last_score = 0 : set=set_last_score
+var best_score = 0
 
 var nb_spark:int = 0
 
 ### ACCESSORS
 
 func set_last_score(new_val : int)->void:
-	last_score = new_val
-	if new_val < best_score or best_score==-1:
+	last_score = max(1000 - new_val,0)
+	if last_score > best_score:
 		best_score = last_score
 		## TEMP pour debug
 		PLAYER.current_data['score_by_level'][lvl_id] = best_score
@@ -78,6 +80,8 @@ func _ready():
 	reload_help_anim.play("Idle")
 	reload_help_timer.timeout.connect(_on_ReloadHelpTimer_timeout)
 	$UI/FuseLeftGauge/Label.text = tr("UI_FUSE_LEFT")
+	retry_button.text = tr("UI_CONTINUE_LEVEL")
+	quit_button.text = tr("UI_QUIT_TO_MENU")
 	firework_musicplayer.volume_db = -80
 	firework_animation.stop()
 	transition_animation.play("Transi_IN", -1, 1.0)
