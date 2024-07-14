@@ -25,6 +25,11 @@ class_name Level
 @onready var fuse_left_gauge = $UI/FuseLeftGauge/ProgressBar
 @onready var fuse_left_gauge_anim = $UI/FuseLeftGauge/AnimationPlayer
 
+@onready var reload_help = $UI/ReloadHelp
+@onready var reload_help_label = $UI/ReloadHelp/Label
+@onready var reload_help_anim = $UI/ReloadHelp/AnimationPlayer
+@onready var reload_help_timer = $UI/ReloadHelp/Timer
+
 @onready var timer = $Timer
 
 var detonator_dialog_pos = Vector2.ZERO
@@ -68,6 +73,10 @@ func _ready():
 	best_score = PLAYER.current_data['score_by_level'][lvl_id]
 	##
 	update_score_display()
+	reload_help.visible = false
+	reload_help_label.text = tr("UI_RELOAD_HELP")
+	reload_help_anim.play("Idle")
+	reload_help_timer.timeout.connect(_on_ReloadHelpTimer_timeout)
 	$UI/FuseLeftGauge/Label.text = tr("UI_FUSE_LEFT")
 	firework_musicplayer.volume_db = -80
 	firework_animation.stop()
@@ -118,9 +127,11 @@ func create_pop_up_dialog(text:String, pos:Vector2)->void:
 
 func _on_EVENTS_has_detonated(new_value:bool)->void:
 	if new_value:
-		pass
+		reload_help_timer.start(10)
 	else:
 		timer.stop()
+		reload_help_timer.stop()
+		reload_help.visible = false
 		for i in range(len(rockets_times)):
 			rockets_times[i] = 0
 
@@ -175,3 +186,9 @@ func _on_Timer_timeout():
 	transition.visible = false
 	firework_animation.play("fly_in",-1,1.0)
 	firework_visualizer.visible = true
+
+func _on_ReloadHelpTimer_timeout():
+	var tween = get_tree().create_tween()
+	reload_help.modulate.a = 0
+	reload_help.visible = true
+	tween.tween_property(reload_help, "modulate", Color.WHITE, 1)

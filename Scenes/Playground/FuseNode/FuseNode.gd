@@ -30,6 +30,7 @@ func _ready():
 	click_area.mouse_entered.connect(_on_ClickArea_mouse_entered)
 	click_area.mouse_exited.connect(_on_ClickArea_mouse_exited)
 	flash_player.animation_finished.connect(_on_FlashPlayer_animation_finished)
+	$Sprite2D/AnimationPlayer.play("idle")
 	_renameAtInstantiate()
 
 ### LOGIC

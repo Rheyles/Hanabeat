@@ -7,6 +7,9 @@ UI_BEST_SCORE,Meilleur score,Best score
 UI_LAST_SCORE,Dernier score,Last score
 UI_FUSE_LEFT,Mèche restante,Fuse left
 UI_LEAVE_LVL,Quitter le niveau ?,Leave the level ?
+UI_RELOAD_HELP,Cliquez ici pour réessayer,Click here to retry
+LVL_SEL_TUTO_1,"Dessinez, coupez et brûlez les mèches...","Draw, cut and burn the fuses..."
+LVL_SEL_TUTO_2,"...pour faire partir toutes les fusées en même temps !","...to make all the rockets go off at once!"
 MM_START,- Cliquez pour commencer -,- Click / Tap to Start -
 MM_CREDITS,"Un jeu par : StrangeJourney & Sakd'Os
 Musique par : PercheSoleil
