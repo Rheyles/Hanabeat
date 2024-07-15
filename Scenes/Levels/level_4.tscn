@@ -1,6 +1,7 @@
-[gd_scene load_steps=38 format=3 uid="uid://t5wfagsr427v"]
+[gd_scene load_steps=39 format=3 uid="uid://t5wfagsr427v"]
 
 [ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_nltgt"]
+[ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_4gndr"]
 
 [sub_resource type="Shader" id="Shader_plulj"]
 resource_local_to_scene = true
@@ -1120,6 +1121,15 @@ material = SubResource("ShaderMaterial_hx4db")
 
 [node name="Herb14" parent="Decorations" index="17"]
 material = SubResource("ShaderMaterial_knsne")
+
+[node name="RocketBank" parent="." index="8" instance=ExtResource("2_4gndr")]
+position = Vector2(304, 475)
+
+[node name="RocketBank2" parent="." index="9" instance=ExtResource("2_4gndr")]
+position = Vector2(222, 475)
+
+[node name="RocketBank3" parent="." index="10" instance=ExtResource("2_4gndr")]
+position = Vector2(385, 475)
 
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]
