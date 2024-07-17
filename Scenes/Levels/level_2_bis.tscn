@@ -1128,21 +1128,23 @@ position = Vector2(470, 290)
 rotation = 0.20944
 
 [node name="RocketBank3" parent="." index="9" instance=ExtResource("2_h4138")]
-position = Vector2(297, 470)
+position = Vector2(375, 505)
 
 [node name="RocketBank2" parent="." index="10" instance=ExtResource("2_h4138")]
 position = Vector2(130, 290)
 rotation = -0.20944
 
 [node name="Puddle" parent="." index="11" instance=ExtResource("3_4femo")]
-position = Vector2(450, 464)
-rotation = -0.579449
-scale = Vector2(2.5, 2.5)
+position = Vector2(488, 475)
+rotation = -1.50796
+scale = Vector2(2.775, 3.94)
+metadata/_edit_lock_ = true
 
 [node name="Puddle2" parent="." index="12" instance=ExtResource("3_4femo")]
 position = Vector2(176, 770)
 rotation = 0.0959931
 scale = Vector2(2.5, 2.5)
+metadata/_edit_lock_ = true
 
 [editable path="UI/Back_To_Menu"]
 [editable path="FireworkVisualizer"]

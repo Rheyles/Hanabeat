@@ -1119,11 +1119,12 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="LevelButton0" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
+[node name="LevelButton6" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 484.0
 offset_top = 286.0
 offset_right = 484.0
 offset_bottom = 286.0
+lvl_number = 6
 
 [node name="LevelButton1" parent="SelectionButton" instance=ExtResource("3_kw8ho")]
 offset_left = 131.0
