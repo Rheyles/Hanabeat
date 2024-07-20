@@ -1241,9 +1241,9 @@ offset_bottom = 415.0
 [node name="TutoText" type="Label" parent="Tuto UI"]
 layout_mode = 0
 offset_left = -54.0
-offset_top = -34.0
+offset_top = -31.0
 offset_right = 310.0
-offset_bottom = 42.0
+offset_bottom = 45.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
 theme_override_constants/line_spacing = -12
@@ -1255,19 +1255,19 @@ autowrap_mode = 2
 
 [node name="Sprite2D2" type="Sprite2D" parent="Tuto UI"]
 modulate = Color(0, 0, 0, 0.419608)
-position = Vector2(130.056, 243.378)
+position = Vector2(130.056, 251.378)
 rotation = 1.5708
 scale = Vector2(2.21586, 2.16291)
 texture = ExtResource("26_31rrp")
 
 [node name="Sprite2D" type="Sprite2D" parent="Tuto UI"]
-position = Vector2(129.488, 239.132)
+position = Vector2(129.488, 247.132)
 rotation = 1.5708
 scale = Vector2(2.14941, 2.09805)
 texture = ExtResource("26_31rrp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Tuto UI"]
-position = Vector2(128.625, 231.481)
+position = Vector2(128.625, 239.481)
 scale = Vector2(1.00934, 0.898207)
 sprite_frames = SubResource("SpriteFrames_5udh3")
 animation = &"new_animation"
@@ -1276,9 +1276,9 @@ frame_progress = 0.254921
 [node name="TutoText2" type="Label" parent="Tuto UI"]
 layout_mode = 0
 offset_left = -52.0
-offset_top = 458.0
+offset_top = 479.0
 offset_right = 312.0
-offset_bottom = 558.0
+offset_bottom = 579.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0.996078)
 theme_override_constants/outline_size = 5
 theme_override_constants/line_spacing = -12

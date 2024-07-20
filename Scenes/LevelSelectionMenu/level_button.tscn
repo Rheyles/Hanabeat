@@ -83,9 +83,9 @@ mouse_filter = 2
 
 [node name="ColorRect" type="ColorRect" parent="Lvl_info_display"]
 layout_mode = 0
-offset_left = -58.0
+offset_left = -62.0
 offset_top = 65.0
-offset_right = 58.0
+offset_right = 63.0
 offset_bottom = 94.0
 color = Color(0.941176, 0.87451, 0.709804, 0.643137)
 
@@ -106,7 +106,7 @@ scale = Vector2(0.690891, 0.858994)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_constants/shadow_outline_size = 2
 theme_override_fonts/font = SubResource("FontVariation_iop00")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 40
 text = "BEST : XXXgffd"
 horizontal_alignment = 1
 vertical_alignment = 1

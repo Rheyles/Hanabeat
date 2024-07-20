@@ -61,6 +61,9 @@ func start_new_burn_point():
 	newSpark.position = self.position
 	#print("new burn on FuseNode n° : " + str(fuseNode_idx))
 
+func is_last_node() -> bool:
+	return $Sprite2D.visible
+
 func display_flash_color():
 	if not flash_on:
 		flash_player.play("flash")

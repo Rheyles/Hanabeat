@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dsjhobxnt5ch6"]
+[gd_scene load_steps=8 format=3 uid="uid://dsjhobxnt5ch6"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/MouseController/MouseController.gd" id="1_2qyka"]
 [ext_resource type="PackedScene" uid="uid://dyei080hdqt5s" path="res://Scenes/Playground/FuseNode/FuseNode.tscn" id="3_n2bub"]
@@ -15,6 +15,8 @@ frame_1/duration = 1.0
 frame_2/texture = ExtResource("6_slywh")
 frame_2/duration = 1.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_h8cpm"]
+
 [node name="MouseController" type="Node2D"]
 script = ExtResource("1_2qyka")
 fuseNode = ExtResource("3_n2bub")
@@ -26,3 +28,11 @@ texture_mode = 2
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="fuseNodeShapeCast" type="ShapeCast2D" parent="."]
+shape = SubResource("CircleShape2D_h8cpm")
+target_position = Vector2(0, 0)
+margin = 2.0
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
