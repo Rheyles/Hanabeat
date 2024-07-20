@@ -39,17 +39,14 @@ func _process(_delta)-> void:
 		fusenode_shape_cast.global_position = get_local_mouse_position()
 		fusenode_shape_cast.force_shapecast_update()
 		var i = fusenode_shape_cast.get_collision_count()
-		print(i)
 		while i > 0:
 			var collider_fuse_node = fusenode_shape_cast.get_collider(i-1).get_parent()
-			print(collider_fuse_node)
 			if collider_fuse_node is FuseNode:
-				print('coucou')
 				if collider_fuse_node.is_last_node() :
-					print('sheesh')
 					mouse_is_on_fuseNode = true
 					hovered_fuse = collider_fuse_node.parent_fuse_ref
-					Input.warp_mouse(collider_fuse_node.global_position)
+					last_node_pos = collider_fuse_node.global_position
+					#Input.warp_mouse(collider_fuse_node.global_position)
 					i=-1
 			i -= 1
 		###
@@ -73,11 +70,13 @@ func _process(_delta)-> void:
 	if Input.is_action_just_pressed('right_click') and hovered_fuse and not GAME.has_detonated:
 		hovered_fuse.resetFuse()
 		
+		
 	if pressed :
 		if current_fuse:
 			_create_fuse()
 		elif slice_start != Vector2.ZERO:
 			_update_slice_fuse()
+
 
 ###LOGIC
 
