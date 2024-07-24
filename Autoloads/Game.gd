@@ -20,10 +20,12 @@ func set_has_detonated(new_value:bool) -> void:
 
 ### BUILT-IN
 var current_scene = null
+var current_path = ""
 
 func _ready():
 	var root = get_tree().get_root()
 	current_scene = root.get_child(root.get_child_count() -1)
+	current_path = current_scene.scene_file_path
 
 
 ### LOGIC
@@ -47,6 +49,7 @@ func _deferred_goto_scene(path):
 	current_scene.free()
 
 	# Load new scene.
+	current_path = path
 	var s = ResourceLoader.load(path)
 
 	# Instance the new scene.
@@ -57,3 +60,7 @@ func _deferred_goto_scene(path):
 
 	# Optional, to make it compatible with the SceneTree.change_scene() API.
 	get_tree().set_current_scene(current_scene)
+
+
+func reload_scene():
+	call_deferred("_deferred_goto_scene", current_path)

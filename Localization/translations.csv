@@ -7,7 +7,7 @@ UI_BEST_SCORE,Meilleur score,Best score
 UI_LAST_SCORE,Dernier score,Last score
 UI_FUSE_LEFT,Mèche restante,Fuse left
 UI_LEAVE_LVL,Quitter le niveau ?,Leave the level ?
-UI_RELOAD_HELP,Cliquez ici pour réessayer,Click here to retry
+UI_RELOAD_HELP,"Clic court pour réessayer / Clic long pour recharger","Short click to retry / Long click to restart"
 UI_CONTINUE_LEVEL,Continuer le niveau,Continue the level
 UI_QUIT_TO_MENU,Retourner au menu,Return to menu
 LVL_SEL_TUTO_1,"Dessinez, coupez si besoin et brûlez les mèches...","Draw, cut if needed and burn the fuses..."

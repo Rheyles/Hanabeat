@@ -16,6 +16,10 @@ extends Node2D
 
 @onready var sound_player = $AudioStreamPlayer
 
+const CLICK_TIME_DELAY = 3000
+var click_time = 0
+var click_pressed = false
+
 var mouse_is_in : bool = false
 var is_ignite : bool = false
 
@@ -23,6 +27,7 @@ var is_ignite : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	click_time = Time.get_ticks_msec()
 	click_area.mouse_entered.connect(_on_ClickArea_mouse_entered)
 	click_area.mouse_exited.connect(_on_ClickArea_mouse_exited)
 	tail_sprite.animation_finished.connect(_on_Tail_animation_finished)
@@ -33,11 +38,15 @@ func _ready():
 	
 	reset_sprite.visible = false
 	reset_anim.play("Idle")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	
 	if Input.is_action_just_pressed('left_click') and mouse_is_in and not GAME.has_detonated:
 		# If there is mouse click on the detonator, we create a spark
+		click_pressed = false
+		click_time = Time.get_ticks_msec()
 		create_spark()
 		GAME.has_detonated = true
 		reset_sprite.visible = true
@@ -48,9 +57,17 @@ func _process(_delta):
 		play_sound("detonator")
 	
 	elif Input.is_action_just_pressed('left_click') and mouse_is_in and GAME.has_detonated :
-		GAME.has_detonated = false
-		reset_sprite.visible = false
-		play_sound("reset")
+		click_time = Time.get_ticks_msec()
+		click_pressed = true
+	
+	elif Input.is_action_just_released('left_click') and mouse_is_in and GAME.has_detonated and click_pressed :
+		if Time.get_ticks_msec() - click_time < CLICK_TIME_DELAY:
+			GAME.has_detonated = false
+			reset_sprite.visible = false
+			play_sound("reset")
+
+	if Time.get_ticks_msec() - click_time > CLICK_TIME_DELAY and mouse_is_in and GAME.has_detonated and click_pressed:
+		GAME.reload_scene()
 
 ### LOGIC
 
