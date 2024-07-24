@@ -1,8 +1,12 @@
-[gd_scene load_steps=40 format=3 uid="uid://t5wfagsr427v"]
+[gd_scene load_steps=44 format=3 uid="uid://t5wfagsr427v"]
 
 [ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_nltgt"]
 [ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_4gndr"]
+[ext_resource type="Texture2D" uid="uid://wpsheh4e46lu" path="res://Ressources/Sprites/LevelsEnd/lvl4_bckg2.png" id="2_n0oyn"]
+[ext_resource type="Texture2D" uid="uid://bluge58wvwwr0" path="res://Ressources/Sprites/LevelsEnd/lvl4_bckg2_n.png" id="3_6d23q"]
 [ext_resource type="PackedScene" uid="uid://bv7eb6g5604um" path="res://Scenes/Playground/Puddle/puddle.tscn" id="3_a2tur"]
+[ext_resource type="Texture2D" uid="uid://bjyqfdmvcha66" path="res://Ressources/Sprites/LevelsEnd/lvl4_bckg3.png" id="4_w514o"]
+[ext_resource type="Texture2D" uid="uid://il41gw4va6j8" path="res://Ressources/Sprites/LevelsEnd/lvl4_bckg3_n.png" id="5_ykl15"]
 
 [sub_resource type="Shader" id="Shader_plulj"]
 resource_local_to_scene = true
@@ -1069,6 +1073,10 @@ shader_parameter/offset = 1.0
 [node name="Level4" instance=ExtResource("1_nltgt")]
 lvl_id = 4
 node_nb_max = 300
+forground1 = ExtResource("2_n0oyn")
+forground1_n = ExtResource("3_6d23q")
+forground2 = ExtResource("4_w514o")
+forground2_n = ExtResource("5_ykl15")
 
 [node name="Herb" parent="Decorations" index="0"]
 material = SubResource("ShaderMaterial_5y4y3")

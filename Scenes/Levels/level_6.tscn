@@ -1,10 +1,14 @@
-[gd_scene load_steps=44 format=3 uid="uid://uqdsf2av2ihc"]
+[gd_scene load_steps=48 format=3 uid="uid://uqdsf2av2ihc"]
 
 [ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_itutt"]
+[ext_resource type="Texture2D" uid="uid://bde3ur7ihoth2" path="res://Ressources/Sprites/LevelsEnd/lvl6_bckg2.png" id="2_p8jd8"]
 [ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_rdvpq"]
 [ext_resource type="PackedScene" uid="uid://bv7eb6g5604um" path="res://Scenes/Playground/Puddle/puddle.tscn" id="3_iaog6"]
+[ext_resource type="Texture2D" uid="uid://ndpse0vatguu" path="res://Ressources/Sprites/LevelsEnd/lvl6_bckg2_n.png" id="3_iw0jc"]
 [ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/RocketBank.gdshader" id="3_vd1gc"]
+[ext_resource type="Texture2D" uid="uid://c6v526rbhjinh" path="res://Ressources/Sprites/LevelsEnd/lvl6_bckg3.png" id="4_6xd5i"]
 [ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/blink.gdshader" id="4_wa557"]
+[ext_resource type="Texture2D" uid="uid://b7kl21gtasdkv" path="res://Ressources/Sprites/LevelsEnd/lvl6_bckg3_n.png" id="5_s56kl"]
 
 [sub_resource type="Shader" id="Shader_plulj"]
 resource_local_to_scene = true
@@ -1092,9 +1096,13 @@ shader = ExtResource("4_wa557")
 shader_parameter/flash_color = null
 shader_parameter/flash_value = 0.0
 
-[node name="Level5" instance=ExtResource("1_itutt")]
-lvl_id = 5
+[node name="Level6" instance=ExtResource("1_itutt")]
+lvl_id = 6
 node_nb_max = 350
+forground1 = ExtResource("2_p8jd8")
+forground1_n = ExtResource("3_iw0jc")
+forground2 = ExtResource("4_6xd5i")
+forground2_n = ExtResource("5_s56kl")
 
 [node name="Herb" parent="Decorations" index="0"]
 material = SubResource("ShaderMaterial_5y4y3")
@@ -1173,15 +1181,9 @@ position = Vector2(488, 611)
 rotation = -0.331613
 
 [node name="Puddle" parent="." index="12" instance=ExtResource("3_iaog6")]
-position = Vector2(72, 403)
-rotation = 1.48528
-scale = Vector2(7.32, 2.795)
-is_water = false
-
-[node name="Puddle2" parent="." index="13" instance=ExtResource("3_iaog6")]
-position = Vector2(160, 729)
-rotation = 3.30391
-scale = Vector2(2.83, 6.98)
+position = Vector2(94, 524)
+rotation = -1.6441
+scale = Vector2(12.949, 2.6)
 is_water = false
 
 [node name="ReloadHelp" parent="UI" index="4"]

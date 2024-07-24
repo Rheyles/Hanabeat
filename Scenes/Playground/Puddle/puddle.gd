@@ -21,10 +21,12 @@ func _on_area_entered(area:Area2D)->void:
 			GAME.current_scene.get_node("%MouseController").add_child(vapor)
 			area.destroy()
 	else:
-		shape_cast.force_shapecast_update()
-		var i = shape_cast.get_collision_count()
-		while i > 0:
-			var collider_fuse_node = shape_cast.get_collider(i-1).get_parent()
-			if not collider_fuse_node.is_burnt :
-				collider_fuse_node.call_deferred('_burn')
-			i -= 1
+		if area is Spark:
+			$FlameParticles.emitting = true
+			shape_cast.force_shapecast_update()
+			var i = shape_cast.get_collision_count()
+			while i > 0:
+				var collider_fuse_node = shape_cast.get_collider(i-1).get_parent()
+				if not collider_fuse_node.is_burnt :
+					collider_fuse_node.call_deferred('_burn')
+				i -= 1
