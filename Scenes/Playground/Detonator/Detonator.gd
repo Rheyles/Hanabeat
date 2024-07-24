@@ -16,7 +16,7 @@ extends Node2D
 
 @onready var sound_player = $AudioStreamPlayer
 
-const CLICK_TIME_DELAY = 3000
+const CLICK_TIME_DELAY = 2500
 var click_time = 0
 var click_pressed = false
 
