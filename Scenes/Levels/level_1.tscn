@@ -1,11 +1,11 @@
 [gd_scene load_steps=43 format=3 uid="uid://dsw6guhoy0eth"]
 
 [ext_resource type="PackedScene" uid="uid://c53tww0tg17d2" path="res://Scenes/Playground/LevelTemplate/level_template.tscn" id="1_anv1l"]
-[ext_resource type="Texture2D" uid="uid://ba6ebtf4tbcnq" path="res://Ressources/Sprites/Menu/bckg_2.png" id="2_7t3dm"]
 [ext_resource type="PackedScene" uid="uid://81yg5m76kgvo" path="res://Scenes/Playground/RocketBank/RocketBank.tscn" id="2_67s1v"]
-[ext_resource type="Texture2D" uid="uid://dxtwodiwv6jc4" path="res://Ressources/Sprites/Menu/bckg_2_n.png" id="3_0umq8"]
-[ext_resource type="Texture2D" uid="uid://b8rc8joxpdiyg" path="res://Ressources/Sprites/Menu/bckg_3.png" id="4_85bcx"]
-[ext_resource type="Texture2D" uid="uid://3xo78fpu2pl2" path="res://Ressources/Sprites/Menu/bckg_3_n.png" id="5_20ov8"]
+[ext_resource type="Texture2D" uid="uid://4eue7am1ec8y" path="res://Ressources/Sprites/LevelsEnd/lvl1_bckg2.png" id="2_pic4r"]
+[ext_resource type="Texture2D" uid="uid://g0uoe4uqossk" path="res://Ressources/Sprites/LevelsEnd/lvl1_bckg2_n.png" id="3_ih0rc"]
+[ext_resource type="Texture2D" uid="uid://btnigjvon378t" path="res://Ressources/Sprites/LevelsEnd/lvl1_bckg3.png" id="4_61qjp"]
+[ext_resource type="Texture2D" uid="uid://bjqls8kr36pwl" path="res://Ressources/Sprites/LevelsEnd/lvl1_bckg3_n.png" id="5_2lpig"]
 
 [sub_resource type="Shader" id="Shader_n5i0y"]
 resource_local_to_scene = true
@@ -1071,10 +1071,10 @@ shader_parameter/offset = 1.0
 
 [node name="Level1" instance=ExtResource("1_anv1l")]
 lvl_id = 1
-forground1 = ExtResource("2_7t3dm")
-forground1_n = ExtResource("3_0umq8")
-forground2 = ExtResource("4_85bcx")
-forground2_n = ExtResource("5_20ov8")
+forground1 = ExtResource("2_pic4r")
+forground1_n = ExtResource("3_ih0rc")
+forground2 = ExtResource("4_61qjp")
+forground2_n = ExtResource("5_2lpig")
 
 [node name="Herb" parent="Decorations" index="0"]
 material = SubResource("ShaderMaterial_5y4y3")
