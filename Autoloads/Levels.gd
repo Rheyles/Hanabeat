@@ -14,11 +14,11 @@ var levels = ["res://Scenes/Playground/_Test/AmazingScene.tscn",
 var level_dict : Dictionary = {
 	0:[0,2], 
 	1:[0,2], 
-	2:[1,0,0], 
-	3:[0,1,2], 
-	4:[0], 
-	5:[2], 
-	6:[0]}
+	2:[0,2], 
+	3:[0,0,2], 
+	4:[0,2,0], 
+	5:[0,2], 
+	6:[2,0,2]}
 
 #Sprite mood : 0 = Basic, 1 = Unhappy, 2 = Laughing
 
