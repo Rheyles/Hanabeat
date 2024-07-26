@@ -38,6 +38,45 @@ script = ExtResource("1_p1q1t")
 
 [node name="FireworkVisualizer" parent="." instance=ExtResource("2_dd3d8")]
 
+[node name="PointLight2D" parent="FireworkVisualizer/Animations" index="0"]
+position = Vector2(293, 391)
+
+[node name="Bckg_8" parent="FireworkVisualizer/Animations" index="1"]
+position = Vector2(300, 540)
+
+[node name="Bckg_7" parent="FireworkVisualizer/Animations" index="2"]
+position = Vector2(300, 540)
+
+[node name="Bckg_6" parent="FireworkVisualizer/Animations" index="3"]
+position = Vector2(300, 540)
+
+[node name="Bckg_5" parent="FireworkVisualizer/Animations" index="6"]
+position = Vector2(300, 540)
+
+[node name="Bckg_4" parent="FireworkVisualizer/Animations" index="7"]
+position = Vector2(300, 875.22)
+
+[node name="FireWork_Launcher" parent="FireworkVisualizer/Animations" index="8"]
+position = Vector2(300, 840)
+
+[node name="Bckg_3" parent="FireworkVisualizer/Animations" index="9"]
+position = Vector2(300, 540)
+
+[node name="Bckg_2" parent="FireworkVisualizer/Animations" index="10"]
+position = Vector2(300, 540)
+
+[node name="Branchs" parent="FireworkVisualizer/Animations" index="11"]
+position = Vector2(0, 0)
+
+[node name="Transition" parent="FireworkVisualizer/Animations" index="12"]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(300, 1620)
+
+[node name="UI" parent="FireworkVisualizer" index="2"]
+modulate = Color(1, 1, 1, 1)
+offset_top = 0.0
+offset_bottom = 1080.0
+
 [node name="Title" type="Label" parent="FireworkVisualizer/UI" index="0"]
 z_index = 10
 layout_mode = 1

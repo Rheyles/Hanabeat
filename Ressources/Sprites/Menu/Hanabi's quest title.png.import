@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dje0htpgwbg1"
-path="res://.godot/imported/Mushu Portrait2.png-b2936dddcae2b4c0ee88dd7c245bc2f0.ctex"
+uid="uid://dbtubykwc2pqm"
+path="res://.godot/imported/Hanabi's quest title.png-68f5c348c8b6d91030e0e0c94564ad08.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/DialogueSprite/Mushu Portrait2.png"
-dest_files=["res://.godot/imported/Mushu Portrait2.png-b2936dddcae2b4c0ee88dd7c245bc2f0.ctex"]
+source_file="res://Ressources/Sprites/Menu/Hanabi's quest title.png"
+dest_files=["res://.godot/imported/Hanabi's quest title.png-68f5c348c8b6d91030e0e0c94564ad08.ctex"]
 
 [params]
 
