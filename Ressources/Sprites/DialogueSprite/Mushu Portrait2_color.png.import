@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bno0ur0xvv2ed"
-path="res://.godot/imported/Mushu Portrait1.png-a896db8fe08a59b08b6ce7ce19a38fb8.ctex"
+uid="uid://dvapsawjhhpr7"
+path="res://.godot/imported/Mushu Portrait2_color.png-f4ab1fc32a5d33e6af3a135caf3aa750.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Ressources/Sprites/DialogueSprite/Mushu Portrait1.png"
-dest_files=["res://.godot/imported/Mushu Portrait1.png-a896db8fe08a59b08b6ce7ce19a38fb8.ctex"]
+source_file="res://Ressources/Sprites/DialogueSprite/Mushu Portrait2_color.png"
+dest_files=["res://.godot/imported/Mushu Portrait2_color.png-f4ab1fc32a5d33e6af3a135caf3aa750.ctex"]
 
 [params]
 
