@@ -21,7 +21,7 @@ var last_box
 func _ready():
 	dialog_pos = get_node("Node2D/DialoguePos").global_position
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("left_click") && dialog_animation_stoped:
 		if dialog_index >= dialog_length - 1:
 			emit_signal("dialog_end",lvl_number)

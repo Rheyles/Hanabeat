@@ -1,15 +1,22 @@
-[gd_scene load_steps=12 format=3 uid="uid://bv7eb6g5604um"]
+[gd_scene load_steps=17 format=3 uid="uid://bv7eb6g5604um"]
 
 [ext_resource type="Script" path="res://Scenes/Playground/Puddle/puddle.gd" id="1_ay3km"]
 [ext_resource type="PackedScene" uid="uid://cq5k35n03o2w7" path="res://Scenes/Playground/Spark/big_vapor.tscn" id="2_euo7j"]
 [ext_resource type="Texture2D" uid="uid://c62luwmrvcadp" path="res://Ressources/Sprites/Puddles/puddles.png" id="3_1txib"]
+[ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/blink.gdshader" id="3_roytr"]
 [ext_resource type="Texture2D" uid="uid://b3sobkbds7jyo" path="res://Ressources/Sprites/smoke2.png" id="4_pfhtq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbvnc"]
+resource_local_to_scene = true
+shader = ExtResource("3_roytr")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_k5xvt"]
 radius = 26.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kxcmy"]
-radius = 27.0185
+radius = 30.0
 
 [sub_resource type="Gradient" id="Gradient_dbgk5"]
 offsets = PackedFloat32Array(0, 0.198529, 0.432432, 1)
@@ -46,16 +53,56 @@ scale_over_velocity_curve = SubResource("CurveTexture_57d58")
 color_ramp = SubResource("GradientTexture1D_2l5wr")
 turbulence_noise_strength = 0.0
 
+[sub_resource type="Animation" id="Animation_qy4ta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xxf0u"]
+resource_name = "blink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1k7f8"]
+_data = {
+"RESET": SubResource("Animation_qy4ta"),
+"blink": SubResource("Animation_xxf0u")
+}
+
 [node name="Puddle" type="Area2D"]
 z_index = -5
+collision_mask = 3
 script = ExtResource("1_ay3km")
 oil_modulate = Color(1, 0.403922, 0.278431, 1)
 vapor_scene = ExtResource("2_euo7j")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jbvnc")
 texture = ExtResource("3_1txib")
 
 [node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_k5xvt")
 target_position = Vector2(0, 0)
 margin = 2.0
@@ -79,6 +126,7 @@ randomness = 0.61
 trail_lifetime = 0.96
 
 [node name="FlameParticles" type="GPUParticles2D" parent="."]
+visible = false
 z_index = 6
 emitting = false
 amount = 150
@@ -89,3 +137,8 @@ one_shot = true
 explosiveness = 0.9
 randomness = 0.61
 trail_lifetime = 0.96
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1k7f8")
+}
