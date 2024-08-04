@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HanaBeat"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Scenes/MainMenu/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -20,12 +20,15 @@ config/icon="res://icon.svg"
 DATA="*res://Autoloads/Data.gd"
 EVENTS="*res://Autoloads/Events.gd"
 GAME="*res://Autoloads/Game.gd"
-LOCALIZATION="*res://Autoloads/Localization.gd"
+LOCAL="*res://Autoloads/Localization.gd"
+LEVELS="*res://Autoloads/Levels.gd"
+PLAYER="*res://Autoloads/Player.gd"
 
 [display]
 
 window/size/viewport_width=600
 window/size/viewport_height=1080
+window/stretch/mode="viewport"
 window/handheld/orientation=1
 
 [input]
@@ -51,4 +54,7 @@ locale/translations=PackedStringArray("res://Localization/translations.en.transl
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
+textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

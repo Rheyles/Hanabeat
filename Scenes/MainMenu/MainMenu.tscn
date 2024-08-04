@@ -1,5 +1,167 @@
-[gd_scene format=3 uid="uid://dvfw5qix0u7x"]
+[gd_scene load_steps=10 format=3 uid="uid://dvfw5qix0u7x"]
 
-[node name="MainMenu" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[ext_resource type="Script" path="res://Scenes/MainMenu/MainMenu.gd" id="1_p1q1t"]
+[ext_resource type="PackedScene" uid="uid://bgbsfii0i3web" path="res://Scenes/Playground/FireworkVisualizer/FireworkVisualizer.tscn" id="2_dd3d8"]
+[ext_resource type="FontVariation" uid="uid://cdaoxw51jws1v" path="res://Ressources/Fonts/new_font_variation.tres" id="4_dso3o"]
+[ext_resource type="FontFile" uid="uid://chweua5osdxqa" path="res://Ressources/Fonts/Borgen.ttf" id="6_thvfe"]
+[ext_resource type="Texture2D" uid="uid://i4o3tockjltq" path="res://Ressources/Sprites/Placeholders/message-24-error.png" id="18_2q28v"]
+[ext_resource type="FontFile" uid="uid://dmrpdxxwkj3cq" path="res://Ressources/Fonts/Miyoshi -Demo.ttf" id="25_8qaia"]
+
+[sub_resource type="Animation" id="Animation_rpwb5"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jt8lj"]
+_data = {
+"Idle": SubResource("Animation_rpwb5")
+}
+
+[sub_resource type="FontVariation" id="FontVariation_t5gd5"]
+base_font = ExtResource("6_thvfe")
+spacing_glyph = -1
+
+[node name="MainMenu" type="Node"]
+script = ExtResource("1_p1q1t")
+
+[node name="FireworkVisualizer" parent="." instance=ExtResource("2_dd3d8")]
+
+[node name="PointLight2D" parent="FireworkVisualizer/Animations" index="0"]
+position = Vector2(293, 391)
+
+[node name="Bckg_8" parent="FireworkVisualizer/Animations" index="1"]
+position = Vector2(300, 540)
+
+[node name="Bckg_7" parent="FireworkVisualizer/Animations" index="2"]
+position = Vector2(300, 540)
+
+[node name="Bckg_6" parent="FireworkVisualizer/Animations" index="3"]
+position = Vector2(300, 540)
+
+[node name="Bckg_5" parent="FireworkVisualizer/Animations" index="6"]
+position = Vector2(300, 540)
+
+[node name="Bckg_4" parent="FireworkVisualizer/Animations" index="7"]
+position = Vector2(300, 875.22)
+
+[node name="FireWork_Launcher" parent="FireworkVisualizer/Animations" index="8"]
+position = Vector2(300, 840)
+
+[node name="Bckg_3" parent="FireworkVisualizer/Animations" index="9"]
+position = Vector2(300, 540)
+
+[node name="Bckg_2" parent="FireworkVisualizer/Animations" index="10"]
+position = Vector2(300, 540)
+
+[node name="Branchs" parent="FireworkVisualizer/Animations" index="11"]
+position = Vector2(0, 0)
+
+[node name="Transition" parent="FireworkVisualizer/Animations" index="12"]
+modulate = Color(1, 1, 1, 1)
+position = Vector2(300, 1620)
+
+[node name="UI" parent="FireworkVisualizer" index="2"]
+modulate = Color(1, 1, 1, 1)
+offset_top = 0.0
+offset_bottom = 1080.0
+
+[node name="Title" type="Label" parent="FireworkVisualizer/UI" index="0"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -458.0
+offset_top = -384.0
+offset_right = 458.0
+offset_bottom = -190.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.6, 0.6)
+pivot_offset = Vector2(458, 97)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("25_8qaia")
+theme_override_font_sizes/font_size = 186
+text = "HANABI'S QUEST"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartLabel" type="Label" parent="FireworkVisualizer/UI" index="1"]
+modulate = Color(1, 1, 1, 0.786891)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -382.0
+offset_top = -214.0
+offset_right = 386.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_dso3o")
+theme_override_font_sizes/font_size = 45
+text = "- Click / Tap to Start -"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FireworkVisualizer/UI/StartLabel"]
+libraries = {
+"": SubResource("AnimationLibrary_jt8lj")
+}
+
+[node name="Exit_Button" type="TextureButton" parent="FireworkVisualizer/UI" index="2"]
+z_index = 10
+layout_mode = 0
+offset_left = 565.0
+offset_top = 10.0
+offset_right = 589.0
+offset_bottom = 34.0
+scale = Vector2(1.2, 1.2)
+size_flags_horizontal = 8
+size_flags_vertical = 0
+texture_normal = ExtResource("18_2q28v")
+
+[node name="Credit" type="Label" parent="FireworkVisualizer/UI" index="3"]
+z_index = 10
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -151.0
+offset_top = -101.0
+offset_right = 151.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_t5gd5")
+theme_override_font_sizes/font_size = 26
+text = "A Game By  : StrangeJourney & Sakd'Os
+Music By : PercheSoleil
+
+V0.1 - Juillet 2024"
+horizontal_alignment = 1
+
+[connection signal="button_down" from="FireworkVisualizer/UI/Exit_Button" to="." method="_on_exit_button_button_down"]
+
+[editable path="FireworkVisualizer"]

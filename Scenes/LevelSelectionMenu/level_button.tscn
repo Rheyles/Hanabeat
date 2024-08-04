@@ -1,0 +1,115 @@
+[gd_scene load_steps=8 format=3 uid="uid://fmwt8lxc4ggs"]
+
+[ext_resource type="Script" path="res://Scenes/LevelSelectionMenu/level_button.gd" id="1_wh2eu"]
+[ext_resource type="Texture2D" uid="uid://mmnb81msxtbp" path="res://Ressources/Sprites/Shadow.png" id="2_3oh7d"]
+[ext_resource type="PackedScene" uid="uid://c4osw4w5md8xx" path="res://Scenes/MainMenu/Firework_launcher/MenuFirework_launcher.tscn" id="2_xd1nr"]
+[ext_resource type="Texture2D" uid="uid://onubf0u2h4lh" path="res://Ressources/Sprites/Menu/ButtonBannerSprite3.png" id="4_qrcck"]
+[ext_resource type="FontFile" uid="uid://dckitmo4yrr4k" path="res://Ressources/Fonts/Water Dragon.ttf" id="5_c3e6r"]
+[ext_resource type="FontFile" uid="uid://dvmld4siqwsqc" path="res://Ressources/Fonts/BorgenBold.ttf" id="6_g27d4"]
+
+[sub_resource type="FontVariation" id="FontVariation_iop00"]
+base_font = ExtResource("6_g27d4")
+spacing_glyph = -3
+
+[node name="LevelButton" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 0
+script = ExtResource("1_wh2eu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2.5, 46)
+scale = Vector2(2.95833, 0.666667)
+texture = ExtResource("2_3oh7d")
+
+[node name="FireWork_Launcher" parent="." instance=ExtResource("2_xd1nr")]
+visible = false
+position = Vector2(0, -40)
+launch_timer = 1.0
+x_offset_range = 0
+shell_speed = 100
+shell_delay_is_random = false
+shell_delay = 0.6
+fireworks_scale_range_max = 0.8
+fireworks_light = false
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -31.0
+offset_top = -44.0
+offset_right = 32.71
+offset_bottom = 46.72
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("4_qrcck")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -39.5
+offset_right = 19.0
+offset_bottom = 41.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_c3e6r")
+theme_override_font_sizes/font_size = 80
+text = "X"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Lvl_info_display" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -140.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Lvl_info_display"]
+layout_mode = 0
+offset_left = -62.0
+offset_top = 65.0
+offset_right = 63.0
+offset_bottom = 94.0
+color = Color(0.941176, 0.87451, 0.709804, 0.643137)
+
+[node name="Lvl_info_text" type="Label" parent="Lvl_info_display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -70.0
+offset_top = -5.0
+offset_right = 129.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.690891, 0.858994)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 2
+theme_override_fonts/font = SubResource("FontVariation_iop00")
+theme_override_font_sizes/font_size = 40
+text = "BEST : XXXgffd"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="mouse_entered" from="TextureButton" to="." method="_on_texture_button_mouse_entered"]

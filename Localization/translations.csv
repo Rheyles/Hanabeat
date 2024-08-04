@@ -1,2 +1,38 @@
 id,fr,en
 TEST,test,test
+POPUP_LETS_GO,"Dessine les mèches pour que les fusées partent en même temps !","Draw the fuses to make all the rockets go off at once!"
+POPUP_WIN,"Tu as réussi, bien joué !","You did it, well played!"
+POPUP_LOSE,"Ca n'a pas fonctionné, dommage... Essaie encore une fois !","It didn't work, bummer... Try again!"
+UI_BEST_SCORE,Meilleur score,Best score
+UI_LAST_SCORE,Dernier score,Last score
+UI_FUSE_LEFT,Mèche restante,Fuse left
+UI_LEAVE_LVL,Quitter le niveau ?,Leave the level ?
+UI_RELOAD_HELP,"Clic court pour réessayer / Clic long pour recharger","Short click to retry / Long click to restart"
+UI_CONTINUE_LEVEL,Continuer le niveau,Continue the level
+UI_QUIT_TO_MENU,Retourner au menu,Return to menu
+LVL_SEL_TUTO_1,"Dessinez, coupez si besoin et brûlez les mèches...","Draw, cut if needed and burn the fuses..."
+LVL_SEL_TUTO_2,"...pour faire partir toutes les fusées en même temps !","...to make all the rockets go off at once!"
+MM_START,- Cliquez pour commencer -,- Click / Tap to Start -
+MM_CREDITS,"Un jeu par : StrangeJourney & Sakd'Os
+Musique par : PercheSoleil
+
+V0.1 - Juillet 2024","A Game By  : StrangeJourney & Sakd'Os
+Music By : PercheSoleil
+
+V0.1 - July 2024"
+LVL_INTRO_0_0,"Bonjour, je suis Bīan pào. Je viens de Nechi pour apporter mes feux d'artifices au Jopon." ,"Hello World, I'm Bīan pào (I think). Welcome"
+LVL_INTRO_1_0,"Bonjour, je suis Bīan pào. Je viens de Nechi pour apporter mes feux d'artifices au Jopon." ,"Hello, I am Bīan pào. I come from Nachi to bring my fireworks to Jopan."
+LVL_INTRO_1_1,"Tu vas m'aider à lancer ces fusées. C'est parti pour un petit entraînement !" ,"You're going to help me launch these rockets. Let's start a little training session!"
+LVL_INTRO_2_0,"Fini l'entraînement, ce soir on fête le nouvel an." ,"Training's over, this evening we're celebrating the new year."
+LVL_INTRO_2_1,"Il a plu mais ça ne nous empêchera pas d'illuminer le ciel !" ,"It rained but that won't stop us from lighting up the sky!"
+LVL_INTRO_3_0,"Un mariage a besoin de nous en urgence. Les organistrices ont mis plus de mèches que nécessaire et il n'en reste plus..." ,"A wedding needs us urgently. The organizers used more fuses than necessary and there are none left..."
+LVL_INTRO_3_1,"Une seule solution : il va falloir ajuster ce qui est déjà en place pour que tout fonctionne." ,"There's only one solution: we'll have to adjust what's already in place to make everything work."
+LVL_INTRO_3_2,"Faisons en sorte que ce mariage soit inoubliable !" ,"Let's make this wedding unforgettable!"
+LVL_INTRO_4_0,"La moisson a été terminée récemment et la Nature a été généreuse une fois de plus." ,"The harvest was recently completed and Nature has been generous once again."
+LVL_INTRO_4_1,"Tout le monde a travaillé très dur, je pense que cela mérite un petit cadeau." ,"Everyone has worked very hard, I think that deserves a little reward."
+LVL_INTRO_4_2,"Il faudra juste que tu fasses attention aux flaques d'huile, elles ont tendance à tout brûler une fois qu'elles s'enflamment." ,"You'll just need to be careful of the oil puddles, they tend to burn everything once they ignite."
+LVL_INTRO_5_0,"J'ai vu que des gens ont organisé une marche des fiertés malgré les risques encourus." ,"I saw that people organized a pride march despite the risks involved."
+LVL_INTRO_5_1,"Je tiens à leur montrer mon soutien alors faisons ce que nous savons faire de mieux !" ,"I want to show them my support, so let's do what we do best!"
+LVL_INTRO_6_0,"Eh bien, c'était un plaisir de collaborer avec toi." ,"Well, it was a pleasure working with you."
+LVL_INTRO_6_1,"Comment ? Tu m'as préparé une petite suprise pour mon anniversaire ?" ,"What? You prepared a little surprise for my birthday?"
+LVL_INTRO_6_2,"C'est tellement gentil, ça me touche. Merci beaucoup <3" ,"That's so kind, I'm touched. Thank you so much <3"

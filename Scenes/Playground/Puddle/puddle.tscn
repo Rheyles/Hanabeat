@@ -1,0 +1,144 @@
+[gd_scene load_steps=17 format=3 uid="uid://bv7eb6g5604um"]
+
+[ext_resource type="Script" path="res://Scenes/Playground/Puddle/puddle.gd" id="1_ay3km"]
+[ext_resource type="PackedScene" uid="uid://cq5k35n03o2w7" path="res://Scenes/Playground/Spark/big_vapor.tscn" id="2_euo7j"]
+[ext_resource type="Texture2D" uid="uid://c62luwmrvcadp" path="res://Ressources/Sprites/Puddles/puddles.png" id="3_1txib"]
+[ext_resource type="Shader" path="res://Scenes/Playground/RocketBank/blink.gdshader" id="3_roytr"]
+[ext_resource type="Texture2D" uid="uid://b3sobkbds7jyo" path="res://Ressources/Sprites/smoke2.png" id="4_pfhtq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jbvnc"]
+resource_local_to_scene = true
+shader = ExtResource("3_roytr")
+shader_parameter/flash_color = Color(1, 1, 1, 1)
+shader_parameter/flash_value = 0.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k5xvt"]
+radius = 26.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kxcmy"]
+radius = 30.0
+
+[sub_resource type="Gradient" id="Gradient_dbgk5"]
+offsets = PackedFloat32Array(0, 0.198529, 0.432432, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0.713726, 0.0745098, 0.168627, 1, 0.845082, 0.744719, 0.00332064, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2l5wr"]
+gradient = SubResource("Gradient_dbgk5")
+
+[sub_resource type="Curve" id="Curve_n5467"]
+max_value = 3.0
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_57d58"]
+curve = SubResource("Curve_n5467")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_f81dw"]
+particle_flag_rotate_y = true
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 25.0
+angular_velocity_min = -90.0
+angular_velocity_max = 258.0
+orbit_velocity_min = -0.333
+gravity = Vector3(0, -98, 0)
+linear_accel_min = -70.84
+linear_accel_max = 56.25
+radial_accel_min = -45.83
+radial_accel_max = 35.42
+scale_min = 0.05
+scale_max = 0.05
+scale_over_velocity_max = 2.45
+scale_over_velocity_curve = SubResource("CurveTexture_57d58")
+color_ramp = SubResource("GradientTexture1D_2l5wr")
+turbulence_noise_strength = 0.0
+
+[sub_resource type="Animation" id="Animation_qy4ta"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_xxf0u"]
+resource_name = "blink"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/flash_value")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1k7f8"]
+_data = {
+"RESET": SubResource("Animation_qy4ta"),
+"blink": SubResource("Animation_xxf0u")
+}
+
+[node name="Puddle" type="Area2D"]
+z_index = -5
+collision_mask = 3
+script = ExtResource("1_ay3km")
+oil_modulate = Color(1, 0.403922, 0.278431, 1)
+vapor_scene = ExtResource("2_euo7j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jbvnc")
+texture = ExtResource("3_1txib")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_k5xvt")
+target_position = Vector2(0, 0)
+margin = 2.0
+collision_mask = 2
+collide_with_areas = true
+collide_with_bodies = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kxcmy")
+
+[node name="VaporParticles" type="GPUParticles2D" parent="."]
+z_index = 6
+emitting = false
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_f81dw")
+texture = ExtResource("4_pfhtq")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.24
+randomness = 0.61
+trail_lifetime = 0.96
+
+[node name="FlameParticles" type="GPUParticles2D" parent="."]
+visible = false
+z_index = 6
+emitting = false
+amount = 150
+process_material = SubResource("ParticleProcessMaterial_f81dw")
+texture = ExtResource("4_pfhtq")
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.9
+randomness = 0.61
+trail_lifetime = 0.96
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_1k7f8")
+}

@@ -1,0 +1,7 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://cdaoxw51jws1v"]
+
+[ext_resource type="FontFile" uid="uid://chweua5osdxqa" path="res://Ressources/Fonts/Borgen.ttf" id="1_foc8u"]
+
+[resource]
+base_font = ExtResource("1_foc8u")
+spacing_glyph = -3

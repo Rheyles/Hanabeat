@@ -1,48 +1,54 @@
-extends Node2D
+extends Area2D
+class_name Spark
+
+@export var vapor_scene : Resource
 
 @onready var spark_shape_cast : ShapeCast2D = $sparkShapeCast
+@onready var fusenode_shape_cast : ShapeCast2D = $fuseNodeShapeCast
 
-var fuse_ref : Node2D
-var actual_fuse_node_pos
-var actual_fuse_node_idx : int
-
-var spark_delay : float = 0.04
+var spark_delay : float = 0.05
 
 ### BUILT-IN
 
 func _ready():
+	EVENTS.has_detonated.connect(_on_EVENTS_has_detonated)
 	_stepBurn()
-
 
 ### LOGIC
 
-#Must contain burn logic ?
-#At each step (burn FuseNode 1 by 1) FuseNode check for collision + other logic
-#VFX -> move particule at each step
-#func _burnTheFuse():
-	#var fuse_line : Line2D = fuse_ref.get_node("Line2D")
-	#while actual_fuse_node_idx >= 0:
-		#await get_tree().create_timer(spark_delay).timeout
-		#_stepBurn(fuse_line)
-	#fuse_ref.lunchFirework()
-
-
 func _stepBurn(): 
-	
+	EVENTS.emit_signal("spark_nb_changed",1)
 	await get_tree().create_timer(spark_delay).timeout
+	
+	var vapor = vapor_scene.instantiate()
+	vapor.global_position = global_position
+	GAME.current_scene.get_node("%MouseController").add_child(vapor)
+
+	fusenode_shape_cast.force_shapecast_update()
+	var i = fusenode_shape_cast.get_collision_count()
+	while i > 0:
+		var collider_fuse_node = fusenode_shape_cast.get_collider(i-1).get_parent()
+		if collider_fuse_node is FuseNode:
+			if not collider_fuse_node.is_burnt :
+				collider_fuse_node.display_flash_color()
+		i -= 1
 
 	spark_shape_cast.force_shapecast_update()
-	var i = spark_shape_cast.get_collision_count()
+	i = spark_shape_cast.get_collision_count()
 	while i > 0:
 		var collider_fuse_node = spark_shape_cast.get_collider(i-1).get_parent()
 		if not collider_fuse_node.is_burnt :
 			collider_fuse_node._burn()
 		i -= 1
-		
 	
-	#await get_tree().create_timer(spark_delay).timeout
+	destroy()
+
+func destroy():
+	EVENTS.emit_signal("spark_nb_changed",-1)
 	queue_free()
-	#if line_to_burn.get_point_count() > 1: #The Spark souldn't move again if it's the last point to burn
-		#self.position = line_to_burn.get_point_position(actual_fuse_node_idx - 1)
-	#line_to_burn.remove_point(actual_fuse_node_idx)
-	#actual_fuse_node_idx -= 1
+
+### SIGNAL LOGICS
+
+func _on_EVENTS_has_detonated(new_value:bool)->void:
+	if not new_value:
+		destroy()
